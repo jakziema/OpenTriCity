@@ -16,7 +16,7 @@ public class CategoriesScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_categoryscreen);
+        setContentView(R.layout.activity_category_screen);
     }
 
     public void onClick(View view) {
