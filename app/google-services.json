@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "269197566221",
+    "firebase_url": "https://inzynierla-cb012.firebaseio.com",
+    "project_id": "inzynierla-cb012",
+    "storage_bucket": "inzynierla-cb012.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:269197566221:android:fd694caed42a3971",
+        "android_client_info": {
+          "package_name": "com.example.beata_macbook.opentricity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "269197566221-7khgvak0pn5hdafqpru5popbebr7deov.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.beata_macbook.opentricity",
+            "certificate_hash": "C72637219D17DC67B23947B4B30F7FDE1474EFA1"
+          }
+        },
+        {
+          "client_id": "269197566221-nd0penfri91cefm7aqr16o9rk206f1el.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpwJMq3mmO2Osmwx6pRLiELhalYxfFwrU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "269197566221-nd0penfri91cefm7aqr16o9rk206f1el.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
