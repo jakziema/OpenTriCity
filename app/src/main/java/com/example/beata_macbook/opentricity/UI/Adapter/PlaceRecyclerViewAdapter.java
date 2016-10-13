@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.example.beata_macbook.opentricity.R;
 import com.example.beata_macbook.opentricity.UI.Model.Place;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 /**
@@ -49,7 +51,7 @@ public class PlaceRecyclerViewAdapter extends RecyclerView.Adapter<PlaceRecycler
         ImageView mImageView;
         TextView mTitleTextView;
         TextView mAddressTextView;
-
+        TextView mDescriptionTextView;
         private Context mContext;
 
         public PlaceViewHolder(View itemView) {
@@ -58,6 +60,7 @@ public class PlaceRecyclerViewAdapter extends RecyclerView.Adapter<PlaceRecycler
             mImageView = (ImageView) itemView.findViewById(R.id.placeImageView);
             mTitleTextView = (TextView) itemView.findViewById(R.id.placeNameTextView);
             mAddressTextView = (TextView) itemView.findViewById(R.id.addressTextView);
+            mDescriptionTextView= (TextView) itemView.findViewById(R.id.descriptionTextView);
 
             mContext = itemView.getContext();
 
@@ -67,6 +70,7 @@ public class PlaceRecyclerViewAdapter extends RecyclerView.Adapter<PlaceRecycler
 
             mTitleTextView.setText(place.getName());
             mAddressTextView.setText(place.getAddress());
+            mDescriptionTextView.setText(place.getDescription());
         }
 
 
