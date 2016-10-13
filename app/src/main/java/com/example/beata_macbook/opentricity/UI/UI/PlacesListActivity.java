@@ -27,7 +27,7 @@ public class PlacesListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_places_list);
         mRecyclerView = (RecyclerView)findViewById(R.id.recyclerView);
-        mFirebaseReference = FirebaseDatabase.getInstance().getReference("Lokale_gastronomiczne");
+        mFirebaseReference = FirebaseDatabase.getInstance().getReference(getIntent().getStringExtra("chosenCategory").toString());
         setupFirebaseAdapter();
     }
 

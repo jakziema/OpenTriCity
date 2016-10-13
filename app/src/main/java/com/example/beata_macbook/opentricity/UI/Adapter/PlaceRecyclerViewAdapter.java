@@ -18,8 +18,7 @@ import java.util.ArrayList;
  */
 
 public class PlaceRecyclerViewAdapter extends RecyclerView.Adapter<PlaceRecyclerViewAdapter.PlaceViewHolder>{
-    private static final int MAX_WIDTH = 200;
-    private static final int MAX_HEIGHT = 200;
+
 
     private ArrayList<Place> mPlaces = new ArrayList<>();
     private Context mContext;

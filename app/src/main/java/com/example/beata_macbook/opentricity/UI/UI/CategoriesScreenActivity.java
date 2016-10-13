@@ -39,7 +39,7 @@ public class CategoriesScreenActivity extends AppCompatActivity {
                 break;
         }
         Intent intent = new Intent(this, PlacesListActivity.class);
-        intent.putExtra("choosenCategory", wybrano);
+        intent.putExtra("chosenCategory", wybrano);
         startActivity(intent);
 
     }

@@ -3,7 +3,9 @@ package com.example.beata_macbook.opentricity.UI.Adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,8 +25,7 @@ import java.util.ArrayList;
  */
 
 public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-    private static final int MAX_WIDTH = 200;
-    private static final int MAX_HEIGHT = 200;
+
     View mView;
     Context mContext;
 
@@ -45,29 +46,33 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
 
     }
 
+
     public void onClick(View view) {
         final ArrayList<Place> places = new ArrayList<>();
+
+        //JAK ZMIENIC ZAPYTANIE DO BAZY w zaleznosci od tego co wybral
         DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference("Lokale_gastronomiczne");
 
-        dbReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    places.add(snapshot.getValue(Place.class));
-                }
-
-                int itemPosition = getLayoutPosition();
-
-//                Intent intent = new Intent(mContext, PlaceDetailActivity.class);
+//        dbReference.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+//                    Log.v("Firebase",snapshot.toString());
+//                    places.add(snapshot.getValue(Place.class));
+//                }
 //
-//                mContext.startActivity(intent);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+//                int itemPosition = getLayoutPosition();
+//
+////                Intent intent = new Intent(mContext, PlaceDetailActivity.class);
+////
+////                mContext.startActivity(intent);
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
 
 
     }
