@@ -1,4 +1,4 @@
-package com.example.beata_macbook.opentricity.UI;
+package com.example.beata_macbook.opentricity.UI.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,7 +38,7 @@ public class CategoriesScreenActivity extends AppCompatActivity {
                 wybrano = "Urzedy";
                 break;
         }
-        Intent intent = new Intent(this, PlacesListViewActivity.class);
+        Intent intent = new Intent(this, PlacesListActivity.class);
         intent.putExtra("choosenCategory", wybrano);
         startActivity(intent);
 

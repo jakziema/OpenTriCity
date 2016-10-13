@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#6A5ACD"
-    tools:context=".UI.AboutScreenActivity">
+    tools:context=".UI.UI.AboutScreenActivity">
     <TextView
         android:text="Autorami aplikacji są Katarzyna Poniatowska, Jakub ziemann i Alicja Zelewska"
         android:textColor="#FFFFFF"

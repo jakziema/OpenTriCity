@@ -10,7 +10,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".UI.MainScreenActivity"
+            android:name=".UI.UI.MainScreenActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,9 +18,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".UI.AboutScreenActivity">
+        <activity android:name=".UI.UI.AboutScreenActivity"></activity>
+        <activity android:name=".UI.UI.CategoriesScreenActivity"></activity>
+        <activity android:name=".UI.UI.PlacesListActivity"></activity>
 
-        </activity>
 
     </application>
 

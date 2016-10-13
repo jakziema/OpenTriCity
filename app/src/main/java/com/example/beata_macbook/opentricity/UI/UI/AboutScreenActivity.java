@@ -1,8 +1,7 @@
-package com.example.beata_macbook.opentricity.UI;
+package com.example.beata_macbook.opentricity.UI.UI;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 
 import com.example.beata_macbook.opentricity.R;
 
@@ -10,11 +9,11 @@ import com.example.beata_macbook.opentricity.R;
  * Created by Beata-MacBook on 13.10.2016.
  */
 
-public class PlacesListActivity extends AppCompatActivity {
+public class AboutScreenActivity extends AppCompatActivity {
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_places_list);
-
-
+        setContentView(R.layout.activity_about_screen);
     }
 }

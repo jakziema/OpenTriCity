@@ -7,16 +7,7 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
-    tools:context=".UI.PlacesListActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Restaurants near"
-        android:id="@+id/locationTextView"
-        android:layout_centerHorizontal="true" />
-
-
+    tools:context=".UI.UI.PlacesListActivity">
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"

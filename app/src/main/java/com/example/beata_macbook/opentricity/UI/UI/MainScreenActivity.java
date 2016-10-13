@@ -1,4 +1,4 @@
-package com.example.beata_macbook.opentricity.UI;
+package com.example.beata_macbook.opentricity.UI.UI;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -22,7 +22,7 @@ public class MainScreenActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void onGuestButtonClicked(View view) {
+    public void onGuestButtonClick(View view) {
         Intent intent = new Intent(this, CategoriesScreenActivity.class);
         startActivity(intent);
     }
