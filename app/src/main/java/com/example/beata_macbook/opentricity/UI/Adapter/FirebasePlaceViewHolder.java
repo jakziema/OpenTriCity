@@ -40,9 +40,11 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
         ImageView placeImageView = (ImageView) mView.findViewById(R.id.placeImageView);
         TextView nameTextView = (TextView) mView.findViewById(R.id.placeNameTextView);
         TextView addressTextView = (TextView) mView.findViewById(R.id.addressTextView);
+        TextView descriptionTextView = (TextView) mView.findViewById(R.id.descriptionTextView);
 
         nameTextView.setText(place.getName());
         addressTextView.setText(place.getAddress());
+        descriptionTextView.setText(place.getDescription());
 
     }
 
@@ -53,26 +55,26 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
         //JAK ZMIENIC ZAPYTANIE DO BAZY w zaleznosci od tego co wybral
         DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference("Lokale_gastronomiczne");
 
-//        dbReference.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-//                    Log.v("Firebase",snapshot.toString());
-//                    places.add(snapshot.getValue(Place.class));
-//                }
+        dbReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Log.v("Firebase",snapshot.toString());
+                    places.add(snapshot.getValue(Place.class));
+                }
+
+                int itemPosition = getLayoutPosition();
+
+//                Intent intent = new Intent(mContext, PlaceDetailActivity.class);
 //
-//                int itemPosition = getLayoutPosition();
-//
-////                Intent intent = new Intent(mContext, PlaceDetailActivity.class);
-////
-////                mContext.startActivity(intent);
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
+//                mContext.startActivity(intent);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
 
     }
