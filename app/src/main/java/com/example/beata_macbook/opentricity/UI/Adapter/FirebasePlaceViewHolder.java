@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.beata_macbook.opentricity.R;
 import com.example.beata_macbook.opentricity.UI.Model.Place;
+import com.example.beata_macbook.opentricity.UI.SinglePlace.SinglePlaceActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -46,6 +47,7 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
         addressTextView.setText(place.getAddress());
         descriptionTextView.setText(place.getDescription());
 
+
     }
 
 
@@ -63,11 +65,11 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
                     places.add(snapshot.getValue(Place.class));
                 }
 
-                int itemPosition = getLayoutPosition();
+               // int itemPosition = getLayoutPosition();
 
-//                Intent intent = new Intent(mContext, PlaceDetailActivity.class);
-//
-//                mContext.startActivity(intent);
+               // Intent intent = new Intent(mContext, SinglePlaceActivity.class);
+
+               // mContext.startActivity(intent);
             }
 
             @Override

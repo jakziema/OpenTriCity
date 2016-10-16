@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
+    android:background="#2196F3"
     android:layout_height="match_parent">
 
     <Button
@@ -10,9 +11,11 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="112dp"
         android:layout_alignParentRight="true"
+        android:background="#BBDEFB"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:textColor="#1976D2"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:onClick="onClick"
@@ -21,6 +24,7 @@
     <Button
         android:text="Lokale gastronomiczne"
         android:layout_width="wrap_content"
+        android:background="#BBDEFB"
         android:layout_height="wrap_content"
         android:layout_below="@+id/govButton"
         android:layout_alignLeft="@+id/govButton"
@@ -28,12 +32,14 @@
         android:layout_marginTop="15dp"
         android:id="@+id/restaurantsButton"
         android:layout_alignRight="@+id/govButton"
+        android:textColor="#1976D2"
         android:onClick="onClick"
         android:layout_alignEnd="@+id/govButton" />
 
     <Button
         android:text="Lokale usługowe"
         android:layout_width="wrap_content"
+        android:background="#BBDEFB"
         android:layout_height="wrap_content"
         android:layout_below="@+id/restaurantsButton"
         android:layout_marginTop="15dp"
@@ -42,12 +48,14 @@
         android:id="@+id/barberButton"
         android:layout_alignRight="@+id/restaurantsButton"
         android:onClick="onClick"
+        android:textColor="#1976D2"
         android:layout_alignEnd="@+id/restaurantsButton" />
 
     <Button
         android:text="Obiekty sportowe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#BBDEFB"
         android:layout_below="@+id/barberButton"
         android:layout_alignLeft="@+id/barberButton"
         android:layout_alignStart="@+id/barberButton"
@@ -55,11 +63,14 @@
         android:id="@+id/sportsButton"
         android:layout_alignRight="@+id/barberButton"
         android:onClick="onClick"
+        android:textColor="#1976D2"
         android:layout_alignEnd="@+id/barberButton" />
 
     <Button
         android:text="Obiekty edukacyjne"
         android:layout_width="wrap_content"
+        android:background="#BBDEFB"
+        android:textColor="#1976D2"
         android:layout_height="wrap_content"
         android:layout_below="@+id/sportsButton"
         android:layout_alignLeft="@+id/sportsButton"
