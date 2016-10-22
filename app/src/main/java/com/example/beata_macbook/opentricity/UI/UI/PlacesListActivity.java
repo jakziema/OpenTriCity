@@ -26,7 +26,10 @@ public class PlacesListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_places_list);
         mRecyclerView = (RecyclerView)findViewById(R.id.recyclerView);
-        mFirebaseReference = FirebaseDatabase.getInstance().getReference(getIntent().getStringExtra("chosenCategory").toString());
+        mFirebaseReference = FirebaseDatabase.getInstance().getReference(
+                //getIntent().getStringExtra("chosenCategory").toString()
+                "Obiekty_edukacyjne"
+        ).orderByKey().equalTo("1").getRef();
         setupFirebaseAdapter();
     }
 

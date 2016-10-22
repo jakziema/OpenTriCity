@@ -45,7 +45,6 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
         nameTextView.setText(place.getName());
         addressTextView.setText(place.getAddress());
         descriptionTextView.setText(place.getDescription());
-
     }
 
 
@@ -53,9 +52,10 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
         final ArrayList<Place> places = new ArrayList<>();
 
         //JAK ZMIENIC ZAPYTANIE DO BAZY w zaleznosci od tego co wybral
-        DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference("Lokale_gastronomiczne");
+        DatabaseReference dbReference =
+                FirebaseDatabase.getInstance().getReference("Lokale_gastronomiczne");
 
-        dbReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        dbReference.orderByChild("name").equalTo("Bar u Jakuba").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
