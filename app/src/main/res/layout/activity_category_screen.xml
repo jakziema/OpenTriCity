@@ -16,6 +16,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:onClick="onClick"
+        android:tag="Urzedy"
         android:id="@+id/govButton" />
 
     <Button
@@ -29,6 +30,7 @@
         android:id="@+id/restaurantsButton"
         android:layout_alignRight="@+id/govButton"
         android:onClick="onClick"
+        android:tag="Lokale_gastronomiczne"
         android:layout_alignEnd="@+id/govButton" />
 
     <Button
@@ -42,6 +44,7 @@
         android:id="@+id/barberButton"
         android:layout_alignRight="@+id/restaurantsButton"
         android:onClick="onClick"
+        android:tag="Lokale_uslugowe"
         android:layout_alignEnd="@+id/restaurantsButton" />
 
     <Button
@@ -55,6 +58,7 @@
         android:id="@+id/sportsButton"
         android:layout_alignRight="@+id/barberButton"
         android:onClick="onClick"
+        android:tag="Obiekty_sportowe"
         android:layout_alignEnd="@+id/barberButton" />
 
     <Button
@@ -68,5 +72,6 @@
         android:id="@+id/eduButton"
         android:layout_alignRight="@+id/sportsButton"
         android:onClick="onClick"
+        android:tag="Obiekty_edukacyjne"
         android:layout_alignEnd="@+id/sportsButton" />
 </RelativeLayout>

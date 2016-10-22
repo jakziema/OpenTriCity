@@ -20,26 +20,35 @@ public class CategoriesScreenActivity extends AppCompatActivity {
     }
 
     public void onClick(View view) {
-        String wybrano = "";
-        switch (view.getId()){
-            case R.id.barberButton:
-                wybrano = "Lokale_uslugowe";
-                break;
-            case R.id.restaurantsButton:
-                wybrano = "Lokale_gastronomiczne";
-                break;
-            case R.id.eduButton:
-                wybrano = "Obiekty_edukacyjne";
-                break;
-            case R.id.sportsButton:
-                wybrano = "Obiekty_sportowe";
-                break;
-            case R.id.govButton:
-                wybrano = "Urzedy";
-                break;
-        }
+        //TODO: Czy Kasi takie rozwiązanie pasuje - każdy przycisk ma swojego
+        // taga i za jego pomocą przesyłamy ten tekst co wcześniej był przypisany do pola "wybrano"
+        // (zajrzyjcie w activity_category_screen.xml i spójrzcie na android.tag przy
+        // każdym przycisku, to magia stanie się jasna).
+        // W ten sposób oszczędzamy trochę linii kodu (pamietajce, że może w apce dojść jeszcze
+        // trochę rodzajów obiektów i wtedy taki switch-case może zrobić się mega nieczytelny.
+        // Poza tym ogólnie switch-case używa się raczej w szczególnych przypadkach - lepiej
+        // pomyśleć o innych rozwiązaniach
+//        String wybrano = "";
+//        switch (view.getId()) {
+//            case R.id.barberButton:
+//                wybrano = "Lokale_uslugowe";
+//                break;
+//            case R.id.restaurantsButton:
+//                wybrano = "Lokale_gastronomiczne";
+//                break;
+//            case R.id.eduButton:
+//                wybrano = "Obiekty_edukacyjne";
+//                break;
+//            case R.id.sportsButton:
+//                wybrano = "Obiekty_sportowe";
+//                break;
+//            case R.id.govButton:
+//                wybrano = "Urzedy";
+//                break;
+//        }
         Intent intent = new Intent(this, PlacesListActivity.class);
-        intent.putExtra("chosenCategory", wybrano);
+        //Pobieramy taga
+        intent.putExtra("chosenCategory", view.getTag().toString());
         startActivity(intent);
 
     }

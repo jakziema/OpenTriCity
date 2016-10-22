@@ -20,7 +20,6 @@ public class PlacesListActivity extends AppCompatActivity {
 
     private DatabaseReference mFirebaseReference;
     private FirebaseRecyclerAdapter mFirebaseAdapter;
-
     RecyclerView mRecyclerView ;
 
     protected void onCreate(Bundle savedInstanceState) {
