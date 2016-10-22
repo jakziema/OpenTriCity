@@ -4,7 +4,6 @@ android {
     compileSdkVersion 24
     buildToolsVersion "24.0.2"
     defaultConfig {
-        multiDexEnabled true
         applicationId "com.example.beata_macbook.opentricity"
         minSdkVersion 15
         targetSdkVersion 24
@@ -30,14 +29,8 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:24.2.1'
     compile 'com.google.firebase:firebase-database:9.6.1'
     compile 'com.firebaseui:firebase-ui-database:0.6.0'
-    compile 'com.google.android.gms:play-services-maps:9.6.1'
-    compile 'com.google.android.gms:play-services-plus:9.6.1'
-    compile 'com.google.android.gms:play-services:9.6.1'
     testCompile 'junit:junit:4.12'
 }
-
-
-
 
 
 apply plugin: 'com.google.gms.google-services'

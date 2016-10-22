@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.example.beata_macbook.opentricity.R;
 import com.example.beata_macbook.opentricity.UI.Model.Place;
-import com.example.beata_macbook.opentricity.UI.SinglePlace.SinglePlaceActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,7 +26,7 @@ import java.util.ArrayList;
 
 public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    View mView;
+   public View mView;
     Context mContext;
 
     public FirebasePlaceViewHolder(View itemView) {
@@ -35,9 +34,11 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
         mView = itemView;
         mContext = itemView.getContext();
         itemView.setOnClickListener(this);
+
     }
 
     public void bindPlace(Place place) {
+
         ImageView placeImageView = (ImageView) mView.findViewById(R.id.placeImageView);
         TextView nameTextView = (TextView) mView.findViewById(R.id.placeNameTextView);
         TextView addressTextView = (TextView) mView.findViewById(R.id.addressTextView);
@@ -46,6 +47,7 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
         nameTextView.setText(place.getName());
         addressTextView.setText(place.getAddress());
         descriptionTextView.setText(place.getDescription());
+
 
 
     }
@@ -65,11 +67,11 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
                     places.add(snapshot.getValue(Place.class));
                 }
 
-               // int itemPosition = getLayoutPosition();
+                int itemPosition = getLayoutPosition();
 
-               // Intent intent = new Intent(mContext, SinglePlaceActivity.class);
-
-               // mContext.startActivity(intent);
+//                Intent intent = new Intent(mContext, PlaceDetailActivity.class);
+//
+//                mContext.startActivity(intent);
             }
 
             @Override

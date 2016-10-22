@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.example.beata_macbook.opentricity.R;
 import com.example.beata_macbook.opentricity.UI.Adapter.FirebasePlaceViewHolder;
@@ -37,9 +38,16 @@ public class PlacesListActivity extends AppCompatActivity {
                         mFirebaseReference) {
 
             @Override
-            protected void populateViewHolder(FirebasePlaceViewHolder viewHolder,
-                                              Place model, int position) {
+            protected void populateViewHolder(final FirebasePlaceViewHolder viewHolder, Place model, int position) {
+
+
+                final String place_key = getRef(position).getKey();
+
+
                 viewHolder.bindPlace(model);
+
+
+
             }
         };
         mRecyclerView.setHasFixedSize(true);

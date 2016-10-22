@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.beata_macbook.opentricity.R;
-import com.example.beata_macbook.opentricity.UI.Maps.MapsActivity;
 
 public class MainScreenActivity extends AppCompatActivity {
 
@@ -33,8 +32,8 @@ public class MainScreenActivity extends AppCompatActivity {
 //        startActivity(intent);
 //    }
 
-   public void onInstructionsButtonClick(View view) {
-        Intent intent = new Intent(this, MapsActivity.class);
-        startActivity(intent);
-    }
+//    public void onInstructionsButtonClicked(View view) {
+//        Intent intent = new Intent(this, InstructionsActivity.class);
+//        startActivity(intent);
+//    }
 }
