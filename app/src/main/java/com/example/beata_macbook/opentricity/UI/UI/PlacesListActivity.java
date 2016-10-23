@@ -40,12 +40,8 @@ public class PlacesListActivity extends AppCompatActivity {
             @Override
             protected void populateViewHolder(final FirebasePlaceViewHolder viewHolder, Place model, int position) {
 
-
                 final String place_key = getRef(position).getKey();
-
-
                 viewHolder.bindPlace(model);
-
 
 
             }

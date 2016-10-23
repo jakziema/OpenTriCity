@@ -30,7 +30,7 @@ public class Details extends AppCompatActivity {
         mFirebaseReference = FirebaseDatabase.getInstance().getReference().child("Obiekty_edukacyjne");
 
         mPlace_key = getIntent().getExtras().getString("name");
-        mSinglePlace = (TextView)findViewById(R.id.textTitle);
+       // mSinglePlace = (TextView)findViewById(R.id.textTitle);
 
         mFirebaseReference.child(mPlace_key).addValueEventListener(new ValueEventListener() {
             @Override
