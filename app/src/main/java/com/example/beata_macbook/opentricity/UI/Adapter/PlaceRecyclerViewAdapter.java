@@ -72,7 +72,6 @@ public class PlaceRecyclerViewAdapter extends RecyclerView.Adapter<PlaceRecycler
             mAddressTextView.setText(place.getAddress());
             mDescriptionTextView.setText(place.getDescription());
 
-
         }
 
 

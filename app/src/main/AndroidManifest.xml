@@ -20,7 +20,7 @@
         <activity android:name=".UI.UI.AboutScreenActivity" />
         <activity android:name=".UI.UI.CategoriesScreenActivity" />
         <activity android:name=".UI.UI.PlacesListActivity" />
-        <activity android:name=".UI.Details.Details"></activity>
+        <activity android:name=".UI.Adapter.Details"></activity>
     </application>
 
 </manifest>

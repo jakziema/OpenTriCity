@@ -1,8 +1,10 @@
-package com.example.beata_macbook.opentricity.UI.Details;
+package com.example.beata_macbook.opentricity.UI.Adapter;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telecom.Call;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.beata_macbook.opentricity.R;
 import com.google.firebase.database.DataSnapshot;
@@ -14,30 +16,29 @@ import com.google.firebase.database.ValueEventListener;
 public class Details extends AppCompatActivity {
 
     private String mPlace_key = null;
-    private DatabaseReference mFirebaseReference;
+    private DatabaseReference dbReference;
 
-    private TextView mTitleTextView;
-    private TextView mAddressTextView;
-    private TextView mElevatorTextView;
-    private TextView mSinglePlace;
-
+    private TextView mNameTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
-        mFirebaseReference = FirebaseDatabase.getInstance().getReference().child("Obiekty_edukacyjne");
+        dbReference = FirebaseDatabase.getInstance().getReference().child("Obiekty_edukacyjne");
 
-        mPlace_key = getIntent().getExtras().getString("name");
-       // mSinglePlace = (TextView)findViewById(R.id.textTitle);
+        mPlace_key = getIntent().getExtras().getString("Obiekty_edukacyjne_id");
 
-        mFirebaseReference.child(mPlace_key).addValueEventListener(new ValueEventListener() {
+        mNameTextView = (TextView)findViewById(R.id.nameTextView);
+
+
+        dbReference.child(mPlace_key).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String place_title = (String) dataSnapshot.child("name").getValue();
-                String place_address = (String) dataSnapshot.child("address").getValue();
-                String place_elevator = (String) dataSnapshot.child("elevator").getValue();
+
+                String place_name = (String)dataSnapshot.child("name").getValue();
+
+                mNameTextView.setText(place_name);
             }
 
             @Override
@@ -45,9 +46,5 @@ public class Details extends AppCompatActivity {
 
             }
         });
-
-
     }
 }
-
-
