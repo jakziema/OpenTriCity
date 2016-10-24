@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.beata_macbook.opentricity.R;
 import com.example.beata_macbook.opentricity.UI.Model.Place;
+import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
@@ -21,6 +22,8 @@ import java.util.ArrayList;
 
 public class PlaceRecyclerViewAdapter extends RecyclerView.Adapter<PlaceRecyclerViewAdapter.PlaceViewHolder>{
 
+    private static final int MAX_WIDTH = 200;
+    private static final int MAX_HEIGHT = 200;
 
     private ArrayList<Place> mPlaces = new ArrayList<>();
     private Context mContext;
@@ -67,6 +70,12 @@ public class PlaceRecyclerViewAdapter extends RecyclerView.Adapter<PlaceRecycler
         }
 
         public void bindPlace(Place place) {
+
+//            Picasso.with(mContext)
+//                    .load(place.getImageURL())
+//                    .resize(MAX_WIDTH, MAX_HEIGHT)
+//                    .centerCrop()
+//                    .into(mImageView);
 
             mTitleTextView.setText(place.getName());
             mAddressTextView.setText(place.getAddress());

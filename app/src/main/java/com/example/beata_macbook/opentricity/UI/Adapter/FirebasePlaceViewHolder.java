@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
@@ -32,6 +33,9 @@ import static com.example.beata_macbook.opentricity.UI.UI.CategoriesScreenActivi
  */
 
 public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+    private static final int MAX_WIDTH = 200;
+    private static final int MAX_HEIGHT = 200;
 
     View mView;
     Context mContext;
@@ -57,45 +61,14 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
         nameTextView.setText(place.getName());
         addressTextView.setText(place.getAddress());
         descriptionTextView.setText(place.getDescription());
+//        Picasso.with(mContext).load(place.getImageURL()).resize(MAX_WIDTH, MAX_HEIGHT).centerCrop().into(placeImageView);
 
     }
 
-
     public void onClick(View view) {
-        final ArrayList<Place> places = new ArrayList<>();
-
-
-        DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference(CategoriesScreenActivity.choice);
-
-        Log.d("Clicked", Integer.toString(getLayoutPosition()));
 
         Intent intent = new Intent(mContext, PlaceDetailActivity.class);
-
         intent.putExtra("name", nameTextView.getText().toString());
         mContext.startActivity(intent);
-
-//        dbReference.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-//
-//                    places.add(snapshot.getValue(Place.class));
-//                }
-//
-//                int itemPosition = getLayoutPosition();
-//
-//
-//
-//
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-
-
     }
 }
