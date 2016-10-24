@@ -8,21 +8,22 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".UI.UI.MainScreenActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
 
         <activity android:name=".UI.UI.AboutScreenActivity"></activity>
         <activity android:name=".UI.UI.CategoriesScreenActivity"></activity>
         <activity android:name=".UI.UI.PlacesListActivity"></activity>
         <activity android:name=".UI.UI.PlaceDetailActivity"></activity>
-
+        <activity android:name=".UI.UI.Instruction"></activity>
 
     </application>
 

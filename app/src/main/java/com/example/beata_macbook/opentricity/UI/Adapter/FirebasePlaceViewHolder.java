@@ -34,10 +34,13 @@ import static com.example.beata_macbook.opentricity.UI.UI.CategoriesScreenActivi
 
 public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+
     private static final int MAX_WIDTH = 200;
     private static final int MAX_HEIGHT = 200;
 
     View mView;
+
+
     Context mContext;
 
     ImageView placeImageView;
@@ -50,18 +53,25 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
         mView = itemView;
         mContext = itemView.getContext();
         itemView.setOnClickListener(this);
+
     }
 
     public void bindPlace(Place place) {
+
          placeImageView = (ImageView) mView.findViewById(R.id.placeImageView);
          nameTextView = (TextView) mView.findViewById(R.id.placeNameTextView);
         addressTextView = (TextView) mView.findViewById(R.id.addressTextView);
          descriptionTextView = (TextView) mView.findViewById(R.id.descriptionTextView);
 
+
+
+
         nameTextView.setText(place.getName());
         addressTextView.setText(place.getAddress());
         descriptionTextView.setText(place.getDescription());
 //        Picasso.with(mContext).load(place.getImageURL()).resize(MAX_WIDTH, MAX_HEIGHT).centerCrop().into(placeImageView);
+
+
 
     }
 
