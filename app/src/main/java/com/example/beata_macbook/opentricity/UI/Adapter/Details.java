@@ -20,6 +20,7 @@ public class Details extends AppCompatActivity {
 
     private TextView mNameTextView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
