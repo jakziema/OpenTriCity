@@ -13,6 +13,8 @@ import com.example.beata_macbook.opentricity.R;
 
 public class CategoriesScreenActivity extends AppCompatActivity {
 
+    public static String choice = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,18 +26,24 @@ public class CategoriesScreenActivity extends AppCompatActivity {
         switch (view.getId()){
             case R.id.barberButton:
                 wybrano = "Lokale_uslugowe";
+                choice = "Lokale_uslugowe";
+
                 break;
             case R.id.restaurantsButton:
                 wybrano = "Lokale_gastronomiczne";
+                choice = "Lokale_gastronomiczne";
                 break;
             case R.id.eduButton:
                 wybrano = "Obiekty_edukacyjne";
+                choice = "Obiekty_edukacyjne";
                 break;
             case R.id.sportsButton:
                 wybrano = "Obiekty_sportowe";
+                choice = "Obiekty_sportowe";
                 break;
             case R.id.govButton:
                 wybrano = "Urzedy";
+                choice= "Urzedy";
                 break;
         }
         Intent intent = new Intent(this, PlacesListActivity.class);

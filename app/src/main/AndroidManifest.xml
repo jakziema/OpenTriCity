@@ -21,6 +21,7 @@
         <activity android:name=".UI.UI.AboutScreenActivity"></activity>
         <activity android:name=".UI.UI.CategoriesScreenActivity"></activity>
         <activity android:name=".UI.UI.PlacesListActivity"></activity>
+        <activity android:name=".UI.UI.PlaceDetailActivity"></activity>
 
 
     </application>

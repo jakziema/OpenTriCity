@@ -9,8 +9,6 @@ import com.example.beata_macbook.opentricity.R;
 
 public class MainScreenActivity extends AppCompatActivity {
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

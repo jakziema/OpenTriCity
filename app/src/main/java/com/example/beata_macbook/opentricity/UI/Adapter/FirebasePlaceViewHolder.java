@@ -12,13 +12,20 @@ import android.widget.TextView;
 
 import com.example.beata_macbook.opentricity.R;
 import com.example.beata_macbook.opentricity.UI.Model.Place;
+import com.example.beata_macbook.opentricity.UI.UI.CategoriesScreenActivity;
+import com.example.beata_macbook.opentricity.UI.UI.PlaceDetailActivity;
+import com.google.android.gms.common.server.converter.StringToIntConverter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
+
+import static com.example.beata_macbook.opentricity.UI.UI.CategoriesScreenActivity.choice;
 
 /**
  * Created by Beata-MacBook on 13.10.2016.
@@ -29,6 +36,11 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
     View mView;
     Context mContext;
 
+    ImageView placeImageView;
+    TextView nameTextView;
+    TextView addressTextView;
+    TextView descriptionTextView;
+
     public FirebasePlaceViewHolder(View itemView) {
         super(itemView);
         mView = itemView;
@@ -37,10 +49,10 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
     }
 
     public void bindPlace(Place place) {
-        ImageView placeImageView = (ImageView) mView.findViewById(R.id.placeImageView);
-        TextView nameTextView = (TextView) mView.findViewById(R.id.placeNameTextView);
-        TextView addressTextView = (TextView) mView.findViewById(R.id.addressTextView);
-        TextView descriptionTextView = (TextView) mView.findViewById(R.id.descriptionTextView);
+         placeImageView = (ImageView) mView.findViewById(R.id.placeImageView);
+         nameTextView = (TextView) mView.findViewById(R.id.placeNameTextView);
+        addressTextView = (TextView) mView.findViewById(R.id.addressTextView);
+         descriptionTextView = (TextView) mView.findViewById(R.id.descriptionTextView);
 
         nameTextView.setText(place.getName());
         addressTextView.setText(place.getAddress());
@@ -52,29 +64,37 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
     public void onClick(View view) {
         final ArrayList<Place> places = new ArrayList<>();
 
-        //JAK ZMIENIC ZAPYTANIE DO BAZY w zaleznosci od tego co wybral
-        DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference("Lokale_gastronomiczne");
 
-        dbReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Log.v("Firebase",snapshot.toString());
-                    places.add(snapshot.getValue(Place.class));
-                }
+        DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference(CategoriesScreenActivity.choice);
 
-                int itemPosition = getLayoutPosition();
+        Log.d("Clicked", Integer.toString(getLayoutPosition()));
 
-//                Intent intent = new Intent(mContext, PlaceDetailActivity.class);
+        Intent intent = new Intent(mContext, PlaceDetailActivity.class);
+
+        intent.putExtra("name", nameTextView.getText().toString());
+        mContext.startActivity(intent);
+
+//        dbReference.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 //
-//                mContext.startActivity(intent);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+//                    places.add(snapshot.getValue(Place.class));
+//                }
+//
+//                int itemPosition = getLayoutPosition();
+//
+//
+//
+//
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
 
 
     }
