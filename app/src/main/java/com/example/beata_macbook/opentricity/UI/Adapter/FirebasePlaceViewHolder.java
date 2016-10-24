@@ -22,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import org.parceler.Parcels;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
@@ -76,9 +77,35 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
     }
 
     public void onClick(View view) {
+        final ArrayList<Place> places = new ArrayList<>();
 
         Intent intent = new Intent(mContext, PlaceDetailActivity.class);
         intent.putExtra("name", nameTextView.getText().toString());
-        mContext.startActivity(intent);
+
+
+
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(choice);
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    places.add(snapshot.getValue(Place.class));
+                    Log.d("bla", snapshot.toString());
+                }
+
+                int itemPosition = getLayoutPosition();
+
+                Intent intent = new Intent(mContext, PlaceDetailActivity.class);
+                intent.putExtra("places", Parcels.wrap(places));
+                intent.putExtra("position", itemPosition + "");
+
+                mContext.startActivity(intent);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
     }
 }

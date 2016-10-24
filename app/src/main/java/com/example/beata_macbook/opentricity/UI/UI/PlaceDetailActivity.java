@@ -13,6 +13,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.parceler.Parcels;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import static com.example.beata_macbook.opentricity.UI.UI.CategoriesScreenActivity.choice;
 
 /**
@@ -21,6 +29,8 @@ import static com.example.beata_macbook.opentricity.UI.UI.CategoriesScreenActivi
 
 public class PlaceDetailActivity extends AppCompatActivity {
 
+    ArrayList<Place> mPlaces = new ArrayList<>();
+
     TextView detailPlaceNameTextView;
 
     @Override
@@ -28,27 +38,15 @@ public class PlaceDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_places_detail);
         String name = getIntent().getStringExtra("name");
-        Log.d("PRZESLANO", name);
+//        Log.d("PRZESLANO", name);
 
         detailPlaceNameTextView = (TextView) findViewById(R.id.detailPlaceNameTextView);
 
+        mPlaces = Parcels.unwrap(getIntent().getParcelableExtra("places"));
+        int startingPosition = Integer.parseInt(getIntent().getStringExtra("position"));
 
-        DatabaseReference dbReference  = FirebaseDatabase.getInstance().getReference(choice);
-        dbReference.orderByChild("name").equalTo(name).limitToFirst(1).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.d("TAG", dataSnapshot.getValue().toString());
-
-
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
+        Log.d("PLACES", mPlaces.get(startingPosition).getName());
+        detailPlaceNameTextView.setText(mPlaces.get(startingPosition).getName());
 
     }
 }
