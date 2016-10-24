@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.beata_macbook.opentricity.R;
-import com.example.beata_macbook.opentricity.UI.Adapter.Details;
+
 
 public class MainScreenActivity extends AppCompatActivity {
 
@@ -31,7 +31,7 @@ public class MainScreenActivity extends AppCompatActivity {
 //        startActivity(intent);
 //    }
     public void onInstructionsButtonClick(View view) {
-        Intent intent = new Intent(MainScreenActivity.this, Details.class);
+        Intent intent = new Intent(MainScreenActivity.this, Instruction.class);
         startActivity(intent);
     }
 }

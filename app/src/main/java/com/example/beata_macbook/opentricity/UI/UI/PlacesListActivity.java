@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.beata_macbook.opentricity.R;
-import com.example.beata_macbook.opentricity.UI.Adapter.Details;
+
 import com.example.beata_macbook.opentricity.UI.Adapter.FirebasePlaceViewHolder;
 import com.example.beata_macbook.opentricity.UI.Model.Place;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -45,14 +45,9 @@ public class PlacesListActivity extends AppCompatActivity {
             @Override
             protected void populateViewHolder(final FirebasePlaceViewHolder viewHolder, Place model, int position) {
 
-                final String place_key = getRef(position).getKey();
+
 
                 viewHolder.bindPlace(model);
-                viewHolder.mView.setOnClickListener((){
-                    Intent detailsIntent = new Intent(PlacesListActivity.this, Details.class);
-                    detailsIntent.putExtra("place_id", place_key);
-                    startActivity(detailsIntent);
-                });
 
             }
         };
