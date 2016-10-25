@@ -71,11 +71,11 @@ public class PlaceRecyclerViewAdapter extends RecyclerView.Adapter<PlaceRecycler
 
         public void bindPlace(Place place) {
 
-//            Picasso.with(mContext)
-//                    .load(place.getImageURL())
-//                    .resize(MAX_WIDTH, MAX_HEIGHT)
-//                    .centerCrop()
-//                    .into(mImageView);
+            Picasso.with(mContext)
+                    .load(place.getImageURL())
+                    .resize(MAX_WIDTH, MAX_HEIGHT)
+                    .centerCrop()
+                    .into(mImageView);
 
             mTitleTextView.setText(place.getName());
             mAddressTextView.setText(place.getAddress());

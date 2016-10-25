@@ -65,12 +65,10 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
          descriptionTextView = (TextView) mView.findViewById(R.id.descriptionTextView);
 
 
-
-
         nameTextView.setText(place.getName());
         addressTextView.setText(place.getAddress());
         descriptionTextView.setText(place.getDescription());
-//        Picasso.with(mContext).load(place.getImageURL()).resize(MAX_WIDTH, MAX_HEIGHT).centerCrop().into(placeImageView);
+        Picasso.with(mContext).load(place.getImageURL()).resize(MAX_WIDTH, MAX_HEIGHT).centerCrop().into(placeImageView);
 
 
 
@@ -91,11 +89,10 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     places.add(snapshot.getValue(Place.class));
-                    Log.d("bla", snapshot.toString());
+
                 }
 
                 int itemPosition = getLayoutPosition();
-
                 Intent intent = new Intent(mContext, PlaceDetailActivity.class);
                 intent.putExtra("places", Parcels.wrap(places));
                 intent.putExtra("position", itemPosition + "");
