@@ -11,8 +11,13 @@ import com.example.beata_macbook.opentricity.R;
  * Created by Beata-MacBook on 13.10.2016.
  */
 
+
+/**
+ * Klasa odpowiadajaca za ekran z kategoriami
+ */
 public class CategoriesScreenActivity extends AppCompatActivity {
 
+    // zmienna globalna wybor, która pozwala nam na ustawienie odpowiedniej kategorii do bazy Firebase
     public static String choice = "";
 
     @Override
@@ -46,7 +51,9 @@ public class CategoriesScreenActivity extends AppCompatActivity {
                 choice= "Urzedy";
                 break;
         }
+
         Intent intent = new Intent(this, PlacesListActivity.class);
+        //przesylamy wybor uzytkownika
         intent.putExtra("chosenCategory", wybrano);
         startActivity(intent);
 

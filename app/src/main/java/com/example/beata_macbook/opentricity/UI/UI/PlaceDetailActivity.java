@@ -2,52 +2,60 @@ package com.example.beata_macbook.opentricity.UI.UI;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.beata_macbook.opentricity.R;
 import com.example.beata_macbook.opentricity.UI.Model.Place;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
-import static com.example.beata_macbook.opentricity.UI.UI.CategoriesScreenActivity.choice;
+import org.parceler.Parcels;
+
+import java.util.ArrayList;
 
 /**
- * Created by Beata-MacBook on 13.10.2016.
+ * Klasa odpowiadająca za widok pokazujący szczegóły danego miejsca
  */
 
 public class PlaceDetailActivity extends AppCompatActivity {
 
+
+    // deklaracja wszystkich labeli itd
     TextView detailPlaceNameTextView;
+    TextView addressTextView;
+    TextView descriptionTextView;
+    TextView phoneTextView;
+    TextView elevatorTextView;
+    ImageView detailPlaceImageView;
+    //deklarujemy obiekt typu Place z ktorego bedziemy pobierali opodwiednie pola
+    Place place;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_places_detail);
-        String name = getIntent().getStringExtra("name");
-        Log.d("PRZESLANO", name);
 
+        //rozpakowujemy przeslane miejsce
+         place = Parcels.unwrap(getIntent().getParcelableExtra("place"));
+
+        //szukamy widokow
         detailPlaceNameTextView = (TextView) findViewById(R.id.detailPlaceNameTextView);
+        addressTextView = (TextView) findViewById(R.id.addressTextView);
+        descriptionTextView = (TextView)findViewById(R.id.descriptionTextView);
+        phoneTextView = (TextView)findViewById(R.id.phoneTextView);
+        detailPlaceImageView = (ImageView)findViewById(R.id.detailPlaceImageView);
+        elevatorTextView = (TextView)findViewById(R.id.elevatorTextView);
 
 
-        DatabaseReference dbReference  = FirebaseDatabase.getInstance().getReference(choice);
-        dbReference.orderByChild("name").equalTo(name).limitToFirst(1).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.d("TAG", dataSnapshot.getValue().toString());
-
-
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+        //wrzucamy do labeli pola kliknietego miejsca
+        detailPlaceNameTextView.setText(place.getName());
+        addressTextView.setText(place.getAddress());
+        descriptionTextView.setText(place.getDescription());
+        phoneTextView.setText(place.getPhoneNumber());
+        elevatorTextView.setText(place.getElevator());
+        //ustawiamy zdjecie po URL
+        Picasso.with(this).load(place.getImageURL()).resize(400, 300).centerCrop().into(detailPlaceImageView);
 
 
     }
