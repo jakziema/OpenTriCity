@@ -33,11 +33,12 @@ import static com.example.beata_macbook.opentricity.UI.UI.CategoriesScreenActivi
  * Created by Beata-MacBook on 13.10.2016.
  */
 
+/**
+ * ViewHolder ktory trzyma nasze info o UI i dane komorki
+ */
+
 public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-
-    private static final int MAX_WIDTH = 200;
-    private static final int MAX_HEIGHT = 200;
 
     View mView;
 
@@ -57,6 +58,7 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
 
     }
 
+    //ustawiamy cale UI i dane miejsca
     public void bindPlace(Place place) {
 
          placeImageView = (ImageView) mView.findViewById(R.id.placeImageView);
@@ -68,34 +70,32 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
         nameTextView.setText(place.getName());
         addressTextView.setText(place.getAddress());
         descriptionTextView.setText(place.getDescription());
-        Picasso.with(mContext).load(place.getImageURL()).resize(MAX_WIDTH, MAX_HEIGHT).centerCrop().into(placeImageView);
-
-
+        Picasso.with(mContext).load(place.getImageURL()).resize(200, 200).centerCrop().into(placeImageView);
 
     }
 
     public void onClick(View view) {
+        //tablica do ktorej wrzucimy sciagniete z firebase miejsca
         final ArrayList<Place> places = new ArrayList<>();
 
-        Intent intent = new Intent(mContext, PlaceDetailActivity.class);
-        intent.putExtra("name", nameTextView.getText().toString());
-
-
-
+        //choice wybor uzytkownika
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference(choice);
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    //wrzucamy do tablicy miejsca
                     places.add(snapshot.getValue(Place.class));
 
                 }
 
+                //pobieramy pozycje kliknietej komorki
                 int itemPosition = getLayoutPosition();
                 Intent intent = new Intent(mContext, PlaceDetailActivity.class);
-                intent.putExtra("places", Parcels.wrap(places));
-                intent.putExtra("position", itemPosition + "");
+                //przesylamy spakowane miejsce
+                Place place = places.get(itemPosition);
+                intent.putExtra("place", Parcels.wrap(place));
 
                 mContext.startActivity(intent);
             }
