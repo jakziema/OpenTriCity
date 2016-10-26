@@ -14,8 +14,10 @@ import android.widget.Toast;
 
 import com.example.beata_macbook.opentricity.R;
 
+/**
+ * Klasa odpowiadajca za ekran glowny , wybor odpowiedniej opcji
+ */
 public class MainScreenActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,13 +27,15 @@ public class MainScreenActivity extends AppCompatActivity {
         }
     }
 
+    //Przejscie do ekranu informacji
     public void onAboutButtonClick(View view) {
         Intent intent = new Intent(MainScreenActivity.this, AboutScreenActivity.class);
         startActivity(intent);
     }
 
+    //Przejscie do keranu z kategoriami
     public void onGuestButtonClick(View view) {
-        Intent intent = new Intent(this, CategoriesScreenActivity.class);
+        Intent intent = new Intent(MainScreenActivity.this, CategoriesScreenActivity.class);
         startActivity(intent);
     }
 
@@ -76,7 +80,7 @@ public class MainScreenActivity extends AppCompatActivity {
                 b.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if(isOnline()) {
+                        if (isOnline()) {
                             dialog.dismiss();
                         }
                     }
@@ -84,5 +88,10 @@ public class MainScreenActivity extends AppCompatActivity {
             }
         });
         return alert;
+    }
+    //Przejscie do ekranu z instrukcjami
+    public void onInstructionsButtonClick(View view) {
+        Intent intent = new Intent(MainScreenActivity.this, Instruction.class);
+        startActivity(intent);
     }
 }

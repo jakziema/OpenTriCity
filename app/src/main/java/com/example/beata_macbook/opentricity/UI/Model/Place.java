@@ -1,9 +1,16 @@
 package com.example.beata_macbook.opentricity.UI.Model;
 
+import org.parceler.Parcel;
+
 /**
  * Created by Beata-MacBook on 13.10.2016.
  */
 
+/**
+ * Klasa modelujaca nasze Miejsce
+ */
+
+@Parcel
 public class Place {
 
     String description;
@@ -13,9 +20,8 @@ public class Place {
     String phoneNumber;
     String imageURL;
 
-    public Place() {
-
-    }
+    //pusty konstruktor potrzebny bibliotece PICASSO
+    public Place() {}
 
     public Place(String name, String website, String address, String phoneNumber, String imageURL, String description) {
         this.name = name;

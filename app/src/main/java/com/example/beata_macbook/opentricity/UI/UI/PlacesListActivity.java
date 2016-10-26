@@ -13,10 +13,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 /**
- * Created by Beata-MacBook on 13.10.2016.
+ * Klasa odpowiadajca za wyswietlanie listy miejsc po przejsciu z kategorii
  */
 
 public class PlacesListActivity extends AppCompatActivity {
+
 
     private DatabaseReference mFirebaseReference;
     private FirebaseRecyclerAdapter mFirebaseAdapter;
@@ -25,23 +26,28 @@ public class PlacesListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_places_list);
+
         mRecyclerView = (RecyclerView)findViewById(R.id.recyclerView);
-        mFirebaseReference = FirebaseDatabase.getInstance().getReference(
-                //getIntent().getStringExtra("chosenCategory").toString()
-                "Obiekty_edukacyjne"
-        ).orderByKey().equalTo("1").getRef();
+        //ustawiamy zapytanie do bazy Firebase w zaleznosci od tego co wybral uzytkownik, pobieramy intentem z ekranu
+        // CategoriesScreenActivity
+        mFirebaseReference = FirebaseDatabase.getInstance().getReference(getIntent().getStringExtra("chosenCategory").toString());
+        //ustawiamy Adapter Firebase
         setupFirebaseAdapter();
     }
 
     private void setupFirebaseAdapter() {
+        //w konstruktorze ustawiamy model klasy - Place, jak maja wygladac komorki - place_list_item,
         mFirebaseAdapter = new FirebaseRecyclerAdapter<Place, FirebasePlaceViewHolder>
                 (Place.class, R.layout.place_list_item, FirebasePlaceViewHolder.class,
                         mFirebaseReference) {
 
             @Override
-            protected void populateViewHolder(FirebasePlaceViewHolder viewHolder,
-                                              Place model, int position) {
+            //zapelnij viewHolder danymi,
+            protected void populateViewHolder(final FirebasePlaceViewHolder viewHolder, Place model, int position) {
+
+                //ustawiamy całe UI
                 viewHolder.bindPlace(model);
+
             }
         };
         mRecyclerView.setHasFixedSize(true);
