@@ -13,7 +13,7 @@ import org.parceler.Parcel;
 @Parcel
 public class Place {
 
-    String description;
+    String opis;
     String name;
     String website;
     String address;
@@ -24,23 +24,33 @@ public class Place {
     String staff;
     String podjazdy;
     String toilets;
-
+    String el_wheelchair;
+    String wheelchair;
+    String crutch;
 
     //pusty konstruktor potrzebny bibliotece PICASSO
     public Place() {}
 
-    public Place(String name, String website, String address, String phoneNumber, String imageURL, String description, String elevator) {
+    public Place(
+            String name, String website, String address, String phoneNumber,
+            String imageURL, String opis, String elevator,
+            String staff, String bar, String toilets, String podjazdy,
+            String el_wheelchair, String wheelchair, String crutch
+    ) {
         this.name = name;
         this.website = website;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.imageURL = imageURL;
-        this.description = description;
+        this.opis = opis;
         this.elevator = elevator;
         this.staff = staff;
         this.bar = bar;
         this.toilets = toilets;
         this.podjazdy = podjazdy;
+        this.el_wheelchair = el_wheelchair;
+        this.wheelchair = wheelchair;
+        this.crutch = crutch;
     }
 
     public String getName() {
@@ -63,7 +73,7 @@ public class Place {
         return imageURL;
     }
 
-    public String getDescription() { return description; }
+    public String getDescription() { return opis; }
 
     public String getElevator() { return elevator; }
 
@@ -74,4 +84,48 @@ public class Place {
     public String getBar() {return bar; }
 
     public String getToilets() {return toilets; }
+
+    public void setDescription(String opis) {
+        this.opis = opis;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    public void setElevator(String elevator) {
+        this.elevator = elevator;
+    }
+
+    public void setBar(String bar) {
+        this.bar = bar;
+    }
+
+    public void setStaff(String staff) {
+        this.staff = staff;
+    }
+
+    public void setPodjazdy(String podjazdy) {
+        this.podjazdy = podjazdy;
+    }
+
+    public void setToilets(String toilets) {
+        this.toilets = toilets;
+    }
 }

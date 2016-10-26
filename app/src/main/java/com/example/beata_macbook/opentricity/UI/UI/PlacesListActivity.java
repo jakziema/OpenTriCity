@@ -14,6 +14,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
+import static com.example.beata_macbook.opentricity.UI.UI.CategoriesScreenActivity.choice;
+
 /**
  * Klasa odpowiadajca za wyswietlanie listy miejsc po przejsciu z kategorii
  */
@@ -21,7 +23,6 @@ import com.google.firebase.database.Query;
 public class PlacesListActivity extends AppCompatActivity {
 
 
-    private DatabaseReference mFirebaseReference;
     private FirebaseRecyclerAdapter mFirebaseAdapter;
     Query mFirebaseReference2;
     RecyclerView mRecyclerView ;
@@ -38,10 +39,7 @@ public class PlacesListActivity extends AppCompatActivity {
         Log.v("WYBOR_KATEGORII",wyborKategorii );
         Log.v("WYBOR_NIEPELNO",wyborNiepelnosprawnosci);
          mFirebaseReference2 = FirebaseDatabase.getInstance().getReference(wyborKategorii).orderByChild(wyborNiepelnosprawnosci).equalTo("true");
-
-
-        mFirebaseReference = FirebaseDatabase.getInstance().getReference(wyborKategorii);
-        Log.d("Firebase", mFirebaseReference.toString());
+        choice = wyborKategorii;
         //ustawiamy Adapter Firebase
         setupFirebaseAdapter();
     }

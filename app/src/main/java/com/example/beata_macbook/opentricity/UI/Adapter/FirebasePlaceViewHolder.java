@@ -82,7 +82,6 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
                     //wrzucamy do tablicy miejsca
                     places.add(snapshot.getValue(Place.class));
                     Log.d("Places", snapshot.toString());
-
                 }
                 //pobieramy pozycje kliknietej komorki
                 int itemPosition = getLayoutPosition();
