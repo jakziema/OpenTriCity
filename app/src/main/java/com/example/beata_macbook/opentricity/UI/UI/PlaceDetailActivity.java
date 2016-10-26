@@ -10,6 +10,7 @@ import com.example.beata_macbook.opentricity.UI.Model.Place;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -26,6 +27,11 @@ public class PlaceDetailActivity extends AppCompatActivity {
     TextView descriptionTextView;
     TextView phoneTextView;
     TextView elevatorTextView;
+    TextView podjazdyTextView;
+    TextView toiletsTextView;
+    TextView staffTextView;
+    TextView barTextView;
+
     ImageView detailPlaceImageView;
     //deklarujemy obiekt typu Place z ktorego bedziemy pobierali opodwiednie pola
     Place place;
@@ -46,6 +52,10 @@ public class PlaceDetailActivity extends AppCompatActivity {
         phoneTextView = (TextView)findViewById(R.id.phoneTextView);
         detailPlaceImageView = (ImageView)findViewById(R.id.detailPlaceImageView);
         elevatorTextView = (TextView)findViewById(R.id.elevatorTextView);
+        barTextView = (TextView)findViewById(R.id.barTextView);
+        toiletsTextView = (TextView)findViewById(R.id.toiletsTextView);
+        staffTextView = (TextView)findViewById(R.id.staffTextView);
+        podjazdyTextView = (TextView)findViewById(R.id.podjazdyTextView);
 
 
         //wrzucamy do labeli pola kliknietego miejsca
@@ -54,6 +64,10 @@ public class PlaceDetailActivity extends AppCompatActivity {
         descriptionTextView.setText(place.getDescription());
         phoneTextView.setText(place.getPhoneNumber());
         elevatorTextView.setText(place.getElevator());
+        barTextView.setText(place.getBar());
+        toiletsTextView.setText(place.getToilets());
+        staffTextView.setText(place.getStaff());
+        podjazdyTextView.setText(place.getPodjazdy());
         //ustawiamy zdjecie po URL
         Picasso.with(this).load(place.getImageURL()).resize(400, 300).centerCrop().into(detailPlaceImageView);
 

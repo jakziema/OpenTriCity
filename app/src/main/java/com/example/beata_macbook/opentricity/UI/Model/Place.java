@@ -20,6 +20,10 @@ public class Place {
     String phoneNumber;
     String imageURL;
     String elevator;
+    String bar;
+    String staff;
+    String podjazdy;
+    String toilets;
 
     //pusty konstruktor potrzebny bibliotece PICASSO
     public Place() {}
@@ -32,6 +36,10 @@ public class Place {
         this.imageURL = imageURL;
         this.description = description;
         this.elevator = elevator;
+        this.staff = staff;
+        this.bar = bar;
+        this.toilets = toilets;
+        this.podjazdy = podjazdy;
     }
 
     public String getName() {
@@ -57,4 +65,12 @@ public class Place {
     public String getDescription() { return description; }
 
     public String getElevator() { return elevator; }
+
+    public String getStaff() {return staff; }
+
+    public String getPodjazdy() {return podjazdy; }
+
+    public String getBar() {return bar; }
+
+    public String getToilets() {return toilets; }
 }
