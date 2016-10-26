@@ -60,11 +60,21 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
         placeImageView = (ImageView) mView.findViewById(R.id.placeImageView);
         nameTextView = (TextView) mView.findViewById(R.id.placeNameTextView);
         addressTextView = (TextView) mView.findViewById(R.id.addressTextView);
+<<<<<<< HEAD
         descriptionTextView = (TextView) mView.findViewById(R.id.descriptionTextView);
+=======
+         descriptionTextView = (TextView) mView.findViewById(R.id.descriptionTextView);
+
+
+>>>>>>> origin/Kasia_Branch
         nameTextView.setText(place.getName());
         addressTextView.setText(place.getAddress());
         descriptionTextView.setText(place.getDescription());
         Picasso.with(mContext).load(place.getImageURL()).resize(200, 200).centerCrop().into(placeImageView);
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/Kasia_Branch
     }
 
     public void onClick(View view) {
@@ -89,6 +99,10 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
                 //przesylamy spakowane miejsce
                 Place place = places.get(itemPosition);
                 intent.putExtra("place", Parcels.wrap(place));
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/Kasia_Branch
                 mContext.startActivity(intent);
             }
 

@@ -27,6 +27,7 @@ public class CategoriesScreenActivity extends AppCompatActivity {
     }
 
     public void onClick(View view) {
+<<<<<<< HEAD
         //TODO: Czy Kasi takie rozwiązanie pasuje - każdy przycisk ma swojego
         // taga i za jego pomocą przesyłamy ten tekst co wcześniej był przypisany do pola "wybrano"
         // (zajrzyjcie w activity_category_screen.xml i spójrzcie na android.tag przy
@@ -56,6 +57,36 @@ public class CategoriesScreenActivity extends AppCompatActivity {
         Intent intent = new Intent(this, PlacesListActivity.class);
         //Pobieramy taga
         intent.putExtra("chosenCategory", view.getTag().toString());
+=======
+        String wybrano = "";
+        switch (view.getId()){
+            case R.id.barberButton:
+                wybrano = "Lokale_uslugowe";
+                choice = "Lokale_uslugowe";
+
+                break;
+            case R.id.restaurantsButton:
+                wybrano = "Lokale_gastronomiczne";
+                choice = "Lokale_gastronomiczne";
+                break;
+            case R.id.eduButton:
+                wybrano = "Obiekty_edukacyjne";
+                choice = "Obiekty_edukacyjne";
+                break;
+            case R.id.sportsButton:
+                wybrano = "Obiekty_sportowe";
+                choice = "Obiekty_sportowe";
+                break;
+            case R.id.govButton:
+                wybrano = "Urzedy";
+                choice= "Urzedy";
+                break;
+        }
+
+        Intent intent = new Intent(this, PlacesListActivity.class);
+        //przesylamy wybor uzytkownika
+        intent.putExtra("chosenCategory", wybrano);
+>>>>>>> origin/Kasia_Branch
         startActivity(intent);
     }
 }

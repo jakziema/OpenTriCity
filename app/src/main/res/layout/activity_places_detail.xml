@@ -49,7 +49,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:text="Wegańskie cuda"
+=======
+                android:text="jmnjk"
+>>>>>>> origin/Kasia_Branch
                 android:id="@+id/descriptionTextView"
                 android:layout_below="@+id/detailPlaceNameTextView"
                 android:layout_alignParentLeft="true"
@@ -62,6 +66,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
@@ -73,6 +81,21 @@
                 android:paddingTop="20dp"
                 android:paddingRight="30dp"
                 tools:ignore="UselessParent">
+<<<<<<< HEAD
+=======
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Numer telefonu"
+                    android:id="@+id/phone1TextView"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:background="#ffffff"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"/>
+>>>>>>> origin/Kasia_Branch
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -80,6 +103,18 @@
                     android:text="606 606 606"
                     android:id="@+id/phoneTextView"
                     android:textColor="@color/colorTextIcons"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Adres"
+                    android:id="@+id/address1TextView"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:background="#ffffff"
                     android:textSize="15sp"
                     android:textStyle="bold"
                     android:layout_marginBottom="10dp"
@@ -96,6 +131,125 @@
                     android:layout_marginBottom="10dp"
                     android:gravity="center_vertical"/>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Windy"
+                    android:id="@+id/elevator1TextView"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:background="#ffffff"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Szkolna 3, Miłobądz"
+                    android:id="@+id/elevatorTextView"
+                    android:textColor="@color/colorTextIcons"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center_vertical"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Toalety"
+                    android:id="@+id/toilets1TextView"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:background="#ffffff"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Szkolna 3, Miłobądz"
+                    android:id="@+id/toiletsTextView"
+                    android:textColor="@color/colorTextIcons"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center_vertical"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Podjazdy"
+                    android:id="@+id/podjazdy1TextView"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:background="#ffffff"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Szkolna 3, Miłobądz"
+                    android:id="@+id/podjazdyTextView"
+                    android:textColor="@color/colorTextIcons"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center_vertical"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Obsługa"
+                    android:id="@+id/staff1TextView"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:background="#ffffff"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Szkolna 3, Miłobądz"
+                    android:id="@+id/staffTextView"
+                    android:textColor="@color/colorTextIcons"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center_vertical"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Bufet"
+                    android:id="@+id/bar1TextView"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:background="#ffffff"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Szkolna 3, Miłobądz"
+                    android:id="@+id/barTextView"
+                    android:textColor="@color/colorTextIcons"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center_vertical"/>
+
+
             </LinearLayout>
+
+        </ScrollView>
+
         </RelativeLayout>
 </LinearLayout>
