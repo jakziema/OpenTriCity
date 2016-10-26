@@ -85,7 +85,7 @@
         android:layout_alignEnd="@+id/sportsButton" />
 
     <ToggleButton
-        android:text="ToggleButton"
+        android:text="wheelchairToggleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="14dp"
@@ -100,7 +100,7 @@
         />
 
     <ToggleButton
-        android:text="ToggleButton"
+        android:text="electronicWheelchairToggleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/wheelchairToggleButton"
@@ -110,7 +110,7 @@
         android:textOn="Wózek el"/>
 
     <ToggleButton
-        android:text="ToggleButton"
+        android:text="crunchesToggleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/electronicWheelchairToggleButton"
@@ -118,6 +118,7 @@
         android:layout_alignEnd="@+id/govButton"
         android:id="@+id/crunchesToggleButton"
         android:textOff="Kule"
-        android:textOn="Kule"/>
+        android:textOn="Kule"
+        />
 
 </RelativeLayout>
