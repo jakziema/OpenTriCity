@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">OpenTriCity</string>
+    <string name="connection_error">Brak połączenia internetowego</string>
+    <string name="try_again">Spróbuj ponownie</string>
+    <string name="error">Błąd</string>
 </resources>

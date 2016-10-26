@@ -1,26 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/staremiastocat"
+    >
 
     <Button
         android:text="Urzędy"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="180dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
+        android:textColor="#ffffff"
+        android:background="#FFA07a"
         android:onClick="onClick"
+        android:tag="Urzedy"
         android:id="@+id/govButton" />
 
     <Button
         android:text="Lokale gastronomiczne"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/govButton"
         android:layout_alignLeft="@+id/govButton"
@@ -28,7 +34,10 @@
         android:layout_marginTop="15dp"
         android:id="@+id/restaurantsButton"
         android:layout_alignRight="@+id/govButton"
+        android:textColor="#ffffff"
+        android:background="#ffab91"
         android:onClick="onClick"
+        android:tag="Lokale_gastronomiczne"
         android:layout_alignEnd="@+id/govButton" />
 
     <Button
@@ -41,12 +50,15 @@
         android:layout_alignStart="@+id/restaurantsButton"
         android:id="@+id/barberButton"
         android:layout_alignRight="@+id/restaurantsButton"
+        android:textColor="#ffffff"
+        android:background="#ff7043"
         android:onClick="onClick"
+        android:tag="Lokale_uslugowe"
         android:layout_alignEnd="@+id/restaurantsButton" />
 
     <Button
         android:text="Obiekty sportowe"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/barberButton"
         android:layout_alignLeft="@+id/barberButton"
@@ -54,12 +66,15 @@
         android:layout_marginTop="15dp"
         android:id="@+id/sportsButton"
         android:layout_alignRight="@+id/barberButton"
+        android:textColor="#ffffff"
+        android:background="#ff4436"
         android:onClick="onClick"
+        android:tag="Obiekty_sportowe"
         android:layout_alignEnd="@+id/barberButton" />
 
     <Button
         android:text="Obiekty edukacyjne"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/sportsButton"
         android:layout_alignLeft="@+id/sportsButton"
@@ -67,6 +82,47 @@
         android:layout_marginTop="15dp"
         android:id="@+id/eduButton"
         android:layout_alignRight="@+id/sportsButton"
+        android:textColor="#ffffff"
+        android:background="#FFCCBC"
         android:onClick="onClick"
+        android:tag="Obiekty_edukacyjne"
         android:layout_alignEnd="@+id/sportsButton" />
+
+    <ToggleButton
+        android:text="wheelchairToggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:id="@+id/wheelchairToggleButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/govButton"
+        android:layout_alignStart="@+id/govButton"
+        android:layout_marginTop="21dp"
+        android:textOff="Wózek"
+        android:textOn="Wózek"
+        />
+
+    <ToggleButton
+        android:text="electronicWheelchairToggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/wheelchairToggleButton"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/electronicWheelchairToggleButton"
+        android:textOff="Wózek el"
+        android:textOn="Wózek el"/>
+
+    <ToggleButton
+        android:text="crunchesToggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/electronicWheelchairToggleButton"
+        android:layout_alignRight="@+id/govButton"
+        android:layout_alignEnd="@+id/govButton"
+        android:id="@+id/crunchesToggleButton"
+        android:textOff="Kule"
+        android:textOn="Kule"
+        />
+
 </RelativeLayout>
