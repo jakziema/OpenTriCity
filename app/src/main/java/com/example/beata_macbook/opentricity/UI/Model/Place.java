@@ -25,6 +25,7 @@ public class Place {
     String podjazdy;
     String toilets;
 
+
     //pusty konstruktor potrzebny bibliotece PICASSO
     public Place() {}
 

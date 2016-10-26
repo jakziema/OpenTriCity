@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="180dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
@@ -87,4 +87,42 @@
         android:onClick="onClick"
         android:tag="Obiekty_edukacyjne"
         android:layout_alignEnd="@+id/sportsButton" />
+
+    <ToggleButton
+        android:text="wheelchairToggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:id="@+id/wheelchairToggleButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/govButton"
+        android:layout_alignStart="@+id/govButton"
+        android:layout_marginTop="21dp"
+        android:textOff="Wózek"
+        android:textOn="Wózek"
+        />
+
+    <ToggleButton
+        android:text="electronicWheelchairToggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/wheelchairToggleButton"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/electronicWheelchairToggleButton"
+        android:textOff="Wózek el"
+        android:textOn="Wózek el"/>
+
+    <ToggleButton
+        android:text="crunchesToggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/electronicWheelchairToggleButton"
+        android:layout_alignRight="@+id/govButton"
+        android:layout_alignEnd="@+id/govButton"
+        android:id="@+id/crunchesToggleButton"
+        android:textOff="Kule"
+        android:textOn="Kule"
+        />
+
 </RelativeLayout>

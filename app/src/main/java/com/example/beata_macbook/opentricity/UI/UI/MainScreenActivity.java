@@ -18,11 +18,6 @@ import com.example.beata_macbook.opentricity.R;
  * Klasa odpowiadajca za ekran glowny , wybor odpowiedniej opcji
  */
 public class MainScreenActivity extends AppCompatActivity {
-<<<<<<< HEAD
-=======
-
-
->>>>>>> origin/Kasia_Branch
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,11 +44,6 @@ public class MainScreenActivity extends AppCompatActivity {
 //        startActivity(intent);
 //    }
 
-<<<<<<< HEAD
-//    public void onInstructionsButtonClicked(View view) {
-//        Intent intent = new Intent(this, InstructionsActivity.class);
-//        startActivity(intent);
-//    }
 
     /**
      * Metoda sprawdza, czy urządzenie jest połączone do internetu.
@@ -95,8 +85,7 @@ public class MainScreenActivity extends AppCompatActivity {
         });
         return alert;
     }
-=======
->>>>>>> origin/Kasia_Branch
+
     //Przejscie do ekranu z instrukcjami
     public void onInstructionsButtonClick(View view) {
         Intent intent = new Intent(MainScreenActivity.this, Instruction.class);
