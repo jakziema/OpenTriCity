@@ -20,6 +20,7 @@ public class Place {
     String phoneNumber;
     String imageURL;
 
+
     //pusty konstruktor potrzebny bibliotece PICASSO
     public Place() {}
 

@@ -80,6 +80,8 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
 
         //choice wybor uzytkownika
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference(choice);
+        //DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference(choice);
+
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
@@ -87,6 +89,7 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     //wrzucamy do tablicy miejsca
                     places.add(snapshot.getValue(Place.class));
+                    Log.d("Places", snapshot.toString());
 
                 }
 
