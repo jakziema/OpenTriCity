@@ -3,6 +3,7 @@
     package="com.example.beata_macbook.opentricity">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,14 +19,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-        <activity android:name=".UI.UI.AboutScreenActivity"></activity>
-        <activity android:name=".UI.UI.CategoriesScreenActivity"></activity>
-        <activity android:name=".UI.UI.PlacesListActivity"></activity>
-        <activity android:name=".UI.UI.PlaceDetailActivity"></activity>
-        <activity android:name=".UI.UI.Instruction"></activity>
-
+        <activity android:name=".UI.UI.AboutScreenActivity" />
+        <activity android:name=".UI.UI.CategoriesScreenActivity" />
+        <activity android:name=".UI.UI.PlacesListActivity" />
+        <activity android:name=".UI.UI.PlaceDetailActivity" />
+        <activity android:name=".UI.UI.Instruction" />
+        <activity android:name=".UI.UI.LoginActivity" />
+        <activity android:name=".UI.UI.AddUserActivity"></activity>
     </application>
 
 </manifest>

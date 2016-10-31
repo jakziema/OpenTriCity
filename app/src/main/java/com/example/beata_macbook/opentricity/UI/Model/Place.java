@@ -27,6 +27,8 @@ public class Place {
     String el_wheelchair;
     String wheelchair;
     String crutch;
+    String latitude;
+    String longitude;
 
     //pusty konstruktor potrzebny bibliotece PICASSO
     public Place() {}
@@ -35,7 +37,8 @@ public class Place {
             String name, String website, String address, String phoneNumber,
             String imageURL, String opis, String elevator,
             String staff, String bar, String toilets, String podjazdy,
-            String el_wheelchair, String wheelchair, String crutch
+            String el_wheelchair, String wheelchair, String crutch,
+            String latitude, String longitude
     ) {
         this.name = name;
         this.website = website;
@@ -51,6 +54,8 @@ public class Place {
         this.el_wheelchair = el_wheelchair;
         this.wheelchair = wheelchair;
         this.crutch = crutch;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public String getName() {
@@ -128,4 +133,8 @@ public class Place {
     public void setToilets(String toilets) {
         this.toilets = toilets;
     }
+
+    public String getLatitude() {return latitude;}
+
+    public String getLongitude() {return longitude; }
 }

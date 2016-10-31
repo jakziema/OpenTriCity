@@ -44,7 +44,10 @@ public class PlaceDetailActivity extends AppCompatActivity {
     TextView staffTextView;
     TextView barTextView;
     LocationManager mLocationManager;
+
+    Button logujBtn;
     Button lokalizujBtn;
+
     Location location = null;
     ImageView detailPlaceImageView;
     //deklarujemy obiekt typu Place z ktorego bedziemy pobierali opodwiednie pola
@@ -71,6 +74,8 @@ public class PlaceDetailActivity extends AppCompatActivity {
         staffTextView = (TextView)findViewById(R.id.staffTextView);
         podjazdyTextView = (TextView)findViewById(R.id.podjazdyTextView);
         lokalizujBtn = (Button) findViewById(R.id.lokalizuj_btn);
+        logujBtn = (Button)findViewById(R.id.loguj_btn);
+
         //wrzucamy do labeli pola kliknietego miejsca
         detailPlaceNameTextView.setText(place.getName());
         addressTextView.setText(place.getAddress());
@@ -83,6 +88,7 @@ public class PlaceDetailActivity extends AppCompatActivity {
         podjazdyTextView.setText(place.getPodjazdy());
         //ustawiamy zdjecie po URL
         Picasso.with(this).load(place.getImageURL()).resize(400, 300).centerCrop().into(detailPlaceImageView);
+
         mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         if (LocationHelper.checkLocationPermission(getApplicationContext())) {
             Toast.makeText(getApplicationContext(), "Nie masz dostępu do usługi lokalizacji.", Toast.LENGTH_SHORT).show();
@@ -96,6 +102,11 @@ public class PlaceDetailActivity extends AppCompatActivity {
                 nawigujStart();
             }
         });
+    }
+
+    public void logujClick(View view) {
+        Intent intent = new Intent(PlaceDetailActivity.this, AddUserActivity.class);
+        startActivity(intent);
     }
 
     public void nawigujStart() {
@@ -129,8 +140,8 @@ public class PlaceDetailActivity extends AppCompatActivity {
                     //W miejsce `52` i `23` wstawcie swoje wspolrzedne geograficzne
                     Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
                             Uri.parse("http://maps.google.com/maps?saddr="+location.getLatitude() +
-                                    "," + location.getLongitude() + "&daddr="+52
-                                    +","+ 23));
+                                    "," + location.getLongitude() + "&daddr="+ 18 +
+                                    ","+ 57));
 
                     startActivity(intent);
                 }
