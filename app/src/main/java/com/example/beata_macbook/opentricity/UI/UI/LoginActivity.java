@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -34,27 +35,23 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-
-                if (firebaseAuth.getCurrentUser() == null) {
-                    Intent loginIntent = new Intent(LoginActivity.this, AddUserActivity.class);
-                    loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(loginIntent);
-
-                }
+        @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth){
+            if(firebaseAuth.getCurrentUser()==null){
+                Intent loginIntent = new Intent(LoginActivity.this, AddUserActivity.class);
+                loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(loginIntent);
             }
+        }
 
         };
 
-        mLoginEmail = (EditText) findViewById(R.id.emailTextView);
-        mLoginPassword = (EditText) findViewById(R.id.passTextView);
+        mLoginEmail = (EditText)findViewById(R.id.emailTextView);
+        mLoginPassword = (EditText)findViewById(R.id.passTextView);
 
-        mLoginButton = (Button) findViewById(R.id.loginButton);
+        mLoginButton = (Button)findViewById(R.id.loginButton);
 
-    }
-
-       /* mLoginButton.setOnClickListener(new View.OnClickListener()
+        mLoginButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v) {
@@ -62,20 +59,22 @@ public class LoginActivity extends AppCompatActivity {
             }
 
         });
-    }*/
+    }
 
-    /*private void checkLogin(){
+    
+
+    private void checkLogin(){
 
         String email = mLoginEmail.getText().toString().trim();
         String password = mLoginPassword.getText().toString().trim();
+        Intent intent = new Intent(LoginActivity.this, AddUserActivity.class);
+        startActivity(intent);
+        Log.v(email, "klik klik");
 
         if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)){
 
-        }*/
 
-        public void onLoginButtonClick(View view) {
-            Intent intent = new Intent(LoginActivity.this, AddUserActivity.class);
-            startActivity(intent);
+
         }
-
     }
+}

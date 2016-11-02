@@ -105,7 +105,7 @@ public class PlaceDetailActivity extends AppCompatActivity {
     }
 
     public void logujClick(View view) {
-        Intent intent = new Intent(PlaceDetailActivity.this, AddUserActivity.class);
+        Intent intent = new Intent(PlaceDetailActivity.this, LoginActivity.class);
         startActivity(intent);
     }
 

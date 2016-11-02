@@ -1,10 +1,12 @@
 package com.example.beata_macbook.opentricity.UI.UI;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,7 +28,7 @@ public class AddUserActivity extends AppCompatActivity {
     private Button mRegisterButton;
 
     private FirebaseAuth mAuth;
-    private DatabaseReference dbReferenece;
+    private DatabaseReference dbReference;
 
     private ProgressDialog mProgress;
 
@@ -37,7 +39,7 @@ public class AddUserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_user);
 
         mAuth = FirebaseAuth.getInstance();
-        dbReferenece = FirebaseDatabase.getInstance().getReference().child("Users");
+        dbReference = FirebaseDatabase.getInstance().getReference().child("Users");
 
         mProgress = new ProgressDialog(this);
 
@@ -57,9 +59,13 @@ public class AddUserActivity extends AppCompatActivity {
 
             final String user = mUserEditText.getText().toString().trim();
             final String email = mEmailEditText.getText().toString().trim();
-            String password = mPasswordEditText.getText().toString().trim();
+            final String password = mPasswordEditText.getText().toString().trim();
 
             if (!TextUtils.isEmpty(user) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
+
+                mProgress.setMessage("czekaj");
+                mProgress.show();
+
 
                 mProgress.setMessage("Trwa rejestracja");
                 mProgress.show();;
@@ -71,10 +77,16 @@ public class AddUserActivity extends AppCompatActivity {
                         if(task.isSuccessful()) {
 
                             String user_id = mAuth.getCurrentUser().getUid();
+                            Log.v(email, "wchodzi");
 
-                            DatabaseReference current_user_db = dbReferenece.child(user_id);
+                            DatabaseReference current_user_db = dbReference.child(user_id);
                             current_user_db.child("user").setValue(user);
                             current_user_db.child("email").setValue(email);
+
+                            mProgress.dismiss();
+                            Intent mainIntent = new Intent(AddUserActivity.this, LoginActivity.class);
+                            mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(mainIntent);
                         }}
                 });
             }

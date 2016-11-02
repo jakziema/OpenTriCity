@@ -28,10 +28,7 @@ public class MainScreenActivity extends AppCompatActivity {
     }
 
     //Przejscie do ekranu informacji
-    public void onAboutButtonClick(View view) {
-        Intent intent = new Intent(MainScreenActivity.this, AboutScreenActivity.class);
-        startActivity(intent);
-    }
+
 
     //Przejscie do keranu z kategoriami
     public void onGuestButtonClick(View view) {

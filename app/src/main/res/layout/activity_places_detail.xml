@@ -35,18 +35,7 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="4.5/5"
-                android:id="@+id/ratingTextView"
-                android:layout_alignTop="@+id/detailPlaceNameTextView"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:textColor="@color/colorAccent"
-                android:textStyle="bold" />
-
-            <TextView
+        <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Wegańskie cuda"
@@ -72,12 +61,11 @@
             android:layout_height="wrap_content"
             android:id="@+id/loguj_btn"
             android:onClick="logujClick"
-            android:layout_alignBaseline="@+id/descriptionTextView"
-            android:layout_alignBottom="@+id/descriptionTextView"
+            android:layout_marginRight="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_alignParentTop="true"
             android:layout_toLeftOf="@+id/lokalizuj_btn"
-            android:layout_toStartOf="@+id/lokalizuj_btn"
-            android:layout_marginRight="26dp"
-            android:layout_marginEnd="26dp" />
+            android:layout_toStartOf="@+id/lokalizuj_btn" />
     </RelativeLayout>
 
     <RelativeLayout
