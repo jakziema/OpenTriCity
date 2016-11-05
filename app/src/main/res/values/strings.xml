@@ -3,4 +3,36 @@
     <string name="connection_error">Brak połączenia internetowego</string>
     <string name="try_again">Spróbuj ponownie</string>
     <string name="error">Błąd</string>
+
+    <string name="label_emailpassword">Email/Autoryzacja hasła</string>
+    <string name="desc_emailpassword">Użyj emaila i hasła do autoryzacji</string>
+
+    <string name="label_custom_auth">Custom Authentication</string>
+    <string name="desc_custom_auth">Use a custom token signed by your own server to authenticate with Firebase.</string>
+
+    <string name="label_firebase_ui">FirebaseUI Auth</string>
+    <string name="desc_firebase_ui">Use the FirebaseUI-Android library to authenticate with Firebase.</string>
+
+    <string name="hint_user_id">ID Użytkownika</string>
+    <string name="get_custom_token">Get Token</string>
+    <string name="sign_in">Loguj</string>
+    <string name="create_account">Rejestruj</string>
+    <string name="sign_out">Wyloguj</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="loading">Czekaj…</string>
+    <string name="custom_token">Custom Token</string>
+    <string name="signed_out">Wylogowano</string>
+    <string name="token_null">Token: null</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Hasło</string>
+    <string name="auth_failed">Błąd logowania</string>
+
+    <string name="firebase_status_fmt">Użytkownik: %s</string>
+    <string name="firebase_user_management">Firebase User Management</string>
+
+    <string name="emailpassword_status_fmt">Email: %s</string>
+    <string name="emailpassword_title_text">Logowanie</string>
+
+    <string name="id_fmt">ID użytkownika: %s</string>
+    <string name="email_fmt">Email: %s</string>
 </resources>
