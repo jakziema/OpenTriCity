@@ -38,7 +38,14 @@ public class PlacesListActivity extends AppCompatActivity {
         String wyborNiepelnosprawnosci = getIntent().getStringExtra("toggleButtonChoice");
         Log.v("WYBOR_KATEGORII",wyborKategorii );
         Log.v("WYBOR_NIEPELNO",wyborNiepelnosprawnosci);
-         mFirebaseReference2 = FirebaseDatabase.getInstance().getReference(wyborKategorii).orderByChild(wyborNiepelnosprawnosci).equalTo("true");
+
+        if (wyborNiepelnosprawnosci == "") {
+            mFirebaseReference2 = FirebaseDatabase.getInstance().getReference(wyborKategorii);
+        } else {
+            mFirebaseReference2 = FirebaseDatabase.getInstance().getReference(wyborKategorii).orderByChild(wyborNiepelnosprawnosci).equalTo("true");
+        }
+
+
         choice = wyborKategorii;
         //ustawiamy Adapter Firebase
         setupFirebaseAdapter();

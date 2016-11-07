@@ -89,7 +89,6 @@
         android:layout_alignEnd="@+id/sportsButton" />
 
     <ToggleButton
-        android:text="wheelchairToggleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="14dp"
@@ -101,28 +100,61 @@
         android:layout_marginTop="21dp"
         android:textOff="Wózek"
         android:textOn="Wózek"
+        android:background="@drawable/toggle_button"
         />
 
     <ToggleButton
-        android:text="electronicWheelchairToggleButton"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/wheelchairToggleButton"
         android:layout_centerHorizontal="true"
-        android:id="@+id/electronicWheelchairToggleButton"
-        android:textOff="Wózek el"
-        android:textOn="Wózek el"/>
+        android:id="@+id/deafToggleButton"
+        android:textOff="Niesłyszący"
+        android:textOn="Niesłyszący"
+        android:background="@drawable/toggle_button"
+        />
 
     <ToggleButton
-        android:text="crunchesToggleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/electronicWheelchairToggleButton"
+        android:layout_alignBottom="@+id/deafToggleButton"
         android:layout_alignRight="@+id/govButton"
         android:layout_alignEnd="@+id/govButton"
         android:id="@+id/crunchesToggleButton"
         android:textOff="Kule"
         android:textOn="Kule"
+        android:background="@drawable/toggle_button"
+
         />
+
+    <ToggleButton
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:id="@+id/blindToggleButton"
+        android:textOff="Niewidomy"
+        android:textOn="Niewidomy"
+        android:layout_below="@+id/wheelchairToggleButton"
+        android:layout_alignLeft="@+id/wheelchairToggleButton"
+        android:layout_alignStart="@+id/wheelchairToggleButton"
+        android:background="@drawable/toggle_button"
+
+        />
+
+    <ToggleButton
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/blindToggleButton"
+        android:layout_alignLeft="@+id/crunchesToggleButton"
+        android:layout_alignStart="@+id/crunchesToggleButton"
+        android:id="@+id/midgetToggleButton"
+        android:textOff="Karłowatość"
+        android:textOn="Karłowatość"
+        android:background="@drawable/toggle_button"
+        />
+
 
 </RelativeLayout>
