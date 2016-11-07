@@ -22,11 +22,15 @@ import com.example.beata_macbook.opentricity.R;
 import com.example.beata_macbook.opentricity.UI.Model.Place;
 import com.example.beata_macbook.opentricity.UI.Utils.LocationHelper;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 import org.w3c.dom.Text;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Klasa odpowiadająca za widok pokazujący szczegóły danego miejsca
@@ -57,6 +61,7 @@ public class PlaceDetailActivity extends AppCompatActivity {
     ImageView detailPlaceImageView;
     //deklarujemy obiekt typu Place z ktorego bedziemy pobierali opodwiednie pola
     Place place;
+    String id;
 
 
     @Override
@@ -65,7 +70,8 @@ public class PlaceDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_places_detail);
 
         //rozpakowujemy przeslane miejsce
-         place = Parcels.unwrap(getIntent().getParcelableExtra("place"));
+        place = Parcels.unwrap(getIntent().getParcelableExtra("place"));
+        id = Parcels.unwrap(getIntent().getParcelableExtra("id"));
 
         //szukamy widokow
         detailPlaceNameTextView = (TextView) findViewById(R.id.detailPlaceNameTextView);
@@ -120,7 +126,11 @@ public class PlaceDetailActivity extends AppCompatActivity {
 
     private void dodajKomentarz() {
         if (mAuth.getCurrentUser() != null) {
-
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Obiekty_edukacyjne")
+                    .child(id).child("comments").push();
+            if (!addCommentTxt.getText().toString().isEmpty()) {
+                ref.setValue(addCommentTxt.getText().toString());
+            }
         } else {
             Toast.makeText(this, "Zaloguj się by dodać komentarz", Toast.LENGTH_SHORT).show();
         }

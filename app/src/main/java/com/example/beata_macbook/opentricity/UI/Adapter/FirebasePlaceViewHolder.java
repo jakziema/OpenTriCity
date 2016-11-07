@@ -26,6 +26,7 @@ import org.parceler.Parcels;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
 import static com.example.beata_macbook.opentricity.UI.UI.CategoriesScreenActivity.choice;
 
@@ -68,7 +69,7 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
 
     public void onClick(View view) {
         //tablica do ktorej wrzucimy sciagniete z firebase miejsca
-        final ArrayList<Place> places = new ArrayList<>();
+        final LinkedHashMap<String, Place> places = new LinkedHashMap<>();
 
         //choice wybor uzytkownika
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference(choice);
@@ -80,15 +81,17 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     //wrzucamy do tablicy miejsca
-                    places.add(snapshot.getValue(Place.class));
+                    places.put(snapshot.getKey(), snapshot.getValue(Place.class));
                     Log.d("Places", snapshot.toString());
                 }
                 //pobieramy pozycje kliknietej komorki
                 int itemPosition = getLayoutPosition();
                 Intent intent = new Intent(mContext, PlaceDetailActivity.class);
                 //przesylamy spakowane miejsce
-                Place place = places.get(itemPosition);
+                Place place = (new ArrayList<Place>(places.values())).get(itemPosition);
+                String id = (new ArrayList<String>(places.keySet())).get(itemPosition);
                 intent.putExtra("place", Parcels.wrap(place));
+                intent.putExtra("id", Parcels.wrap(id));
                 mContext.startActivity(intent);
             }
 
