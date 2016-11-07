@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ToggleButton;
 
 import com.example.beata_macbook.opentricity.R;
@@ -34,7 +36,7 @@ public class CategoriesScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        toggleButtonChoice = "";
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_screen);
@@ -106,5 +108,19 @@ public class CategoriesScreenActivity extends AppCompatActivity {
         intent.putExtra("chosenCategory", view.getTag().toString());
         intent.putExtra("toggleButtonChoice", toggleButtonChoice);
         startActivity(intent);
+    }
+
+
+
+    public void onRestart() {
+        super.onRestart();
+
+        toggleButtonChoice = "";
+        wheelchairToggleButton.setChecked(false);
+        deafToggleButton.setChecked(false);
+        blindToggleButton.setChecked(false);
+        midgetToggleButton.setChecked(false);
+        crutchesToggleButton.setChecked(false);
+
     }
 }
