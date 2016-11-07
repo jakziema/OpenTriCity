@@ -39,12 +39,13 @@ public class PlacesListActivity extends AppCompatActivity {
         Log.v("WYBOR_KATEGORII",wyborKategorii );
         Log.v("WYBOR_NIEPELNO",wyborNiepelnosprawnosci);
 
-        if (wyborNiepelnosprawnosci == "") {
+        if (wyborNiepelnosprawnosci.isEmpty()) {
             mFirebaseReference2 = FirebaseDatabase.getInstance().getReference(wyborKategorii);
         } else {
-            mFirebaseReference2 = FirebaseDatabase.getInstance().getReference(wyborKategorii).orderByChild(wyborNiepelnosprawnosci).equalTo("true");
-        }
+            mFirebaseReference2 = FirebaseDatabase.getInstance().getReference(wyborKategorii)
+                    .orderByChild(wyborNiepelnosprawnosci).equalTo("true");
 
+        }
 
         choice = wyborKategorii;
         //ustawiamy Adapter Firebase

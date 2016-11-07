@@ -25,7 +25,7 @@ public class CategoriesScreenActivity extends AppCompatActivity {
     ToggleButton midgetToggleButton;
     ToggleButton blindToggleButton;
 
-    public static String toggleButtonChoice = "";
+    public  String toggleButtonChoice = "";
 
 
     // zmienna globalna wybor, która pozwala nam na ustawienie odpowiedniej kategorii do bazy Firebase
@@ -33,6 +33,9 @@ public class CategoriesScreenActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        toggleButtonChoice = "";
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_screen);
 
