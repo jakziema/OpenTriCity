@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 import com.example.beata_macbook.opentricity.R;
 import com.example.beata_macbook.opentricity.UI.Model.Place;
 import com.example.beata_macbook.opentricity.UI.Utils.LocationHelper;
+import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -43,7 +45,10 @@ public class PlaceDetailActivity extends AppCompatActivity {
     TextView toiletsTextView;
     TextView staffTextView;
     TextView barTextView;
+    EditText addCommentTxt;
+    Button addCommentBtn;
     LocationManager mLocationManager;
+    private FirebaseAuth mAuth;
 
     Button logujBtn;
     Button lokalizujBtn;
@@ -75,6 +80,15 @@ public class PlaceDetailActivity extends AppCompatActivity {
         podjazdyTextView = (TextView)findViewById(R.id.podjazdyTextView);
         lokalizujBtn = (Button) findViewById(R.id.lokalizuj_btn);
         logujBtn = (Button)findViewById(R.id.loguj_btn);
+        addCommentTxt = (EditText) findViewById(R.id.addCommentTxt);
+        addCommentBtn = (Button) findViewById(R.id.addCommentBtn);
+        addCommentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dodajKomentarz();
+            }
+        });
+        mAuth = FirebaseAuth.getInstance();
 
         //wrzucamy do labeli pola kliknietego miejsca
         detailPlaceNameTextView.setText(place.getName());
@@ -102,6 +116,14 @@ public class PlaceDetailActivity extends AppCompatActivity {
                 nawigujStart();
             }
         });
+    }
+
+    private void dodajKomentarz() {
+        if (mAuth.getCurrentUser() != null) {
+
+        } else {
+            Toast.makeText(this, "Zaloguj się by dodać komentarz", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void logujClick(View view) {

@@ -252,6 +252,30 @@
         </LinearLayout>
 
     </ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <EditText
+            android:hint="Dodaj komentarz"
+            android:background="#FFFFFF"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight=".70"
+            android:id="@+id/addCommentTxt" />
+
+        <Button
+            android:text="Dodaj komentarz"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight=".30"
+            android:id="@+id/addCommentBtn" />
+
+        </LinearLayout>
 
     </RelativeLayout>
+
+
 </LinearLayout>
