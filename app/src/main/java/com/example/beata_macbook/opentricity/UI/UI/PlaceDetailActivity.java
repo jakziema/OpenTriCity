@@ -66,10 +66,8 @@ public class PlaceDetailActivity extends AppCompatActivity {
     private CustomCommentsAdapter adapter ;
     LocationManager mLocationManager;
     private FirebaseAuth mAuth;
-
     Button logujBtn;
     Button lokalizujBtn;
-
     Location location = null;
     ImageView detailPlaceImageView;
     //deklarujemy obiekt typu Place z ktorego bedziemy pobierali opodwiednie pola
@@ -83,8 +81,7 @@ public class PlaceDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_places_detail);
         inflater = LayoutInflater.from(this);
-        details = inflater.inflate(
-                R.layout.detail_layout, null, false);
+        details = inflater.inflate(R.layout.detail_layout, null, false);
         //rozpakowujemy przeslane miejsce
         place = Parcels.unwrap(getIntent().getParcelableExtra("place"));
         id = Parcels.unwrap(getIntent().getParcelableExtra("id"));
@@ -160,7 +157,7 @@ public class PlaceDetailActivity extends AppCompatActivity {
     }
 
     private void dodajKomentarz() {
-        if (true) {
+        if (mAuth.getCurrentUser() != null) {
             if (this.category != null && this.id != null) {
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference(this.category)
                         .child(this.id).child("comments").push();
@@ -204,8 +201,12 @@ public class PlaceDetailActivity extends AppCompatActivity {
             dialog.show();
         } else {
             if(!LocationHelper.checkLocationPermission(getApplicationContext())){
-                if(null == location) {
-                    Toast.makeText(getApplicationContext(), "Poczekaj na pobranie Twojej lokalizacji", Toast.LENGTH_SHORT).show();
+                if(location == null) {
+                    Toast.makeText(
+                            getApplicationContext(),
+                            "Poczekaj na pobranie Twojej lokalizacji",
+                            Toast.LENGTH_SHORT
+                    ).show();
                 }
                 else{
                     location = mLocationManager
@@ -215,10 +216,8 @@ public class PlaceDetailActivity extends AppCompatActivity {
                             Uri.parse("http://maps.google.com/maps?saddr="+location.getLatitude() +
                                     "," + location.getLongitude() + "&daddr="+ 18 +
                                     ","+ 57));
-
                     startActivity(intent);
                 }
-
             }
             else{
                 Toast.makeText(getApplicationContext(), "Coś poszło nie tak", Toast.LENGTH_SHORT).show();

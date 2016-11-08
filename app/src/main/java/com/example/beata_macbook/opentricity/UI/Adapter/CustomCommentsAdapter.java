@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.beata_macbook.opentricity.R;
 import com.example.beata_macbook.opentricity.UI.Model.Comment;
+import com.example.beata_macbook.opentricity.UI.Utils.EmailSender;
 
 import java.util.ArrayList;
 
@@ -26,6 +27,7 @@ public class CustomCommentsAdapter extends BaseAdapter{
     private ListView mListView;
     private ArrayList<Comment> data;
     private LayoutInflater inflater;
+    private Activity activity;
 
 
     public CustomCommentsAdapter(ListView listView, ArrayList<Comment> data, Activity activity) {
@@ -33,6 +35,7 @@ public class CustomCommentsAdapter extends BaseAdapter{
         this.data = data;
         this.inflater = ( LayoutInflater )activity.
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.activity = activity;
     }
 
     @Override
@@ -87,7 +90,13 @@ public class CustomCommentsAdapter extends BaseAdapter{
         public void onClick(View v) {
             final int position = mListView.getPositionForView((View) v.getParent());
             Comment comment = ((Comment) mListView.getItemAtPosition(position));
-            Log.d("COMMENT TAG", comment.toString());
+            final StringBuilder message = new StringBuilder("Zgłoszono komentarz o treści: ");
+            message.append(comment.getText());
+            message.append(". ID komentarza: ");
+            message.append(comment.getId());
+            new EmailSender(activity).sendEmail(
+                    "alazelewska.47@gmail.com", "OpenTriCity zgłoszenie", message.toString()
+            );
         }
     };
 

@@ -21,104 +21,28 @@ import javax.net.ssl.HttpsURLConnection;
 /**
  * Created by alazelewska on 26.10.16.
  */
-
 public class LocationHelper {
-
-    public static final String BROADCAST_ACTION = "LOCATION_SERVICE";
 
     public static boolean checkLocationPermission(Context context) {
         return ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) !=
                 PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(context,
                 Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED;
-
     }
 
     public static boolean isLocationEnabled(Context context) {
         int locationMode = 0;
-        String locationProviders;
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             try {
                 locationMode = Settings.Secure.getInt(context.getContentResolver(), Settings.Secure.LOCATION_MODE);
-
             } catch (Settings.SettingNotFoundException e) {
                 e.printStackTrace();
             }
-
             return locationMode != Settings.Secure.LOCATION_MODE_OFF;
-
-        }else{
-            locationProviders = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
+        } else{
+            final String locationProviders = Settings.Secure.getString(
+                    context.getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED
+            );
             return !TextUtils.isEmpty(locationProviders);
         }
-
-
     }
-
-    public static String getLatLongByURL(String requestURL) {
-        URL url;
-        String response = "";
-        try {
-            url = new URL(requestURL);
-
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setReadTimeout(15000);
-            conn.setConnectTimeout(15000);
-            conn.setRequestMethod("GET");
-            conn.setDoInput(true);
-            conn.setRequestProperty("Content-Type",
-                    "application/x-www-form-urlencoded");
-            conn.setDoOutput(true);
-            int responseCode = conn.getResponseCode();
-
-            if (responseCode == HttpsURLConnection.HTTP_OK) {
-                String line;
-                BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                while ((line = br.readLine()) != null) {
-                    response += line;
-                }
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return response;
-    }
-
-    public static void showLocationDialog(final Context ctx) {
-        AlertDialog.Builder dialog = new AlertDialog.Builder(ctx);
-        dialog.setTitle("Lokalizacja");
-        dialog.setMessage("GPS jest wyłączony. Czy chcesz uruchomić ekran ustawień aby go włączyć?");
-        dialog.setPositiveButton("Ustawienia", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface paramDialogInterface, int paramInt) {
-                Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                ctx.startActivity(myIntent);
-            }
-        });
-        dialog.setNegativeButton("Anuluj", new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface paramDialogInterface, int paramInt) {
-
-            }
-        });
-        dialog.show();
-    }
-
-    public static boolean isNumeric(String str)
-    {
-        try
-        {
-            double d = Double.parseDouble(str);
-        }
-        catch(NumberFormatException nfe)
-        {
-            return false;
-        }
-        return true;
-    }
-
-
-
 }
