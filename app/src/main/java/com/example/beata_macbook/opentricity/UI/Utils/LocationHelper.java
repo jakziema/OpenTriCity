@@ -19,7 +19,7 @@ import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
 
 /**
- * Created by formel on 26.10.16.
+ * Created by alazelewska on 26.10.16.
  */
 
 public class LocationHelper {

@@ -22,6 +22,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.beata_macbook.opentricity.R;
+import com.example.beata_macbook.opentricity.UI.Adapter.CustomCommentsAdapter;
+import com.example.beata_macbook.opentricity.UI.Model.Comment;
 import com.example.beata_macbook.opentricity.UI.Model.Place;
 import com.example.beata_macbook.opentricity.UI.Utils.LocationHelper;
 import com.google.firebase.FirebaseException;
@@ -61,7 +63,7 @@ public class PlaceDetailActivity extends AppCompatActivity {
     LayoutInflater inflater;
     View details;
     private ListView list ;
-    private ArrayAdapter<String> adapter ;
+    private CustomCommentsAdapter adapter ;
     LocationManager mLocationManager;
     private FirebaseAuth mAuth;
 
@@ -143,16 +145,16 @@ public class PlaceDetailActivity extends AppCompatActivity {
     }
 
     private void createListView() {
-        ArrayList<String> carL = new ArrayList<String>();
+        ArrayList<Comment> comments = new ArrayList<Comment>();
         if (place.getComments() != null) {
-            for (final Object comment : place.getComments().values()) {
-                carL.add(comment.toString());
+            for (final Map.Entry<String, Object> entry : place.getComments().entrySet()) {
+                comments.add(new Comment(entry.getKey(), entry.getValue().toString()));
             }
         }
-        adapter = new ArrayAdapter<String>(this, R.layout.single_comment_row, carL);
+        adapter = new CustomCommentsAdapter(list, comments, PlaceDetailActivity.this);
         list.addHeaderView(details);
         list.setAdapter(adapter);
-        if (carL.isEmpty()) {
+        if (comments.isEmpty()) {
             noCommentsTxt.setVisibility(View.VISIBLE);
         }
     }
@@ -165,7 +167,7 @@ public class PlaceDetailActivity extends AppCompatActivity {
                 final String comment = addCommentTxt.getText().toString();
                 if (!comment.isEmpty()) {
                     ref.setValue(comment);
-                    adapter.add(comment);
+                    this.recreate();
                 }
             } else {
                 Toast.makeText(this, "Wystąpił problem przy dodawaniu komentarza.", Toast.LENGTH_SHORT).show();
