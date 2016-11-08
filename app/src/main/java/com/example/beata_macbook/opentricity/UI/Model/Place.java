@@ -2,7 +2,10 @@ package com.example.beata_macbook.opentricity.UI.Model;
 
 import org.parceler.Parcel;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * Created by Beata-MacBook on 13.10.2016.
@@ -34,7 +37,7 @@ public class Place {
     String deaf;
     String blind;
     String midget;
-    List<String> comments;
+    HashMap<String, Object> comments;
 
     //pusty konstruktor potrzebny bibliotece PICASSO
     public Place() {}
@@ -45,7 +48,7 @@ public class Place {
             String staff, String bar, String toilets, String podjazdy,
             String el_wheelchair, String wheelchair, String crutch,
             String latitude, String longitude, String blind, String midget,
-            String deaf, List<String> comments
+            String deaf,  HashMap<String, Object> comments
     ) {
         this.name = name;
         this.website = website;
@@ -149,11 +152,11 @@ public class Place {
 
     public String getLongitude() {return longitude; }
 
-    public List<String> getComments() {
+    public HashMap<String, Object> getComments() {
         return comments;
     }
 
-    public void setComments(List<String> comments) {
+    public void setComments(HashMap<String, Object> comments) {
         this.comments = comments;
     }
 }

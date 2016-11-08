@@ -11,17 +11,22 @@ import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.beata_macbook.opentricity.R;
 import com.example.beata_macbook.opentricity.UI.Model.Place;
 import com.example.beata_macbook.opentricity.UI.Utils.LocationHelper;
+import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -29,6 +34,7 @@ import com.squareup.picasso.Picasso;
 import org.parceler.Parcels;
 import org.w3c.dom.Text;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,8 +55,13 @@ public class PlaceDetailActivity extends AppCompatActivity {
     TextView toiletsTextView;
     TextView staffTextView;
     TextView barTextView;
+    TextView noCommentsTxt;
     EditText addCommentTxt;
     Button addCommentBtn;
+    LayoutInflater inflater;
+    View details;
+    private ListView list ;
+    private ArrayAdapter<String> adapter ;
     LocationManager mLocationManager;
     private FirebaseAuth mAuth;
 
@@ -61,33 +72,38 @@ public class PlaceDetailActivity extends AppCompatActivity {
     ImageView detailPlaceImageView;
     //deklarujemy obiekt typu Place z ktorego bedziemy pobierali opodwiednie pola
     Place place;
-    String id;
+    private String id;
+    private String category;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_places_detail);
-
+        inflater = LayoutInflater.from(this);
+        details = inflater.inflate(
+                R.layout.detail_layout, null, false);
         //rozpakowujemy przeslane miejsce
         place = Parcels.unwrap(getIntent().getParcelableExtra("place"));
         id = Parcels.unwrap(getIntent().getParcelableExtra("id"));
+        category = Parcels.unwrap(getIntent().getParcelableExtra("category"));
 
         //szukamy widokow
         detailPlaceNameTextView = (TextView) findViewById(R.id.detailPlaceNameTextView);
-        addressTextView = (TextView) findViewById(R.id.addressTextView);
-        descriptionTextView = (TextView)findViewById(R.id.descriptionTextView);
-        phoneTextView = (TextView)findViewById(R.id.phoneTextView);
-        detailPlaceImageView = (ImageView)findViewById(R.id.detailPlaceImageView);
-        elevatorTextView = (TextView)findViewById(R.id.elevatorTextView);
-        barTextView = (TextView)findViewById(R.id.barTextView);
-        toiletsTextView = (TextView)findViewById(R.id.toiletsTextView);
-        staffTextView = (TextView)findViewById(R.id.staffTextView);
-        podjazdyTextView = (TextView)findViewById(R.id.podjazdyTextView);
+        addressTextView = (TextView) details.findViewById(R.id.addressTextView);
+        descriptionTextView = (TextView) findViewById(R.id.descriptionTextView);
+        phoneTextView = (TextView) details.findViewById(R.id.phoneTextView);
+        detailPlaceImageView = (ImageView) findViewById(R.id.detailPlaceImageView);
+        elevatorTextView = (TextView) details.findViewById(R.id.elevatorTextView);
+        barTextView = (TextView) details.findViewById(R.id.barTextView);
+        toiletsTextView = (TextView) details.findViewById(R.id.toiletsTextView);
+        staffTextView = (TextView) details.findViewById(R.id.staffTextView);
+        podjazdyTextView = (TextView) details.findViewById(R.id.podjazdyTextView);
+        noCommentsTxt = (TextView) details.findViewById(R.id.noCommentsTxt);
         lokalizujBtn = (Button) findViewById(R.id.lokalizuj_btn);
-        logujBtn = (Button)findViewById(R.id.loguj_btn);
-        addCommentTxt = (EditText) findViewById(R.id.addCommentTxt);
-        addCommentBtn = (Button) findViewById(R.id.addCommentBtn);
+        logujBtn = (Button) findViewById(R.id.loguj_btn);
+        addCommentTxt = (EditText) details.findViewById(R.id.addCommentTxt);
+        addCommentBtn = (Button) details.findViewById(R.id.addCommentBtn);
         addCommentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,6 +122,8 @@ public class PlaceDetailActivity extends AppCompatActivity {
         toiletsTextView.setText(place.getToilets());
         staffTextView.setText(place.getStaff());
         podjazdyTextView.setText(place.getPodjazdy());
+        list = (ListView) findViewById(R.id.commentList);
+        this.createListView();
         //ustawiamy zdjecie po URL
         Picasso.with(this).load(place.getImageURL()).resize(400, 300).centerCrop().into(detailPlaceImageView);
 
@@ -124,15 +142,36 @@ public class PlaceDetailActivity extends AppCompatActivity {
         });
     }
 
+    private void createListView() {
+        ArrayList<String> carL = new ArrayList<String>();
+        if (place.getComments() != null) {
+            for (final Object comment : place.getComments().values()) {
+                carL.add(comment.toString());
+            }
+        }
+        adapter = new ArrayAdapter<String>(this, R.layout.single_comment_row, carL);
+        list.addHeaderView(details);
+        list.setAdapter(adapter);
+        if (carL.isEmpty()) {
+            noCommentsTxt.setVisibility(View.VISIBLE);
+        }
+    }
+
     private void dodajKomentarz() {
-        if (mAuth.getCurrentUser() != null) {
-            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Obiekty_edukacyjne")
-                    .child(id).child("comments").push();
-            if (!addCommentTxt.getText().toString().isEmpty()) {
-                ref.setValue(addCommentTxt.getText().toString());
+        if (true) {
+            if (this.category != null && this.id != null) {
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference(this.category)
+                        .child(this.id).child("comments").push();
+                final String comment = addCommentTxt.getText().toString();
+                if (!comment.isEmpty()) {
+                    ref.setValue(comment);
+                    adapter.add(comment);
+                }
+            } else {
+                Toast.makeText(this, "Wystąpił problem przy dodawaniu komentarza.", Toast.LENGTH_SHORT).show();
             }
         } else {
-            Toast.makeText(this, "Zaloguj się by dodać komentarz", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Zaloguj się by dodać komentarz.", Toast.LENGTH_SHORT).show();
         }
     }
 

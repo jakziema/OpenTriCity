@@ -92,6 +92,7 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
                 String id = (new ArrayList<String>(places.keySet())).get(itemPosition);
                 intent.putExtra("place", Parcels.wrap(place));
                 intent.putExtra("id", Parcels.wrap(id));
+                intent.putExtra("category", Parcels.wrap(choice));
                 mContext.startActivity(intent);
             }
 
