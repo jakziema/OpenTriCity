@@ -164,7 +164,8 @@ public class PlaceDetailActivity extends AppCompatActivity {
                 final String comment = addCommentTxt.getText().toString();
                 if (!comment.isEmpty()) {
                     ref.setValue(comment);
-                    this.recreate();
+                    finish();
+                    startActivity(getIntent());
                 }
             } else {
                 Toast.makeText(this, "Wystąpił problem przy dodawaniu komentarza.", Toast.LENGTH_SHORT).show();
