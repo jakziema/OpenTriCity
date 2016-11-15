@@ -2,6 +2,10 @@ package com.example.beata_macbook.opentricity.UI.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.icu.text.DecimalFormat;
+import android.icu.text.NumberFormat;
+import android.location.Location;
+import android.location.LocationManager;
 import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -64,6 +68,7 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
         addressTextView.setText(place.getAddress());
         descriptionTextView.setText(place.getDescription());
         Picasso.with(mContext).load(place.getImageURL()).resize(200, 200).centerCrop().into(placeImageView);
+
     }
 
     public void onClick(View view) {
@@ -98,4 +103,37 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
             }
         });
     }
+
+    public String calculateDistance(String longitude, String latitude) {
+
+
+
+        Location userLocation = new Location("userLocation");
+        userLocation.setLongitude(54.407816);
+        userLocation.setLatitude(18.609015);
+        Location placeLocation = new Location("placeLocation");
+        placeLocation.setLongitude(54.371694);
+        placeLocation.setLatitude(18.612716);
+        float distanceFloat = userLocation.distanceTo(placeLocation);
+
+        NumberFormat formatter = new DecimalFormat("#0");
+
+        Log.v("DISTANCE", String.valueOf(formatter.format(distanceFloat)) + " m");
+
+        String distanceString = String.valueOf(formatter.format(distanceFloat));
+
+        return distanceString;
+    }
+
+    public void getGoogleApiClient() {
+        if (mGoogleApiClient == null) {
+            mGoogleApiClient = new GoogleApiClient.Builder(this)
+                    .addConnectionCallbacks(this)
+                    .addOnConnectionFailedListener(this)
+                    .addApi(LocationServices.API)
+                    .build();
+        }
+    }
+
+
 }
