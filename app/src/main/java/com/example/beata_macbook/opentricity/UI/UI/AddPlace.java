@@ -34,6 +34,10 @@ import static android.R.attr.category;
 public class AddPlace extends AppCompatActivity {
 
     EditText mTextName;
+    EditText mTextAddress;
+    EditText mTextPhone;
+    EditText mTextElevator;
+
     Button mAddBtn;
     private String category;
 
@@ -48,6 +52,11 @@ public class AddPlace extends AppCompatActivity {
 
 
         mTextName = (EditText)findViewById(R.id.name);
+        mTextAddress = (EditText)findViewById(R.id.address);
+        mTextPhone = (EditText)findViewById(R.id.phone);
+        mTextElevator = (EditText)findViewById(R.id.elevator);
+
+
         mAddBtn = (Button)findViewById(R.id.addBtn);
         category = Parcels.unwrap(getIntent().getParcelableExtra("category"));
 
@@ -61,9 +70,21 @@ public class AddPlace extends AppCompatActivity {
 
         int  n = rand.nextInt(1000) + 1;
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Lokale_uslugowe").child(String.valueOf(n)).child("name");
+        DatabaseReference refAdr = FirebaseDatabase.getInstance().getReference().child("Lokale_uslugowe").child(String.valueOf(n)).child("address");
+        DatabaseReference refPho = FirebaseDatabase.getInstance().getReference().child("Lokale_uslugowe").child(String.valueOf(n)).child("phoneNumber");
+        DatabaseReference refEle = FirebaseDatabase.getInstance().getReference().child("Lokale_uslugowe").child(String.valueOf(n)).child("elevator");
+        //DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Lokale_uslugowe").child(String.valueOf(n)).child("name");
+
         final String name = mTextName.getText().toString();
-        if (!name.isEmpty()) {
+        final String address = mTextAddress.getText().toString();
+        final String phone = mTextPhone.getText().toString();
+        final String elevator = mTextElevator.getText().toString();
+
+        if (!name.isEmpty() && !address.isEmpty() && !phone.isEmpty() && !elevator.isEmpty()) {
                   ref.setValue(name);
+                    refAdr.setValue(address);
+                    refPho.setValue(phone);
+                    refEle.setValue(elevator);
                     finish();
                     startActivity(getIntent());
                 }

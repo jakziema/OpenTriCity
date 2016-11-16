@@ -10,33 +10,69 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.beata_macbook.opentricity.UI.UI.AddPlace">
 
+    <Button
+        android:text="Dodaj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/addBtn"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Name"
         android:ems="10"
         android:id="@+id/name"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="89dp" />
+        android:hint="nazwa" />
 
-    <Button
-        android:text="Dodaj"
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
-        android:id="@+id/addBtn"
+        android:inputType="textPersonName"
+        android:ems="10"
         android:layout_below="@+id/name"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/address"
+        android:hint="Adres" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/phone"
+        android:hint="Numer telefonu"
+        android:layout_below="@+id/address"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <Spinner
-        android:layout_width="match_parent"
+    <EditText
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/elevator"
+        android:hint=" windy"
+        android:layout_marginTop="14dp"
+        android:layout_below="@+id/phone"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ToggleButton
+        android:text="ToggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/toggleButton"
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_alignBaseline="@+id/elevator"
+        android:layout_alignBottom="@+id/elevator"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/spinner"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

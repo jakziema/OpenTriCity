@@ -16,11 +16,11 @@ public class NewPlace {
             this.address = address;
         }
 
-        public String getText() {
+        public String getTextName() {
             return name;
         }
 
-        public String getId() { return address;
+        public String getTextAdr() { return address;
         }
 
 
