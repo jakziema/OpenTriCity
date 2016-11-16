@@ -26,6 +26,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
@@ -36,6 +37,7 @@ import java.util.ArrayList;
 
 import static android.content.Context.LOCATION_SERVICE;
 import static com.example.beata_macbook.opentricity.UI.UI.CategoriesScreenActivity.choice;
+import static com.example.beata_macbook.opentricity.UI.UI.CategoriesScreenActivity.wyborNiepelnosprawnosci;
 
 /**
  * Created by Beata-MacBook on 13.10.2016.
@@ -54,6 +56,8 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
     TextView nameTextView;
     TextView addressTextView;
     TextView descriptionTextView;
+
+    Query mFirebaseReference2;
 
 
 
@@ -83,10 +87,15 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
         final ArrayList<Place> places = new ArrayList<>();
 
         //choice wybor uzytkownika
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(choice);
-        //DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference(choice);
+        if (wyborNiepelnosprawnosci.isEmpty()) {
+            mFirebaseReference2 = FirebaseDatabase.getInstance().getReference(choice);
+        } else {
+            mFirebaseReference2 = FirebaseDatabase.getInstance().getReference(choice)
+                    .orderByChild(wyborNiepelnosprawnosci).equalTo("true");
 
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+        }
+
+        mFirebaseReference2.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -101,6 +110,7 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
                 //przesylamy spakowane miejsce
                 Place place = places.get(itemPosition);
                 intent.putExtra("place", Parcels.wrap(place));
+                Log.v("itemPosition", String.valueOf(place));
                 mContext.startActivity(intent);
             }
 

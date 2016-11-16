@@ -60,6 +60,7 @@ public class PlaceDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_places_detail);
 
         //rozpakowujemy przeslane miejsce
+
          place = Parcels.unwrap(getIntent().getParcelableExtra("place"));
 
         //szukamy widokow
