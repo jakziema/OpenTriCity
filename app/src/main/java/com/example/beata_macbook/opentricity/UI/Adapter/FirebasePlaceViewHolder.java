@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.icu.text.DecimalFormat;
 import android.icu.text.NumberFormat;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.media.Image;
 import android.os.Bundle;
@@ -13,11 +14,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.beata_macbook.opentricity.R;
 import com.example.beata_macbook.opentricity.UI.Model.Place;
 import com.example.beata_macbook.opentricity.UI.UI.CategoriesScreenActivity;
 import com.example.beata_macbook.opentricity.UI.UI.PlaceDetailActivity;
+import com.example.beata_macbook.opentricity.UI.Utils.LocationHelper;
 import com.google.android.gms.common.server.converter.StringToIntConverter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,6 +34,7 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
+import static android.content.Context.LOCATION_SERVICE;
 import static com.example.beata_macbook.opentricity.UI.UI.CategoriesScreenActivity.choice;
 
 /**
@@ -50,6 +54,9 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
     TextView nameTextView;
     TextView addressTextView;
     TextView descriptionTextView;
+    TextView distanceTextView;
+
+
 
     public FirebasePlaceViewHolder(View itemView) {
         super(itemView);
@@ -68,6 +75,12 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
         addressTextView.setText(place.getAddress());
         descriptionTextView.setText(place.getDescription());
         Picasso.with(mContext).load(place.getImageURL()).resize(200, 200).centerCrop().into(placeImageView);
+
+        distanceTextView = (TextView)mView.findViewById(R.id.distanceTextView);
+        distanceTextView.setText(calculateDistance(place.getLongitude(), place.getLatitude()));
+
+
+
 
     }
 
@@ -104,16 +117,21 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
         });
     }
 
-    public String calculateDistance(String longitude, String latitude) {
+    public String calculateDistance(String placeLongitude, String placeLatitude) {
 
+        LocationManager lm = (LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE);
+        Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+         Double longitude = location.getLongitude();
+         Double latitude = location.getLatitude();
 
 
         Location userLocation = new Location("userLocation");
-        userLocation.setLongitude(54.407816);
-        userLocation.setLatitude(18.609015);
+        userLocation.setLongitude(longitude);
+        userLocation.setLatitude(latitude);
         Location placeLocation = new Location("placeLocation");
-        placeLocation.setLongitude(54.371694);
-        placeLocation.setLatitude(18.612716);
+
+        placeLocation.setLongitude(Double.parseDouble(placeLongitude));
+        placeLocation.setLatitude(Double.parseDouble(placeLatitude));
         float distanceFloat = userLocation.distanceTo(placeLocation);
 
         NumberFormat formatter = new DecimalFormat("#0");
@@ -125,15 +143,9 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
         return distanceString;
     }
 
-    public void getGoogleApiClient() {
-        if (mGoogleApiClient == null) {
-            mGoogleApiClient = new GoogleApiClient.Builder(this)
-                    .addConnectionCallbacks(this)
-                    .addOnConnectionFailedListener(this)
-                    .addApi(LocationServices.API)
-                    .build();
-        }
-    }
+
+
+
 
 
 }
