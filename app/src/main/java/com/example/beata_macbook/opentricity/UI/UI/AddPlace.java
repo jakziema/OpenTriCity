@@ -55,15 +55,15 @@ public class AddPlace extends AppCompatActivity {
 
     private void addNewPlace() {
 
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference()
-                        .child("Lokale_gastronomiczne").push();
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Lokale_gastronomiczne").child("4").child("name");
         final String name = mTextName.getText().toString();
         if (!name.isEmpty()) {
-                  ref.child("address").setValue(name);
+                  ref.setValue(name);
                     finish();
                     startActivity(getIntent());
                 }
-            }
+       }
+
     @Override
     protected void onStart() {
         super.onStart();
