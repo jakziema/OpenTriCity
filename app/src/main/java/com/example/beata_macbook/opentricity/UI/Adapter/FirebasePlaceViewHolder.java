@@ -118,17 +118,19 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
     }
 
     public String calculateDistance(String placeLongitude, String placeLatitude) {
+        String przykladowyAdres = "http://maps.google.com/maps?saddr=54.407808,18.609013&daddr=54.405868,18.608323";
 
         LocationManager lm = (LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE);
         Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-         Double longitude = location.getLongitude();
-         Double latitude = location.getLatitude();
+        Double longitude = location.getLongitude();
+        Double latitude = location.getLatitude();
 
 
         Location userLocation = new Location("userLocation");
         userLocation.setLongitude(longitude);
         userLocation.setLatitude(latitude);
         Location placeLocation = new Location("placeLocation");
+
 
         placeLocation.setLongitude(Double.parseDouble(placeLongitude));
         placeLocation.setLatitude(Double.parseDouble(placeLatitude));

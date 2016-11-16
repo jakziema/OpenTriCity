@@ -143,6 +143,7 @@ public class PlaceDetailActivity extends AppCompatActivity {
                                     "," + location.getLongitude() + "&daddr="+ 18 +
                                     ","+ 57));
 
+
                     startActivity(intent);
                 }
 
