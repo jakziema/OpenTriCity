@@ -13,7 +13,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -24,20 +23,25 @@ import android.widget.Toast;
 import com.example.beata_macbook.opentricity.R;
 import com.example.beata_macbook.opentricity.UI.Adapter.CustomCommentsAdapter;
 import com.example.beata_macbook.opentricity.UI.Model.Comment;
+import com.example.beata_macbook.opentricity.UI.Model.CommentFields;
 import com.example.beata_macbook.opentricity.UI.Model.Place;
 import com.example.beata_macbook.opentricity.UI.Utils.LocationHelper;
-import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
-import org.w3c.dom.Text;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -145,9 +149,10 @@ public class PlaceDetailActivity extends AppCompatActivity {
         ArrayList<Comment> comments = new ArrayList<Comment>();
         if (place.getComments() != null) {
             for (final Map.Entry<String, Object> entry : place.getComments().entrySet()) {
-                comments.add(new Comment(entry.getKey(), entry.getValue().toString()));
+                comments.add(new Comment(entry.getKey(), (HashMap) entry.getValue()));
             }
         }
+        Collections.sort(comments, new DateComparator());
         adapter = new CustomCommentsAdapter(list, comments, PlaceDetailActivity.this);
         list.addHeaderView(details);
         list.setAdapter(adapter);
@@ -162,8 +167,13 @@ public class PlaceDetailActivity extends AppCompatActivity {
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference(this.category)
                         .child(this.id).child("comments").push();
                 final String comment = addCommentTxt.getText().toString();
+                DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                Date date = new Date();
+                Map<String, String> mapa = new HashMap<>();
+                mapa.put(CommentFields.DATE.name(), dateFormat.format(date).toString());
+                mapa.put(CommentFields.TEXT.name(), comment);
                 if (!comment.isEmpty()) {
-                    ref.setValue(comment);
+                    ref.setValue(mapa);
                     finish();
                     startActivity(getIntent());
                 }
@@ -211,7 +221,7 @@ public class PlaceDetailActivity extends AppCompatActivity {
                 }
                 else{
                     location = mLocationManager
-                            .getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                            .getLastKnownLocation(LocationManager.GPS_PROVIDER);
                     //W miejsce `52` i `23` wstawcie swoje wspolrzedne geograficzne
                     Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
                             Uri.parse("http://maps.google.com/maps?saddr="+location.getLatitude() +
@@ -249,5 +259,20 @@ public class PlaceDetailActivity extends AppCompatActivity {
             Log.d("LOCATION", Double.toString(location.getLatitude()));
         }
     };
+
+    public class DateComparator implements Comparator<Comment> {
+        @Override
+        public int compare(Comment o1, Comment o2) {
+            DateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.ENGLISH);
+            try {
+                Date date1 =  df.parse(o1.getDate());
+                final Date date2 = df.parse(o2.getDate());
+                return date1.compareTo(date2);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            return 0;
+        }
+    }
 
 }
