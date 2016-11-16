@@ -32,6 +32,7 @@ public class CategoriesScreenActivity extends AppCompatActivity {
 
     // zmienna globalna wybor, która pozwala nam na ustawienie odpowiedniej kategorii do bazy Firebase
     public static String choice = "";
+    public static String wyborNiepelnosprawnosci = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class CategoriesScreenActivity extends AppCompatActivity {
                 if(wheelchairToggleButton.isChecked()) {
 
                     toggleButtonChoice = "wheelchair";
+                    wyborNiepelnosprawnosci = "wheelchair";
                     Log.v("Wcisnieto", toggleButtonChoice);
                 }
             }
@@ -64,6 +66,7 @@ public class CategoriesScreenActivity extends AppCompatActivity {
                 if(deafToggleButton.isChecked()) {
 
                     toggleButtonChoice = "deaf";
+                    wyborNiepelnosprawnosci = "deaf";
                     Log.v("Wcisnieto", toggleButtonChoice);
                 }
             }
@@ -76,6 +79,7 @@ public class CategoriesScreenActivity extends AppCompatActivity {
                 if (crutchesToggleButton.isChecked()) {
 
                     toggleButtonChoice  = "crutch";
+                    wyborNiepelnosprawnosci = "crutch";
 
                 }
             }
@@ -86,6 +90,7 @@ public class CategoriesScreenActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (midgetToggleButton.isChecked()) {
                     toggleButtonChoice = "midget";
+                    wyborNiepelnosprawnosci = "midget";
                 }
             }
         });
@@ -95,6 +100,7 @@ public class CategoriesScreenActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (blindToggleButton.isChecked()) {
                     toggleButtonChoice = "blind";
+                    wyborNiepelnosprawnosci = "blind";
                 }
             }
         });
@@ -121,6 +127,8 @@ public class CategoriesScreenActivity extends AppCompatActivity {
         blindToggleButton.setChecked(false);
         midgetToggleButton.setChecked(false);
         crutchesToggleButton.setChecked(false);
+        choice = "";
+        wyborNiepelnosprawnosci = "";
 
     }
 }

@@ -91,6 +91,7 @@ public class PlaceDetailActivity extends AppCompatActivity {
         id = Parcels.unwrap(getIntent().getParcelableExtra("id"));
         category = Parcels.unwrap(getIntent().getParcelableExtra("category"));
 
+
         //szukamy widokow
         detailPlaceNameTextView = (TextView) findViewById(R.id.detailPlaceNameTextView);
         addressTextView = (TextView) details.findViewById(R.id.addressTextView);
@@ -189,6 +190,10 @@ public class PlaceDetailActivity extends AppCompatActivity {
         Intent intent = new Intent(PlaceDetailActivity.this, AddUserActivity.class);
         startActivity(intent);
     }
+    public void dodajClick(View view) {
+        Intent intent = new Intent(PlaceDetailActivity.this, AddPlace.class);
+        startActivity(intent);
+    }
 
     public void nawigujStart() {
         if (!LocationHelper.isLocationEnabled(getApplicationContext())) {
@@ -227,6 +232,7 @@ public class PlaceDetailActivity extends AppCompatActivity {
                             Uri.parse("http://maps.google.com/maps?saddr="+location.getLatitude() +
                                     "," + location.getLongitude() + "&daddr="+ 18 +
                                     ","+ 57));
+
                     startActivity(intent);
                 }
             }

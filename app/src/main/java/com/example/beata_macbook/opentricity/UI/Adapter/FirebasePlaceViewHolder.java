@@ -2,6 +2,11 @@ package com.example.beata_macbook.opentricity.UI.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.icu.text.DecimalFormat;
+import android.icu.text.NumberFormat;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -9,16 +14,19 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.beata_macbook.opentricity.R;
 import com.example.beata_macbook.opentricity.UI.Model.Place;
 import com.example.beata_macbook.opentricity.UI.UI.CategoriesScreenActivity;
 import com.example.beata_macbook.opentricity.UI.UI.PlaceDetailActivity;
+import com.example.beata_macbook.opentricity.UI.Utils.LocationHelper;
 import com.google.android.gms.common.server.converter.StringToIntConverter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
@@ -28,7 +36,9 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
+import static android.content.Context.LOCATION_SERVICE;
 import static com.example.beata_macbook.opentricity.UI.UI.CategoriesScreenActivity.choice;
+import static com.example.beata_macbook.opentricity.UI.UI.CategoriesScreenActivity.wyborNiepelnosprawnosci;
 
 /**
  * Created by Beata-MacBook on 13.10.2016.
@@ -48,6 +58,11 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
     TextView addressTextView;
     TextView descriptionTextView;
 
+    Query mFirebaseReference2;
+
+
+
+
     public FirebasePlaceViewHolder(View itemView) {
         super(itemView);
         mView = itemView;
@@ -65,6 +80,7 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
         addressTextView.setText(place.getAddress());
         descriptionTextView.setText(place.getDescription());
         Picasso.with(mContext).load(place.getImageURL()).resize(200, 200).centerCrop().into(placeImageView);
+
     }
 
     public void onClick(View view) {
@@ -72,10 +88,15 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
         final LinkedHashMap<String, Place> places = new LinkedHashMap<>();
 
         //choice wybor uzytkownika
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(choice);
-        //DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference(choice);
+        if (wyborNiepelnosprawnosci.isEmpty()) {
+            mFirebaseReference2 = FirebaseDatabase.getInstance().getReference(choice);
+        } else {
+            mFirebaseReference2 = FirebaseDatabase.getInstance().getReference(choice)
+                    .orderByChild(wyborNiepelnosprawnosci).equalTo("true");
 
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+        }
+
+        mFirebaseReference2.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -91,8 +112,12 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
                 Place place = (new ArrayList<Place>(places.values())).get(itemPosition);
                 String id = (new ArrayList<String>(places.keySet())).get(itemPosition);
                 intent.putExtra("place", Parcels.wrap(place));
+
                 intent.putExtra("id", Parcels.wrap(id));
                 intent.putExtra("category", Parcels.wrap(choice));
+
+                Log.v("itemPosition", String.valueOf(place));
+
                 mContext.startActivity(intent);
             }
 
@@ -102,4 +127,12 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
             }
         });
     }
+
+
+
+
+
+
+
+
 }
