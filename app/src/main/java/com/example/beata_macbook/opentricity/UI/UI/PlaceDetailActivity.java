@@ -108,6 +108,10 @@ public class PlaceDetailActivity extends AppCompatActivity {
         Intent intent = new Intent(PlaceDetailActivity.this, AddUserActivity.class);
         startActivity(intent);
     }
+    public void dodajClick(View view) {
+        Intent intent = new Intent(PlaceDetailActivity.this, AddPlace.class);
+        startActivity(intent);
+    }
 
     public void nawigujStart() {
         if (!LocationHelper.isLocationEnabled(getApplicationContext())) {
