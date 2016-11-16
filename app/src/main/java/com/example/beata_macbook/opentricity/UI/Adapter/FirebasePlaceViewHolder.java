@@ -76,11 +76,6 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
         descriptionTextView.setText(place.getDescription());
         Picasso.with(mContext).load(place.getImageURL()).resize(200, 200).centerCrop().into(placeImageView);
 
-
-
-
-
-
     }
 
     public void onClick(View view) {

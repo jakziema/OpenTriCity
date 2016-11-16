@@ -26,6 +26,9 @@ import org.parceler.Parcels;
 
 
 import org.parceler.Parcels;
+
+import java.util.Random;
+
 import static android.R.attr.category;
 
 public class AddPlace extends AppCompatActivity {
@@ -54,8 +57,10 @@ public class AddPlace extends AppCompatActivity {
 
 
     private void addNewPlace() {
+        Random rand = new Random();
 
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Lokale_gastronomiczne").child("4").child("name");
+        int  n = rand.nextInt(1000) + 1;
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Lokale_uslugowe").child(String.valueOf(n)).child("name");
         final String name = mTextName.getText().toString();
         if (!name.isEmpty()) {
                   ref.setValue(name);
