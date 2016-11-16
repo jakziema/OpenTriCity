@@ -54,7 +54,7 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
     TextView nameTextView;
     TextView addressTextView;
     TextView descriptionTextView;
-    TextView distanceTextView;
+
 
 
 
@@ -76,8 +76,7 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
         descriptionTextView.setText(place.getDescription());
         Picasso.with(mContext).load(place.getImageURL()).resize(200, 200).centerCrop().into(placeImageView);
 
-        distanceTextView = (TextView)mView.findViewById(R.id.distanceTextView);
-        distanceTextView.setText(calculateDistance(place.getLongitude(), place.getLatitude()));
+
 
 
 
@@ -117,33 +116,7 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
         });
     }
 
-    public String calculateDistance(String placeLongitude, String placeLatitude) {
-        String przykladowyAdres = "http://maps.google.com/maps?saddr=54.407808,18.609013&daddr=54.405868,18.608323";
 
-        LocationManager lm = (LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE);
-        Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        Double longitude = location.getLongitude();
-        Double latitude = location.getLatitude();
-
-
-        Location userLocation = new Location("userLocation");
-        userLocation.setLongitude(longitude);
-        userLocation.setLatitude(latitude);
-        Location placeLocation = new Location("placeLocation");
-
-
-        placeLocation.setLongitude(Double.parseDouble(placeLongitude));
-        placeLocation.setLatitude(Double.parseDouble(placeLatitude));
-        float distanceFloat = userLocation.distanceTo(placeLocation);
-
-        NumberFormat formatter = new DecimalFormat("#0");
-
-        Log.v("DISTANCE", String.valueOf(formatter.format(distanceFloat)) + " m");
-
-        String distanceString = String.valueOf(formatter.format(distanceFloat));
-
-        return distanceString;
-    }
 
 
 
