@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -51,6 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+                android:theme="@style/ThemeOverlay.MyDarkButton"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:id="@+id/lokalizuj_btn" />
@@ -64,8 +66,29 @@
             android:layout_marginRight="25dp"
             android:layout_marginEnd="25dp"
             android:layout_alignParentTop="true"
+            android:theme="@style/ThemeOverlay.MyDarkButton"
             android:layout_toLeftOf="@+id/lokalizuj_btn"
             android:layout_toStartOf="@+id/lokalizuj_btn" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@color/colorPrimary"
+            android:layout_below="@+id/descriptionTextView"
+            android:layout_alignRight="@+id/descriptionTextView"
+            android:layout_alignEnd="@+id/descriptionTextView"
+            android:layout_marginRight="75dp"
+            android:layout_marginEnd="75dp"
+            android:id="@+id/imageView" />
+
+        <ImageButton
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:srcCompat="@android:drawable/ic_input_add"
+            android:id="@+id/imageButton3"
+            android:onClick="dodajClick"
+            android:layout_below="@+id/detailPlaceNameTextView" />
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -75,6 +98,8 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+
 
         <LinearLayout
             android:orientation="vertical"
