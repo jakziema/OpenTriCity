@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ToggleButton;
 
 
 import com.example.beata_macbook.opentricity.R;
@@ -30,6 +31,7 @@ import org.parceler.Parcels;
 import java.util.Random;
 
 import static android.R.attr.category;
+import static com.example.beata_macbook.opentricity.UI.UI.CategoriesScreenActivity.wyborNiepelnosprawnosci;
 
 public class AddPlace extends AppCompatActivity {
 
@@ -37,13 +39,19 @@ public class AddPlace extends AppCompatActivity {
     EditText mTextAddress;
     EditText mTextPhone;
     EditText mTextElevator;
+    EditText mTextStaff;
+    EditText mTextToilets;
+    EditText mTextRamp;
+
+    ToggleButton elevatorBtn;
 
     Button mAddBtn;
     private String category;
 
+
     //DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
     //id = Parcels.unwrap(getIntent().getParcelableExtra("id"));
-   // category = Parcels.unwrap(getIntent().getParcelableExtra("category"));
+    // category = Parcels.unwrap(getIntent().getParcelableExtra("category"));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,17 +59,17 @@ public class AddPlace extends AppCompatActivity {
         setContentView(R.layout.activity_add_place);
 
 
-        mTextName = (EditText)findViewById(R.id.name);
-        mTextAddress = (EditText)findViewById(R.id.address);
-        mTextPhone = (EditText)findViewById(R.id.phone);
-        mTextElevator = (EditText)findViewById(R.id.elevator);
+        mTextName = (EditText) findViewById(R.id.name);
+        mTextAddress = (EditText) findViewById(R.id.address);
+        mTextPhone = (EditText) findViewById(R.id.phone);
+        mTextElevator = (EditText) findViewById(R.id.elevator);
+        mTextStaff = (EditText)findViewById(R.id.staff);
+        mTextToilets = (EditText)findViewById(R.id.toilets);
+        mTextRamp = (EditText)findViewById(R.id.ramp);
 
-
-        mAddBtn = (Button)findViewById(R.id.addBtn);
-        category = Parcels.unwrap(getIntent().getParcelableExtra("category"));
-
-
+        mAddBtn = (Button) findViewById(R.id.addBtn);
     }
+    //category = Parcels.unwrap(getIntent().getParcelableExtra("category"));
 
 
 
@@ -69,26 +77,34 @@ public class AddPlace extends AppCompatActivity {
         Random rand = new Random();
 
         int  n = rand.nextInt(1000) + 1;
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Lokale_uslugowe").child(String.valueOf(n)).child("name");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Lokale_uslugowe").child(String.valueOf(n)).child("name");
         DatabaseReference refAdr = FirebaseDatabase.getInstance().getReference().child("Lokale_uslugowe").child(String.valueOf(n)).child("address");
         DatabaseReference refPho = FirebaseDatabase.getInstance().getReference().child("Lokale_uslugowe").child(String.valueOf(n)).child("phoneNumber");
         DatabaseReference refEle = FirebaseDatabase.getInstance().getReference().child("Lokale_uslugowe").child(String.valueOf(n)).child("elevator");
-        //DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Lokale_uslugowe").child(String.valueOf(n)).child("name");
+        DatabaseReference refStaff = FirebaseDatabase.getInstance().getReference().child("Lokale_uslugowe").child(String.valueOf(n)).child("staff");
+        DatabaseReference refToil = FirebaseDatabase.getInstance().getReference().child("Lokale_uslugowe").child(String.valueOf(n)).child("toilets");
+        DatabaseReference refRamp = FirebaseDatabase.getInstance().getReference().child("Lokale_uslugowe").child(String.valueOf(n)).child("podjazdy");
 
         final String name = mTextName.getText().toString();
         final String address = mTextAddress.getText().toString();
         final String phone = mTextPhone.getText().toString();
         final String elevator = mTextElevator.getText().toString();
+        final String staff = mTextStaff.getText().toString();
+        final String ramp = mTextRamp.getText().toString();
+        final String toilets = mTextToilets.getText().toString();
 
         if (!name.isEmpty() && !address.isEmpty() && !phone.isEmpty() && !elevator.isEmpty()) {
-                  ref.setValue(name);
-                    refAdr.setValue(address);
-                    refPho.setValue(phone);
-                    refEle.setValue(elevator);
-                    finish();
-                    startActivity(getIntent());
-                }
-       }
+            ref.setValue(name);
+            refAdr.setValue(address);
+            refPho.setValue(phone);
+            refEle.setValue(elevator);
+            refStaff.setValue(staff);
+            refToil.setValue(toilets);
+            refRamp.setValue(ramp);
+            finish();
+            startActivity(getIntent());
+        }
+    }
 
     @Override
     protected void onStart() {
@@ -100,8 +116,4 @@ public class AddPlace extends AppCompatActivity {
             }
         });
     }
-    }
-
-
-
-
+}
