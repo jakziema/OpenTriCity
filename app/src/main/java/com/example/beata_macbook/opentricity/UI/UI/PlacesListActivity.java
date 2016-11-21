@@ -14,7 +14,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-import static com.example.beata_macbook.opentricity.UI.UI.CategoriesScreenActivity.choice;
+import static com.example.beata_macbook.opentricity.UI.UI.ListCategoriesScreenActivity.choice;
 
 /**
  * Klasa odpowiadajca za wyswietlanie listy miejsc po przejsciu z kategorii

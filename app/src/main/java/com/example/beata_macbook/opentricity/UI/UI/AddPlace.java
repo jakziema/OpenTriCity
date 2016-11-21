@@ -31,7 +31,7 @@ import org.parceler.Parcels;
 import java.util.Random;
 
 import static android.R.attr.category;
-import static com.example.beata_macbook.opentricity.UI.UI.CategoriesScreenActivity.wyborNiepelnosprawnosci;
+import static com.example.beata_macbook.opentricity.UI.UI.ListCategoriesScreenActivity.wyborNiepelnosprawnosci;
 
 public class AddPlace extends AppCompatActivity {
 

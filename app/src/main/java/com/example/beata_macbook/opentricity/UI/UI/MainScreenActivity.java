@@ -32,7 +32,7 @@ public class MainScreenActivity extends AppCompatActivity {
 
     //Przejscie do keranu z kategoriami
     public void onGuestButtonClick(View view) {
-        Intent intent = new Intent(MainScreenActivity.this, CategoriesScreenActivity.class);
+        Intent intent = new Intent(MainScreenActivity.this, ListCategoriesScreenActivity.class);
         startActivity(intent);
     }
 

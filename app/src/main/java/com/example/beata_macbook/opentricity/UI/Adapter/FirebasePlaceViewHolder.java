@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import com.example.beata_macbook.opentricity.R;
 import com.example.beata_macbook.opentricity.UI.Model.Place;
-import com.example.beata_macbook.opentricity.UI.UI.CategoriesScreenActivity;
+import com.example.beata_macbook.opentricity.UI.UI.ListCategoriesScreenActivity;
 import com.example.beata_macbook.opentricity.UI.UI.PlaceDetailActivity;
 import com.example.beata_macbook.opentricity.UI.Utils.LocationHelper;
 import com.google.android.gms.common.server.converter.StringToIntConverter;
@@ -37,8 +37,10 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 import static android.content.Context.LOCATION_SERVICE;
-import static com.example.beata_macbook.opentricity.UI.UI.CategoriesScreenActivity.choice;
-import static com.example.beata_macbook.opentricity.UI.UI.CategoriesScreenActivity.wyborNiepelnosprawnosci;
+
+
+import static com.example.beata_macbook.opentricity.UI.UI.ListCategoriesScreenActivity.wyborNiepelnosprawnosci;
+import static com.example.beata_macbook.opentricity.UI.UI.ListCategoriesScreenActivity.choice;
 
 /**
  * Created by Beata-MacBook on 13.10.2016.
