@@ -35,4 +35,12 @@
 
     <string name="id_fmt">ID użytkownika: %s</string>
     <string name="email_fmt">Email: %s</string>
+    <string-array name="categories">
+        <item>Urzedy</item>
+        <item>Lokale gastronomiczne</item>
+        <item>Lokale_usługowe</item>
+        <item>Obiekty_sportowe</item>
+        <item>Obiekty edukacyjne</item>
+    </string-array>
+    
 </resources>
