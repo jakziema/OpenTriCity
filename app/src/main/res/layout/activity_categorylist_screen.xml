@@ -10,25 +10,6 @@
     >
 
 
-
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="83dp"
-        android:id="@+id/disabilitySpinner"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        />
-
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/disabilitySpinner"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="170dp"
-        android:id="@+id/categorySpinner" />
-
     <Button
         android:text="WYSZUKAJ"
         android:layout_width="wrap_content"
@@ -36,6 +17,69 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/searchButton" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></LinearLayout>
+
+    <TextView
+        android:text="Wybierz kategorię miejsca:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="28sp"
+        android:id="@+id/textView"
+        android:background= "@drawable/corner_radius"
+        android:textColor="#ffffff"
+        android:layout_below="@+id/linearLayout"
+        android:layout_marginTop="15dp"
+        android:layout_alignRight="@+id/categorySpinner"
+        android:layout_alignEnd="@+id/categorySpinner"
+        android:layout_toEndOf="@+id/linearLayout2"
+        android:layout_alignLeft="@+id/categorySpinner"
+        android:layout_alignStart="@+id/categorySpinner"
+
+        />
+
+    <Spinner
+        android:id="@+id/categorySpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown"
+        style="@style/spinner_style"
+        android:popupBackground="#cccccc"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="33dp"
+        android:layout_toEndOf="@+id/linearLayout2"
+        android:layout_toRightOf="@+id/linearLayout2" />
+
+    <TextView
+        android:text="Wybierz rodzaj niepełnosprawności"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="28sp"
+        android:id="@+id/textView3"
+        android:background= "@drawable/corner_radius"
+        android:textColor="#ffffff"
+        android:layout_marginTop="22dp"
+        android:layout_below="@+id/categorySpinner"
+        android:layout_alignRight="@+id/disabilitySpinner"
+        android:layout_alignEnd="@+id/disabilitySpinner"
+        android:layout_alignLeft="@+id/disabilitySpinner"
+        android:layout_alignStart="@+id/disabilitySpinner"
+        />
+
+    <Spinner
+
+        android:id="@+id/disabilitySpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown"
+        style="@style/spinner_style"
+        android:popupBackground="#cccccc"
+
+        android:layout_marginTop="33dp"
+        android:layout_below="@+id/textView3"
+        android:layout_toRightOf="@+id/linearLayout2"
+        android:layout_toEndOf="@+id/linearLayout2" />
 
 
 </RelativeLayout>
