@@ -6,6 +6,7 @@
     android:background="@color/colorPrimary"
     >
 
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -14,6 +15,7 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryLight"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -25,9 +27,9 @@
                 android:layout_height="wrap_content"
                 android:text="Numer telefonu"
                 android:id="@+id/phone1TextView"
-                android:textColor="@color/colorPrimaryDark"
-                android:background="#ffffff"
-                android:textSize="15sp"
+                android:textColor="@color/colorPrimaryLight"
+                android:background="@color/colorPrimary"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"/>
@@ -38,7 +40,7 @@
                 android:text="606 606 606"
                 android:id="@+id/phoneTextView"
                 android:textColor="@color/colorTextIcons"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"/>
@@ -48,9 +50,9 @@
                 android:layout_height="wrap_content"
                 android:text="Adres"
                 android:id="@+id/address1TextView"
-                android:textColor="@color/colorPrimaryDark"
-                android:background="#ffffff"
-                android:textSize="15sp"
+                android:textColor="@color/colorPrimaryLight"
+                android:background="@color/colorPrimary"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"/>
@@ -61,7 +63,7 @@
                 android:text="Szkolna 3, Miłobądz"
                 android:id="@+id/addressTextView"
                 android:textColor="@color/colorTextIcons"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="10dp"
                 android:gravity="center_vertical"/>
@@ -71,9 +73,9 @@
                 android:layout_height="wrap_content"
                 android:text="Windy"
                 android:id="@+id/elevator1TextView"
-                android:textColor="@color/colorPrimaryDark"
-                android:background="#ffffff"
-                android:textSize="15sp"
+                android:textColor="@color/colorPrimaryLight"
+                android:background="@color/colorPrimary"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"/>
@@ -84,7 +86,7 @@
                 android:text="Szkolna 3, Miłobądz"
                 android:id="@+id/elevatorTextView"
                 android:textColor="@color/colorTextIcons"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="10dp"
                 android:gravity="center_vertical"/>
@@ -94,9 +96,9 @@
                 android:layout_height="wrap_content"
                 android:text="Toalety"
                 android:id="@+id/toilets1TextView"
-                android:textColor="@color/colorPrimaryDark"
-                android:background="#ffffff"
-                android:textSize="15sp"
+                android:textColor="@color/colorPrimaryLight"
+                android:background="@color/colorPrimary"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"/>
@@ -107,7 +109,7 @@
                 android:text="Szkolna 3, Miłobądz"
                 android:id="@+id/toiletsTextView"
                 android:textColor="@color/colorTextIcons"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="10dp"
                 android:gravity="center_vertical"/>
@@ -117,9 +119,9 @@
                 android:layout_height="wrap_content"
                 android:text="Podjazdy"
                 android:id="@+id/podjazdy1TextView"
-                android:textColor="@color/colorPrimaryDark"
-                android:background="#ffffff"
-                android:textSize="15sp"
+                android:textColor="@color/colorPrimaryLight"
+                android:background="@color/colorPrimary"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"/>
@@ -130,7 +132,7 @@
                 android:text="Szkolna 3, Miłobądz"
                 android:id="@+id/podjazdyTextView"
                 android:textColor="@color/colorTextIcons"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="10dp"
                 android:gravity="center_vertical"/>
@@ -140,9 +142,9 @@
                 android:layout_height="wrap_content"
                 android:text="Obsługa"
                 android:id="@+id/staff1TextView"
-                android:textColor="@color/colorPrimaryDark"
-                android:background="#ffffff"
-                android:textSize="15sp"
+                android:textColor="@color/colorPrimaryLight"
+                android:background="@color/colorPrimary"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"/>
@@ -153,7 +155,7 @@
                 android:text="Szkolna 3, Miłobądz"
                 android:id="@+id/staffTextView"
                 android:textColor="@color/colorTextIcons"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="10dp"
                 android:gravity="center_vertical"/>
@@ -163,9 +165,9 @@
                 android:layout_height="wrap_content"
                 android:text="Bufet"
                 android:id="@+id/bar1TextView"
-                android:textColor="@color/colorPrimaryDark"
-                android:background="#ffffff"
-                android:textSize="15sp"
+                android:textColor="@color/colorPrimaryLight"
+                android:background="@color/colorPrimary"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"/>
@@ -176,7 +178,7 @@
                 android:text="Szkolna 3, Miłobądz"
                 android:id="@+id/barTextView"
                 android:textColor="@color/colorTextIcons"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="10dp"
                 android:gravity="center_vertical"/>
@@ -187,13 +189,14 @@
                 android:paddingRight="5dp"
                 android:layout_height="wrap_content"
                 android:text="Komentarze"
-                android:textColor="@color/colorPrimaryDark"
-                android:background="#ffffff"
-                android:textSize="15sp"
+                android:textColor="@color/colorPrimaryLight"
+                android:background="@color/colorPrimary"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="20dp"
                 android:gravity="center"/>
+
 
             <LinearLayout
                 android:layout_width="match_parent"

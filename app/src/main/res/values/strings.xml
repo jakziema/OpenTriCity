@@ -30,9 +30,21 @@
     <string name="firebase_status_fmt">Użytkownik: %s</string>
     <string name="firebase_user_management">Firebase User Management</string>
 
+    <string name="logIn">Zaloguj</string>
+    <string name="logOut">Wyloguj</string>
+
     <string name="emailpassword_status_fmt">Email: %s</string>
     <string name="emailpassword_title_text">Logowanie</string>
 
     <string name="id_fmt">ID użytkownika: %s</string>
     <string name="email_fmt">Email: %s</string>
+    <string-array name="categories">
+        <item>Urzedy</item>
+        <item>Lokale_gastronomiczne</item>
+        <item>Lokale_uslugowe</item>
+        <item>Obiekty_sportowe</item>
+        <item>Obiekty_edukacyjne</item>
+
+    </string-array>
+    
 </resources>
