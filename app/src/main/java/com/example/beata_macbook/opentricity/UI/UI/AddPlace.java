@@ -1,6 +1,7 @@
 package com.example.beata_macbook.opentricity.UI.UI;
 
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +25,8 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -55,12 +58,16 @@ public class AddPlace extends AppCompatActivity {
     Button mAddBtn;
     private String category;
     private FirebaseAuth mAuth;
+    private StorageReference mStorage;
+
+    private Button mSelectImage;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
 
+    private static final int GALLERY_INTENT = 2;
     //DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
     //id = Parcels.unwrap(getIntent().getParcelableExtra("id"));
     // category = Parcels.unwrap(getIntent().getParcelableExtra("category"));
@@ -70,6 +77,9 @@ public class AddPlace extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_place);
 
+
+        mStorage = FirebaseStorage.getInstance().getReference();
+        mSelectImage = (Button)findViewById(R.id.selectImage);
 
         mTextName = (EditText) findViewById(R.id.name);
         mTextAddress = (EditText) findViewById(R.id.address);
@@ -85,6 +95,16 @@ public class AddPlace extends AppCompatActivity {
         adapter = ArrayAdapter.createFromResource(this, R.array.categories, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+
+        mSelectImage.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(Intent.ACTION_PICK);
+
+                intent.setType("image/*");
+                startActivityForResult(intent, GALLERY_INTENT);
+            }
+        });
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view,
