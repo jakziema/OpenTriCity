@@ -13,11 +13,17 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.beata_macbook.opentricity.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * Klasa odpowiadajca za ekran glowny , wybor odpowiedniej opcji
  */
+
+
+
 public class MainScreenActivity extends AppCompatActivity {
+
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +31,7 @@ public class MainScreenActivity extends AppCompatActivity {
         if(!isOnline()) {
             this.connectionAlert().show();
         }
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
     }
 
     //Przejscie do ekranu informacji
@@ -34,6 +41,16 @@ public class MainScreenActivity extends AppCompatActivity {
     public void onGuestButtonClick(View view) {
         Intent intent = new Intent(MainScreenActivity.this, ListCategoriesScreenActivity.class);
         startActivity(intent);
+    }
+
+    public void addPlaceButtonClick(View view) {
+
+
+
+            Intent intent = new Intent(MainScreenActivity.this, AddPlace.class);
+            startActivity(intent);
+
+
     }
 
 //    public void onLoginButtonClicked(View view) {

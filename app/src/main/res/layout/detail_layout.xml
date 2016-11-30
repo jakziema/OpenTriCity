@@ -189,13 +189,14 @@
                 android:paddingRight="5dp"
                 android:layout_height="wrap_content"
                 android:text="Komentarze"
-                android:textColor="@color/colorPrimaryLight"
-                android:background="@color/colorPrimary"
-                android:textSize="17sp"
+                android:textColor="@color/colorPrimary"
+                android:background="@color/colorPrimaryLight"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="20dp"
-                android:gravity="center"/>
+                android:gravity="center"
+                tools:background="@color/colorPrimaryLight" />
 
 
             <LinearLayout

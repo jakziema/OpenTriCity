@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@drawable/staremiastocat"
+    android:background="@drawable/staremiasto1"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -10,46 +10,10 @@
     >
 
 
-    <Button
-        android:text="WYSZUKAJ"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/searchButton" />
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"></LinearLayout>
 
-    <TextView
-        android:text="Wybierz kategorię miejsca:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="28sp"
-        android:id="@+id/textView"
-        android:background= "@drawable/corner_radius"
-        android:textColor="#ffffff"
-        android:layout_below="@+id/linearLayout"
-        android:layout_marginTop="15dp"
-        android:layout_alignRight="@+id/categorySpinner"
-        android:layout_alignEnd="@+id/categorySpinner"
-        android:layout_toEndOf="@+id/linearLayout2"
-        android:layout_alignLeft="@+id/categorySpinner"
-        android:layout_alignStart="@+id/categorySpinner"
-
-        />
-
-    <Spinner
-        android:id="@+id/categorySpinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:spinnerMode="dropdown"
-        style="@style/spinner_style"
-        android:popupBackground="#cccccc"
-        android:layout_below="@+id/textView"
-        android:layout_marginTop="33dp"
-        android:layout_toEndOf="@+id/linearLayout2"
-        android:layout_toRightOf="@+id/linearLayout2" />
 
     <TextView
         android:text="Wybierz rodzaj niepełnosprawności"
@@ -57,8 +21,8 @@
         android:layout_height="wrap_content"
         android:textSize="28sp"
         android:id="@+id/textView3"
-        android:background= "@drawable/corner_radius"
-        android:textColor="#ffffff"
+        android:background="#ffffff"
+        android:textColor="#d32f2f"
         android:layout_marginTop="22dp"
         android:layout_below="@+id/categorySpinner"
         android:layout_alignRight="@+id/disabilitySpinner"
@@ -74,12 +38,45 @@
         android:layout_height="wrap_content"
         android:spinnerMode="dropdown"
         style="@style/spinner_style"
-        android:popupBackground="#cccccc"
+        android:popupBackground="#ffffff"
 
-        android:layout_marginTop="33dp"
         android:layout_below="@+id/textView3"
-        android:layout_toRightOf="@+id/linearLayout2"
-        android:layout_toEndOf="@+id/linearLayout2" />
+        android:layout_centerHorizontal="true" />
+
+    <Spinner
+        android:id="@+id/categorySpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown"
+        style="@style/spinner_style"
+        android:popupBackground="#ffffff"
+        android:layout_below="@+id/textView"
+        android:layout_toRightOf="@+id/linearLayout"
+        android:layout_toEndOf="@+id/linearLayout" />
+
+    <TextView
+        android:text="Wybierz kategorię miejsca:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="28sp"
+        android:background="#ffffff"
+        android:id="@+id/textView"
+        android:textColor="#D32f2f"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_alignStart="@+id/textView3" />
+
+    <Button
+        android:text="WYSZUKAJ"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center"
+        android:theme="@style/ThemeOverlay.MyDarkButton"
+        android:id="@+id/searchButton"
+        android:layout_below="@+id/disabilitySpinner"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp" />
 
 
 </RelativeLayout>

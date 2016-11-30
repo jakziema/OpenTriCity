@@ -4,6 +4,7 @@ package com.example.beata_macbook.opentricity.UI.UI;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,11 +23,14 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -47,10 +51,12 @@ public class AddPlace extends AppCompatActivity {
     EditText mTextStaff;
     EditText mTextToilets;
     EditText mTextRamp;
-    Spinner spinner;
+    Spinner spinnerCategory;
     ArrayAdapter<CharSequence> adapter;
 
     ToggleButton elevatorBtn;
+
+    private static final String TAG = AddPlace.class.getName();
 
     Button mAddBtn;
     private String category;
@@ -58,10 +64,8 @@ public class AddPlace extends AppCompatActivity {
     private StorageReference mStorage;
 
     private Button mSelectImage;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
+
+
     private GoogleApiClient client;
 
     private static final int GALLERY_INTENT = 2;
@@ -74,9 +78,10 @@ public class AddPlace extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_place);
 
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
         mStorage = FirebaseStorage.getInstance().getReference();
-        mSelectImage = (Button)findViewById(R.id.selectImage);
+        mSelectImage = (Button) findViewById(R.id.selectImage);
 
         mTextName = (EditText) findViewById(R.id.name);
         mTextAddress = (EditText) findViewById(R.id.address);
@@ -88,22 +93,22 @@ public class AddPlace extends AppCompatActivity {
 
         mAddBtn = (Button) findViewById(R.id.addBtn);
 
-        spinner = (Spinner) findViewById(R.id.spinner);
+        spinnerCategory = (Spinner) findViewById(R.id.spinner);
         adapter = ArrayAdapter.createFromResource(this, R.array.categories, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+        spinnerCategory.setAdapter(adapter);
 
-        mSelectImage.setOnClickListener(new View.OnClickListener(){
+        mSelectImage.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_PICK);
-
                 intent.setType("image/*");
                 startActivityForResult(intent, GALLERY_INTENT);
             }
         });
 
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+        spinnerCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
                 parent.getItemAtPosition(position);
@@ -124,11 +129,14 @@ public class AddPlace extends AppCompatActivity {
     //category = Parcels.unwrap(getIntent().getParcelableExtra("category"));
 
 
-    private void addNewPlace() {
+
+
+  private void addNewPlace() {
 
         Random rand = new Random();
 
         int n = rand.nextInt(1000) + 1;
+
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child(text).child(String.valueOf(n)).child("name");
         DatabaseReference refAdr = FirebaseDatabase.getInstance().getReference().child(text).child(String.valueOf(n)).child("address");
@@ -137,6 +145,7 @@ public class AddPlace extends AppCompatActivity {
         DatabaseReference refStaff = FirebaseDatabase.getInstance().getReference().child(text).child(String.valueOf(n)).child("staff");
         DatabaseReference refToil = FirebaseDatabase.getInstance().getReference().child(text).child(String.valueOf(n)).child("toilets");
         DatabaseReference refRamp = FirebaseDatabase.getInstance().getReference().child(text).child(String.valueOf(n)).child("podjazdy");
+      DatabaseReference imageURL = FirebaseDatabase.getInstance().getReference().child(text).child(String.valueOf(n)).child("imageURL");
         Log.d("Wybrałam", text);
 
 
@@ -148,6 +157,7 @@ public class AddPlace extends AppCompatActivity {
         final String staff = mTextStaff.getText().toString();
         final String ramp = mTextRamp.getText().toString();
         final String toilets = mTextToilets.getText().toString();
+       //final Uri imageUrl =
 
         if (!name.isEmpty() && !address.isEmpty() && !phone.isEmpty() && !elevator.isEmpty() && phone.matches(phonePatter)) {
             ref.setValue(name);
@@ -159,12 +169,20 @@ public class AddPlace extends AppCompatActivity {
             refRamp.setValue(ramp);
             finish();
             startActivity(getIntent());
-        } else {
-            Toast.makeText(AddPlace.this,
-                    "Uzupełnij wszystkie pola", Toast.LENGTH_LONG).show();
-        }
 
+            Toast.makeText(this, "Miejsce zostało dodane", Toast.LENGTH_SHORT).show();
+        }/* else {
+                Toast.makeText(AddPlace.this,
+                        "Uzupełnij wszystkie pola", Toast.LENGTH_LONG).show();
+            }
+        }*/
+
+        else {
+            Toast.makeText(this, "Uzupełnij pola", Toast.LENGTH_SHORT).show();
+        }
     }
+
+
 
     @Override
     protected void onStart() {
@@ -174,8 +192,11 @@ public class AddPlace extends AppCompatActivity {
 
         mAddBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                addNewPlace();
-                Log.d("Wybrano", text);
+
+                    addNewPlace();
+                    Log.d("Wybrano", text);
+
+
             }
         });
         // ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -208,4 +229,31 @@ public class AddPlace extends AppCompatActivity {
         AppIndex.AppIndexApi.end(client, getIndexApiAction());
         client.disconnect();
     }
-}
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode==GALLERY_INTENT && resultCode==RESULT_OK){
+            Uri uri = data.getData();
+
+            StorageReference filepath = mStorage.child("Nowe_zdjecia").child(uri.getLastPathSegment());
+            filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    Uri downloadUrl = taskSnapshot.getDownloadUrl();
+
+                    Log.d(TAG, "url to" +downloadUrl);
+                    Toast.makeText(AddPlace.this,"Plik dostarczono do bazy. W aplikacji będzie widoczny po akceptacji administratora" ,Toast.LENGTH_LONG).show();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(AddPlace.this,"Operacja zakończona niepowodzeniem" ,Toast.LENGTH_LONG).show();
+                }
+            });
+
+            }
+        }
+
+    }

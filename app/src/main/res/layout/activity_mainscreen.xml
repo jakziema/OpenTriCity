@@ -9,48 +9,59 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.beata_macbook.opentricity.UI.UI.MainScreenActivity"
-    android:background="@drawable/gda"
+    android:background="@drawable/staremiasto"
     >
 
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="20pt"
+        android:layout_height="30pt"
         android:text="Instrukcja"
         android:id="@+id/instructionsButton"
-        android:background="@drawable/button_selector"
-        android:textColor="#ffffff"
+        android:theme="@style/ThemeOverlay.MyDarkButton"
         android:textSize="20dp"
         android:onClick="onInstructionsButtonClick"
         android:layout_above="@+id/aboutButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="23dp" />
+        android:layout_marginBottom="2dp" />
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="20pt"
-        android:text="Znajdź miejsce"
-        android:id="@+id/guestButton"
-        android:background="@drawable/button_selector"
-        android:textColor="#ffffff"
-        android:textSize="20dp"
-        android:onClick="onGuestButtonClick"
-        android:layout_above="@+id/instructionsButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="21dp" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="20pt"
+        android:layout_height="30pt"
         android:text="O aplikacji"
         android:id="@+id/aboutButton"
-        android:background="@drawable/button_selector"
-        android:textColor="#ffffff"
+        android:theme="@style/ThemeOverlay.MyDarkButton"
         android:textSize="20dp"
         android:onClick="onAboutButtonClick"
+        android:layout_marginBottom="2dp"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+    android:layout_width="match_parent"
+    android:layout_height="30pt"
+    android:text="Znajdź miejsce"
+    android:id="@+id/guestButton"
+    android:theme="@style/ThemeOverlay.MyDarkButton"
+    android:textSize="20dp"
+    android:onClick="onGuestButtonClick"
+    android:layout_marginBottom="2dp"
+    android:layout_above="@+id/addPlaceButton"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="30pt"
+        android:text="Dodaj miejsce"
+        android:id="@+id/addPlaceButton"
+        android:theme="@style/ThemeOverlay.MyDarkButton"
+        android:textSize="20dp"
+        android:onClick="addPlaceButtonClick"
+        android:layout_marginBottom="2dp"
+        android:layout_above="@+id/instructionsButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 

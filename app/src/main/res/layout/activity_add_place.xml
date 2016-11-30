@@ -11,11 +11,23 @@
     tools:context="com.example.beata_macbook.opentricity.UI.UI.AddPlace">
 
 
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="1" />
+
+
+
     <Button
         android:text="Dodaj"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/addBtn"
+        android:theme="@style/ThemeOverlay.MyDarkButton"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
@@ -35,26 +47,40 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-    <Spinner
+    <Button
+        android:text="Wybierz zdjęcie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/addBtn"
+        android:layout_toStartOf="@+id/addBtn"
+        android:theme="@style/ThemeOverlay.MyDarkButton"
+        android:layout_marginRight="51dp"
+        android:layout_marginEnd="51dp"
+        android:id="@+id/selectImage" />
+
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
-        android:id="@+id/spinner"
-        />
+        android:inputType="phone"
+        android:ems="10"
+        android:id="@+id/phone"
+        android:hint="Numer telefonu"
+        android:layout_below="@+id/name"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="39dp" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/name"
-        android:hint="nazwa"
-        android:layout_below="@+id/spinner"
+        android:id="@+id/elevator"
+        android:hint="Windy"
+        android:layout_below="@+id/toilets"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="24dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -66,7 +92,8 @@
             android:id="@+id/toilets"
             android:hint="Toalety"
         android:layout_below="@+id/phone"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -76,10 +103,10 @@
         android:id="@+id/ramp"
         android:hint="Podjazdy"
         android:layout_below="@+id/elevator"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -99,35 +126,16 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/elevator"
-        android:hint="Windy"
-        android:layout_below="@+id/toilets"
+        android:id="@+id/name"
+        android:hint="Nazwa"
+        android:layout_marginTop="44dp"
+        android:layout_below="@+id/spinner"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="phone"
-        android:ems="10"
-        android:id="@+id/phone"
-        android:hint="Numer telefonu"
-        android:layout_below="@+id/address"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 
-    <Button
-        android:text="Wybierz zdjęcie"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/addBtn"
-        android:layout_toStartOf="@+id/addBtn"
-        android:layout_marginRight="51dp"
-        android:layout_marginEnd="51dp"
-        android:id="@+id/selectImage" />
 
 
 </RelativeLayout>

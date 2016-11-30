@@ -15,7 +15,8 @@
         android:layout_width="0dp"
         android:layout_weight="0.25"
         android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.MyDarkButton"
         android:text="Zgłoś nadużycie"
-        android:textSize="7sp"
+        android:textSize="10sp"
         android:id="@+id/commentAbuseBtn" />
 </LinearLayout>

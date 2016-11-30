@@ -40,10 +40,10 @@
     <string name="email_fmt">Email: %s</string>
     <string-array name="categories">
         <item>Urzedy</item>
-        <item>Lokale_gastronomiczne</item>
-        <item>Lokale_uslugowe</item>
-        <item>Obiekty_sportowe</item>
-        <item>Obiekty_edukacyjne</item>
+        <item>Lokale gastronomiczne</item>
+        <item>Lokale uslugowe</item>
+        <item>Obiekty sportowe</item>
+        <item>Obiekty edukacyjne</item>
 
     </string-array>
     

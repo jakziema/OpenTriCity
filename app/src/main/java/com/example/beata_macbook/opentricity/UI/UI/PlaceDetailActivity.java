@@ -190,10 +190,7 @@ public class PlaceDetailActivity extends AppCompatActivity {
         Intent intent = new Intent(PlaceDetailActivity.this, AddUserActivity.class);
         startActivity(intent);
     }
-    public void dodajClick(View view) {
-        Intent intent = new Intent(PlaceDetailActivity.this, AddPlace.class);
-        startActivity(intent);
-    }
+
 
     public void nawigujStart() {
         if (!LocationHelper.isLocationEnabled(getApplicationContext())) {
@@ -230,8 +227,8 @@ public class PlaceDetailActivity extends AppCompatActivity {
                     //W miejsce `52` i `23` wstawcie swoje wspolrzedne geograficzne
                     Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
                             Uri.parse("http://maps.google.com/maps?saddr="+location.getLatitude() +
-                                    "," + location.getLongitude() + "&daddr="+ 18 +
-                                    ","+ 57));
+                                    "," + location.getLongitude() +
+                                    ","));
 
                     startActivity(intent);
                 }
