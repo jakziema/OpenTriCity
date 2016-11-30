@@ -131,25 +131,12 @@ public class ListCategoriesScreenActivity extends AppCompatActivity {
         });
 
 
-
-
-
-
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Log.v("wybor",choice);
                 Log.v("wybor",wyborNiepelnosprawnosci);
-
-
-                Toast.makeText(ListCategoriesScreenActivity.this,
-                        "OnClickListener : " +
-                                "\nSpinner 1 : " + String.valueOf(categorySpinner.getSelectedItem()) +
-                                "\nSpinner 2 : " + String.valueOf(disabilitySpinner.getSelectedItem()),
-                        Toast.LENGTH_SHORT).show();
-
-
 
                 Intent intent = new Intent(ListCategoriesScreenActivity.this, PlacesListActivity.class);
                 intent.putExtra("chosenCategory", choice);
@@ -159,6 +146,8 @@ public class ListCategoriesScreenActivity extends AppCompatActivity {
         });
 
     }
+
+
 
 
 
