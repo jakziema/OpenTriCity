@@ -182,7 +182,9 @@ public class PlaceDetailActivity extends AppCompatActivity {
                 Toast.makeText(this, "Wystąpił problem przy dodawaniu komentarza.", Toast.LENGTH_SHORT).show();
             }
         } else {
-            Toast.makeText(this, "Zaloguj się by dodać komentarz.", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Zaloguj się by dodać komentarz.", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, Pop.class);
+            startActivity(intent);
         }
     }
 
@@ -226,11 +228,14 @@ public class PlaceDetailActivity extends AppCompatActivity {
                             .getLastKnownLocation(LocationManager.GPS_PROVIDER);
                     //W miejsce `52` i `23` wstawcie swoje wspolrzedne geograficzne
                     Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-                            Uri.parse("http://maps.google.com/maps?saddr="+location.getLatitude() +
-                                    "," + location.getLongitude() +
-                                    ","));
+                            Uri.parse("http://maps.google.com/maps?saddr="+location.getLatitude()+
+                                    "," + location.getLongitude() + "&daddr="+ place.getLongitude() +
+                                            ","+ place.getLatitude()));
 
                     startActivity(intent);
+
+
+
                 }
             }
             else{

@@ -52,6 +52,8 @@ public class MainScreenActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainScreenActivity.this, AddPlace.class);
                 startActivity(intent);
             } else {
+                Intent intent1 = new Intent(MainScreenActivity.this, Pop.class);
+                startActivity(intent1);
                 Log.v("logowanie ", "Niezalogowany");
             }
 
