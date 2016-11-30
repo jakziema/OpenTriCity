@@ -8,6 +8,7 @@ import android.net.NetworkInfo;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -24,6 +25,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class MainScreenActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +33,8 @@ public class MainScreenActivity extends AppCompatActivity {
         if(!isOnline()) {
             this.connectionAlert().show();
         }
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
+        mAuth = FirebaseAuth.getInstance();
     }
 
     //Przejscie do ekranu informacji
@@ -45,13 +48,18 @@ public class MainScreenActivity extends AppCompatActivity {
 
     public void addPlaceButtonClick(View view) {
 
+            if (mAuth.getCurrentUser() != null) {
+                Intent intent = new Intent(MainScreenActivity.this, AddPlace.class);
+                startActivity(intent);
+            } else {
+                Log.v("logowanie ", "Niezalogowany");
+            }
 
-
-            Intent intent = new Intent(MainScreenActivity.this, AddPlace.class);
-            startActivity(intent);
 
 
     }
+
+
 
 //    public void onLoginButtonClicked(View view) {
 //        Intent intent = new Intent(this, LoginActivity.class);
