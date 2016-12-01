@@ -146,6 +146,18 @@ public class PlaceDetailActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        if(mAuth.getCurrentUser()!=null){
+            logujBtn.setText("Zaloguj");
+
+        }else{
+            logujBtn.setText("Zalogowany");
+        }
+
+    }
+
     private void createListView() {
         ArrayList<Comment> comments = new ArrayList<Comment>();
         if (place.getComments() != null) {
