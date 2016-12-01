@@ -31,7 +31,7 @@ Na ekranie startowym wchodzimy w link 'Dodaj miejsce'  i uzupełniamy podstawowe
             android:textSize="18dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/aboutTextView"
+            android:id="@+id/instructionTextView"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />

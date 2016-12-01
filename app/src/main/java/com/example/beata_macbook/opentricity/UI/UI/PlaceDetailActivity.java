@@ -246,8 +246,6 @@ public class PlaceDetailActivity extends AppCompatActivity {
 
                     startActivity(intent);
 
-
-
                 }
             }
             else{
