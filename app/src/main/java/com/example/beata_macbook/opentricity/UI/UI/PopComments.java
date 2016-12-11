@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.beata_macbook.opentricity.R;
+import com.example.beata_macbook.opentricity.UI.Model.Comment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -207,10 +208,12 @@ public class PopComments extends AppCompatActivity implements View.OnClickListen
             signOut();
         }
 
+        ;
+
     }
 
-    public void previousClick(View view){
-        Intent i = new Intent(PopComments.this, PlaceDetailActivity.class);
-        startActivity(i);
+    public void exitClick(View v){
+        finish();
     }
+
 }

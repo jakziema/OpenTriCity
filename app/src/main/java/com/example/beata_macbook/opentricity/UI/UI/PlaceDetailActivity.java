@@ -112,7 +112,7 @@ public class PlaceDetailActivity extends AppCompatActivity {
         toiletsTextView = (TextView) details.findViewById(R.id.toiletsTextView);
         staffTextView = (TextView) details.findViewById(R.id.staffTextView);
         podjazdyTextView = (TextView) details.findViewById(R.id.podjazdyTextView);
-        
+
 
         noCommentsTxt = (TextView) details.findViewById(R.id.noCommentsTxt);
         lokalizujBtn = (Button) findViewById(R.id.lokalizuj_btn);
