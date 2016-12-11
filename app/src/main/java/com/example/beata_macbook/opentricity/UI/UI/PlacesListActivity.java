@@ -34,16 +34,22 @@ public class PlacesListActivity extends AppCompatActivity {
         mRecyclerView = (RecyclerView)findViewById(R.id.recyclerView);
         //ustawiamy zapytanie do bazy Firebase w zaleznosci od tego co wybral uzytkownik, pobieramy intentem z ekranu
         // CategoriesScreenActivity
+
         String wyborKategorii = getIntent().getStringExtra("chosenCategory");
         String wyborNiepelnosprawnosci = getIntent().getStringExtra("toggleButtonChoice");
-        Log.v("WYBOR_KATEGORII",wyborKategorii );
-        Log.v("WYBOR_NIEPELNO",wyborNiepelnosprawnosci);
 
-        if (wyborNiepelnosprawnosci.isEmpty()) {
+
+
+        if (wyborNiepelnosprawnosci.equals("Bez kategorii")) {
             mFirebaseReference2 = FirebaseDatabase.getInstance().getReference(wyborKategorii);
+            Log.v("Weszlo", wyborNiepelnosprawnosci);
         } else {
             mFirebaseReference2 = FirebaseDatabase.getInstance().getReference(wyborKategorii)
                     .orderByChild(wyborNiepelnosprawnosci).equalTo("true");
+
+            Log.v("Nie Weszlo", wyborNiepelnosprawnosci);
+
+
 
         }
 

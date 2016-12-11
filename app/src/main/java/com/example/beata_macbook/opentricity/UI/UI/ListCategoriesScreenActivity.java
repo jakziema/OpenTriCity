@@ -135,8 +135,7 @@ public class ListCategoriesScreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Log.v("wybor",choice);
-                Log.v("wybor",wyborNiepelnosprawnosci);
+
 
                 Intent intent = new Intent(ListCategoriesScreenActivity.this, PlacesListActivity.class);
                 intent.putExtra("chosenCategory", choice);

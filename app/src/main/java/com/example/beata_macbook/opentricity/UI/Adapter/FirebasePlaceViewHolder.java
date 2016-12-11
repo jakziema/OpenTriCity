@@ -90,7 +90,7 @@ public class FirebasePlaceViewHolder extends RecyclerView.ViewHolder implements 
         final LinkedHashMap<String, Place> places = new LinkedHashMap<>();
 
         //choice wybor uzytkownika
-        if (wyborNiepelnosprawnosci.isEmpty()) {
+        if (wyborNiepelnosprawnosci.equals("Bez kategorii")) {
             mFirebaseReference2 = FirebaseDatabase.getInstance().getReference(choice);
         } else {
             mFirebaseReference2 = FirebaseDatabase.getInstance().getReference(choice)
