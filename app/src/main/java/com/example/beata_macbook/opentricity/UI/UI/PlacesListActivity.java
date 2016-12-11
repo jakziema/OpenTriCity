@@ -36,7 +36,7 @@ public class PlacesListActivity extends AppCompatActivity {
         // CategoriesScreenActivity
         String wyborKategorii = getIntent().getStringExtra("chosenCategory");
         String wyborNiepelnosprawnosci = getIntent().getStringExtra("toggleButtonChoice");
-        Log.v("WYBOR_KATEGORII",wyborKategorii );
+        Log.v("WYBOR_KATEGORII",wyborKategorii);
         Log.v("WYBOR_NIEPELNO",wyborNiepelnosprawnosci);
 
         if (wyborNiepelnosprawnosci.isEmpty()) {

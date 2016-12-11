@@ -7,12 +7,18 @@ import android.widget.TextView;
 import com.example.beata_macbook.opentricity.R;
 
 public class Instruction extends AppCompatActivity {
-    TextView instruction;
+    TextView instruction1;
+    TextView instruction2;
+    TextView instruction3;
+    TextView instruction4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instruction);
-        instruction = (TextView)findViewById(R.id.instructionTextView);
+        instruction1 = (TextView)findViewById(R.id.instruction1TextView);
+        instruction2 = (TextView)findViewById(R.id.instruction2TextView);
+        instruction3 = (TextView)findViewById(R.id.instruction3TextView);
+        instruction4 = (TextView)findViewById(R.id.instruction4TextView);
 
     }
 }

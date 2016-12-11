@@ -238,7 +238,6 @@ public class PlaceDetailActivity extends AppCompatActivity {
                 else{
                     location = mLocationManager
                             .getLastKnownLocation(LocationManager.GPS_PROVIDER);
-                    //W miejsce `52` i `23` wstawcie swoje wspolrzedne geograficzne
                     Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
                             Uri.parse("http://maps.google.com/maps?saddr="+location.getLatitude()+
                                     "," + location.getLongitude() + "&daddr="+ place.getLongitude() +

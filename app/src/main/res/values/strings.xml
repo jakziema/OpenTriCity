@@ -38,6 +38,7 @@
 
     <string name="id_fmt">ID użytkownika: %s</string>
     <string name="email_fmt">Email: %s</string>
+    <string name="_1_jak_wyszuka_miejsce_zgodnie_z_posiadan_niepe_nosprawno_cia_aby_znale_miejsce_kt_re_nas_interesuje_i_kt_re_spe_nia_nasze_wymagania_nale_y_klikn_znajd_miejsce_nast_pnie_wybieramy_kategori_miejsca_i_rodzaj_niepe_nosprawno_ci_i_klikamy_wyszukaj_zostan_nam_wy_wietlone_miejsca_do_kt_rych_na_pewno_b_dziemy_mogli_si_dosta"></string>
     <string-array name="categories">
         <item>Urzedy</item>
         <item>Lokale gastronomiczne</item>

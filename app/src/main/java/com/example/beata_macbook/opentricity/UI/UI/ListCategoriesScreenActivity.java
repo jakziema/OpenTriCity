@@ -97,7 +97,7 @@ public class ListCategoriesScreenActivity extends AppCompatActivity {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
 
                     for (DataSnapshot ds2 : ds.getChildren()) {
-                        Log.v("Categories", ds2.getValue().toString());
+
                         disabilities.add(ds2.getValue().toString());
                     }
                 }

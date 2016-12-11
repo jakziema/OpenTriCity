@@ -46,6 +46,8 @@ public class MainScreenActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+
+
     public void addPlaceButtonClick(View view) {
 
             if (mAuth.getCurrentUser() != null) {
