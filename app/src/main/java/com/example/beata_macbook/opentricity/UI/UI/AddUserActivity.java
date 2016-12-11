@@ -136,7 +136,7 @@ public class AddUserActivity extends AppCompatActivity implements
                             mStatusTextView.setText(R.string.auth_failed);
                         }
 
-                        loggedIn = true
+                        loggedIn = true;
                     }
                 });
     }

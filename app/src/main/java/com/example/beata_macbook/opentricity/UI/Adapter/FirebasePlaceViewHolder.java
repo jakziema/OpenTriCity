@@ -40,6 +40,7 @@ import static android.content.Context.LOCATION_SERVICE;
 
 
 import static com.example.beata_macbook.opentricity.UI.UI.ListCategoriesScreenActivity.wyborNiepelnosprawnosci;
+import static com.example.beata_macbook.opentricity.UI.UI.ListCategoriesScreenActivity.choice;
 
 
 /**

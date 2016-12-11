@@ -46,7 +46,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import static com.example.beata_macbook.opentricity.UI.UI.PlaceDetailActivity.loggedIn;
+
 
 /**
  * Klasa odpowiadająca za widok pokazujący szczegóły danego miejsca
@@ -145,7 +145,11 @@ public class PlaceDetailActivity extends AppCompatActivity {
         list = (ListView) findViewById(R.id.commentList);
         this.createListView();
 
-        if (loggedIn) {     logujBtn.setText("Wyloguj"); } else {     logujBtn.setText("Zaloguj"); }
+        if(loggedIn) {
+            logujBtn.setText("Wyloguj");
+        } else {
+            logujBtn.setText("Zaloguj");
+        }
 
         //ustawiamy zdjecie po URL
         Picasso.with(this).load(place.getImageURL()).resize(400, 300).centerCrop().into(detailPlaceImageView);
@@ -178,24 +182,15 @@ public class PlaceDetailActivity extends AppCompatActivity {
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
 
-                updateUI(user);
+
 
             }
         };
     }
 
 
-   /* @Override
-    protected void onRestart() {
-        super.onRestart();
-        if(mAuth.getCurrentUser()!=null){
-            logujBtn.setText("Zaloguj");
 
-        }else{
-            logujBtn.setText("wyloguj");
-        }
 
-    }*/
 
     private void createListView() {
         ArrayList<Comment> comments = new ArrayList<Comment>();
@@ -322,18 +317,17 @@ public class PlaceDetailActivity extends AppCompatActivity {
         }
     };
 
-    protected void onRestart() {     super.onRestart();      if (loggedIn) {         logujBtn.setText("Wyloguj");     } else {         logujBtn.setText("Zaloguj");     }   }
+    protected void onRestart() {
+        super.onRestart();
 
-
-
-    private void updateUI(FirebaseUser user) {
-        if (user != null) {
-           logujBtn.setText("Wyloguj");
+        if(loggedIn) {
+            logujBtn.setText("Wyloguj");
         } else {
-            //findViewById(R.id.loguj_btn).setVisibility(View.GONE);
             logujBtn.setText("Zaloguj");
         }
+
     }
+
 
     public class DateComparator implements Comparator<Comment> {
         @Override
