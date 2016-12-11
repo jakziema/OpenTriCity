@@ -8,6 +8,7 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -27,6 +28,7 @@ import com.example.beata_macbook.opentricity.UI.Model.CommentFields;
 import com.example.beata_macbook.opentricity.UI.Model.Place;
 import com.example.beata_macbook.opentricity.UI.Utils.LocationHelper;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -71,6 +73,7 @@ public class PlaceDetailActivity extends AppCompatActivity {
     LocationManager mLocationManager;
     private FirebaseAuth mAuth;
     Button logujBtn;
+    Button wylogujBtn;
     Button lokalizujBtn;
     Location location = null;
     ImageView detailPlaceImageView;
@@ -78,6 +81,7 @@ public class PlaceDetailActivity extends AppCompatActivity {
     Place place;
     private String id;
     private String category;
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
 
     @Override
@@ -91,7 +95,12 @@ public class PlaceDetailActivity extends AppCompatActivity {
         id = Parcels.unwrap(getIntent().getParcelableExtra("id"));
         category = Parcels.unwrap(getIntent().getParcelableExtra("category"));
 
+        /*if(mAuth.getCurrentUser()!=null){
+            logujBtn.setText("Zaloguj");
 
+        }else{
+            logujBtn.setText("wyloguj");
+        }*/
         //szukamy widokow
         detailPlaceNameTextView = (TextView) findViewById(R.id.detailPlaceNameTextView);
         addressTextView = (TextView) details.findViewById(R.id.addressTextView);
@@ -103,9 +112,12 @@ public class PlaceDetailActivity extends AppCompatActivity {
         toiletsTextView = (TextView) details.findViewById(R.id.toiletsTextView);
         staffTextView = (TextView) details.findViewById(R.id.staffTextView);
         podjazdyTextView = (TextView) details.findViewById(R.id.podjazdyTextView);
+        
+
         noCommentsTxt = (TextView) details.findViewById(R.id.noCommentsTxt);
         lokalizujBtn = (Button) findViewById(R.id.lokalizuj_btn);
         logujBtn = (Button) findViewById(R.id.loguj_btn);
+        wylogujBtn = (Button)findViewById(R.id.button2);
         addCommentTxt = (EditText) details.findViewById(R.id.addCommentTxt);
         addCommentBtn = (Button) details.findViewById(R.id.addCommentBtn);
         addCommentBtn.setOnClickListener(new View.OnClickListener() {
@@ -144,19 +156,39 @@ public class PlaceDetailActivity extends AppCompatActivity {
                 nawigujStart();
             }
         });
+
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            public static final String TAG = "komunikat" ;
+
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    // Użytkownik zalogowany
+                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                } else {
+                    // Użytkownik wylogowany
+                    Log.d(TAG, "onAuthStateChanged:signed_out");
+                }
+
+                updateUI(user);
+
+            }
+        };
     }
 
-    @Override
+
+   /* @Override
     protected void onRestart() {
         super.onRestart();
         if(mAuth.getCurrentUser()!=null){
             logujBtn.setText("Zaloguj");
 
         }else{
-            logujBtn.setText("Zalogowany");
+            logujBtn.setText("wyloguj");
         }
 
-    }
+    }*/
 
     private void createListView() {
         ArrayList<Comment> comments = new ArrayList<Comment>();
@@ -195,12 +227,17 @@ public class PlaceDetailActivity extends AppCompatActivity {
             }
         } else {
             //Toast.makeText(this, "Zaloguj się by dodać komentarz.", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(this, Pop.class);
+            Intent intent = new Intent(this, PopComments.class);
             startActivity(intent);
         }
     }
 
     public void logujClick(View view) {
+        Intent intent = new Intent(PlaceDetailActivity.this, AddUserActivity.class);
+        startActivity(intent);
+    }
+
+    public void wylogujClick(View view){
         Intent intent = new Intent(PlaceDetailActivity.this, AddUserActivity.class);
         startActivity(intent);
     }
@@ -277,6 +314,17 @@ public class PlaceDetailActivity extends AppCompatActivity {
             Log.d("LOCATION", Double.toString(location.getLatitude()));
         }
     };
+
+
+
+    private void updateUI(FirebaseUser user) {
+        if (user != null) {
+           logujBtn.setText("Wyloguj");
+        } else {
+            //findViewById(R.id.loguj_btn).setVisibility(View.GONE);
+            logujBtn.setText("Zaloguj");
+        }
+    }
 
     public class DateComparator implements Comparator<Comment> {
         @Override

@@ -61,6 +61,11 @@ public class MainScreenActivity extends AppCompatActivity {
 
     }
 
+    public void onAboutButtonClick(View view){
+        Intent intent = new Intent(MainScreenActivity.this, AboutScreenActivity.class);
+        startActivity(intent);
+    }
+
 
 
 //    public void onLoginButtonClicked(View view) {

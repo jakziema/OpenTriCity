@@ -47,4 +47,13 @@
 
     </string-array>
 
+    <string-array name="disabilities">
+        <item>Wozek</item>
+        <item>Kule</item>
+        <item>Niesłyszący</item>
+        <item>Karłowatość</item>
+        <item>Pies przewodnik</item>
+    </string-array>
+
+
 </resources>

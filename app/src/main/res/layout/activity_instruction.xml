@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -9,33 +9,60 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.beata_macbook.opentricity.UI.UI.Instruction"
-    android:background="@drawable/staremiasto"
+    android:background="@drawable/staremiasto1"
     >
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:layout_height="match_parent"
+        android:orientation="vertical">
         <TextView
-            android:text=" 1. Jak wyszukać  miejsce zgodnie z posiadaną niepełnosprawnościa?
-Aby znaleźć miejsce które nas interesuje i które spełnia nasze wymagania należy kliknąć 'Znajdź miejsce', następnie wybieramy kategorię miejsca i rodzaj niepełnosprawności i klikamy 'Wyszukaj'. Zostaną nam wyświetlone miejsca do których na pewno będziemy mogli się dostać.
+            android:text="1. Jak wyszukać miejsce zgodnie z posiadaną niepełnosprawnościa? Aby znaleźć miejsce które nas interesuje i które spełnia nasze wymagania należy kliknąć \'Znajdź miejsce\', następnie wybieramy kategorię miejsca i rodzaj niepełnosprawności i klikamy \'Wyszukaj\'. Zostaną nam wyświetlone miejsca do których na pewno będziemy mogli się dostać."
 
-2. Jak zlokalizować miejsce na mapie?
-Po wybraniu miejsca z listy otwiera nam się widok szczegółowy, gdzie możemy znaleźć przycisk lokalizuj. Po kliknięciu zostajemy przeniesieni do aplikacji Google Maps, gdzie możemy zobaczyć wyznaczoną trasę do tego miejsca.
-3. Jak dodać komentarz do miejsca?
-Jeśli chcemy skomentować miejsce, musimy być zalogowani. Służy do tego przycisk 'Zaloguj' gdzie odbywa się rejestracja użytkownika. Wpisujemy tam swój login i hasło, klikamy 'Zarejestruj'. Teraz możemy w polu Wpisz komentarz dodać swoja opinię. Jeśli którakolwiek z opinii już istniejących nie jest zgodna z prawdą, bądź budzi niepokój, można ją zgłosić klikając 'Zgłoś nadużycie'. Zostaniemy przekierowani do aplikacji z których możemy wysłać wiadomość administratorowi.
-4. Jak dodać miejsce ?
-Na ekranie startowym wchodzimy w link 'Dodaj miejsce'  i uzupełniamy podstawowe dane. Możemy umieścić także zdjęcie z komputera klikając „Dodaj zdjęcie”. Całość kończymy przyciskiem 'Dodaj'."
             android:textColor="#FFFFFF"
             android:background="@color/colorPrimaryDark"
             android:textSize="18dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/instructionTextView"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:id="@+id/instruction1TextView"
+            android:layout_marginBottom="20dp"
+            />
 
-    </ScrollView>
+        <TextView
+            android:text="2. Jak zlokalizować miejsce na mapie? Po wybraniu miejsca z listy otwiera nam się widok szczegółowy, gdzie możemy znaleźć przycisk lokalizuj. Po kliknięciu zostajemy przeniesieni do aplikacji Google Maps, gdzie możemy zobaczyć wyznaczoną trasę do tego miejsca."
+            android:textColor="#FFFFFF"
+            android:background="@color/colorPrimaryDark"
+            android:textSize="18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/instruction2TextView"
+            android:layout_marginBottom="20dp"
+            />
 
-</RelativeLayout>
+        <TextView
+            android:text="3. Jak dodać komentarz do miejsca? Jeśli chcemy skomentować miejsce, musimy być zalogowani.
+        Służy do tego przycisk 'Zaloguj' gdzie odbywa się rejestracja użytkownika. Wpisujemy tam swój login i hasło, klikamy 'Zarejestruj'. Teraz możemy w polu Wpisz komentarz dodać swoja opinię. Jeśli którakolwiek z opinii już istniejących nie jest zgodna z prawdą, bądź budzi niepokój, można ją zgłosić klikając 'Zgłoś nadużycie'. Zostaniemy przekierowani do aplikacji z których możemy wysłać wiadomość administratorowi."
+
+            android:textColor="@android:color/white"
+            android:background="@color/colorPrimaryDark"
+            android:textSize="18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/instruction3TextView"
+            android:layout_marginBottom="20dp"
+            />
+
+        <TextView
+            android:text="4. Jak dodać miejsce ? Na ekranie startowym wchodzimy w link 'Dodaj miejsce'  i uzupełniamy podstawowe dane. Możemy umieścić także zdjęcie z komputera klikając „Dodaj zdjęcie”. Całość kończymy przyciskiem 'Dodaj'."
+            android:textColor="@android:color/white"
+            android:background="@color/colorPrimaryDark"
+            android:textSize="18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/instruction4TextView"
+            android:layout_marginBottom="20dp"
+            />
+
+    </LinearLayout>
+
+</ScrollView>

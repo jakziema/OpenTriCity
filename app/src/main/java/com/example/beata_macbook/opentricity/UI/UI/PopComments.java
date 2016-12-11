@@ -20,7 +20,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class Pop extends AppCompatActivity implements View.OnClickListener{
+public class PopComments extends AppCompatActivity implements View.OnClickListener{
 
     private static final String TAG = "EmailPassword";
 
@@ -39,7 +39,7 @@ public class Pop extends AppCompatActivity implements View.OnClickListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pop);
+        setContentView(R.layout.activity_pop_comments);
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -112,7 +112,7 @@ public class Pop extends AppCompatActivity implements View.OnClickListener{
 
                         //Komunikat, jesli logowanie się nie powiedzie
                         if (!task.isSuccessful()) {
-                            Toast.makeText(Pop.this, R.string.auth_failed,
+                            Toast.makeText(PopComments.this, R.string.auth_failed,
                                     Toast.LENGTH_SHORT).show();
                         }
 
@@ -137,7 +137,7 @@ public class Pop extends AppCompatActivity implements View.OnClickListener{
 
                         if (!task.isSuccessful()) {
                             Log.w(TAG, "signInWithEmail:failed", task.getException());
-                            Toast.makeText(Pop.this, R.string.auth_failed,
+                            Toast.makeText(PopComments.this, R.string.auth_failed,
                                     Toast.LENGTH_SHORT).show();
                         }
 
@@ -210,7 +210,7 @@ public class Pop extends AppCompatActivity implements View.OnClickListener{
     }
 
     public void previousClick(View view){
-        Intent i = new Intent(Pop.this, AddPlace.class);
-                startActivity(i);
+        Intent i = new Intent(PopComments.this, PlaceDetailActivity.class);
+        startActivity(i);
     }
 }

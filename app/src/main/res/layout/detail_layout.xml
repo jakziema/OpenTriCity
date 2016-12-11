@@ -159,6 +159,51 @@
                 android:textStyle="bold"
                 android:layout_marginBottom="10dp"
                 android:gravity="center_vertical"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Parkingi"
+                android:id="@+id/parkingTextView"
+                android:textColor="@color/colorPrimaryLight"
+                android:background="@color/colorPrimary"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Szkolna 3, Miłobądz"
+                android:id="@+id/parking1TextView"
+                android:textColor="@color/colorTextIcons"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_vertical"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Komunikacja miejska"
+                android:id="@+id/komunikacjaTextView"
+                android:textColor="@color/colorPrimaryLight"
+                android:background="@color/colorPrimary"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Szkolna 3, Miłobądz"
+                android:id="@+id/komunikacja1TextView"
+                android:textColor="@color/colorTextIcons"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_vertical"/>
 
             <TextView
                 android:layout_width="match_parent"

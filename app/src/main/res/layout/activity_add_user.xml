@@ -66,24 +66,36 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/email_password_fields"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp">
 
                 <Button
                     android:id="@+id/email_sign_in_button"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/sign_in"
+                    android:layout_gravity="center"
+                    android:text="Zaloguj się"
                     android:theme="@style/ThemeOverlay.MyDarkButton" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/rejestracja"
+                    android:text="Jeżeli nie masz jeszcze konta, zarejestruj się"
+                    android:textColor="@color/colorPrimary"
+                    />
+
 
                 <Button
                     android:id="@+id/email_create_account_button"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/create_account"
+                    android:layout_gravity="center"
+
+                    android:text="Zarejestruj się"
                     android:theme="@style/ThemeOverlay.MyDarkButton" />
             </LinearLayout>
 
@@ -98,12 +110,12 @@
 
         </RelativeLayout>
 
-        <TextView
-            android:id="@+id/detail"
-            style="@style/ThemeOverlay.MyTextDetail"
-            tools:text="Firebase User ID: 123456789abc" />
-
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/detail"
+        style="@style/ThemeOverlay.MyTextDetail"
+        tools:text="Firebase User ID: 123456789abc" />
 
 
 </LinearLayout>
