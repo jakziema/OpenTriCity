@@ -22,13 +22,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UI.UI.AboutScreenActivity" />
-        <activity android:name=".UI.UI.CategoriesScreenActivity" />
-        <activity android:name=".UI.UI.PlacesListActivity" />
-        <activity android:name=".UI.UI.PlaceDetailActivity" />
-        <activity android:name=".UI.UI.Instruction" />
-        <activity android:name=".UI.UI.AddUserActivity" />
-        <activity android:name=".UI.UI.ListCategoriesScreenActivity" />
+        <activity android:name=".UI.UI.AboutScreenActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".UI.UI.CategoriesScreenActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".UI.UI.PlacesListActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".UI.UI.PlaceDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".UI.UI.Instruction"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".UI.UI.AddUserActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".UI.UI.ListCategoriesScreenActivity"
+            android:screenOrientation="portrait"/>
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
