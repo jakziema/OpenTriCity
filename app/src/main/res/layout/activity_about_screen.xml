@@ -9,13 +9,13 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.beata_macbook.opentricity.UI.UI.AboutScreenActivity"
-    android:background="@drawable/staremiasto"
+    android:background="@drawable/staremiasto1"
     >
     <TextView
-        android:text=" Autorami aplikacji są Katarzyna Poniatowska, Jakub Ziemann i Alicja Zelewska. Aplikacja ma na celu pomoc osobom niepełnosprawnym w poruszaniu się po mieście."
+        android:text=" OpenTriCity powstawała w ramach pracy inżynierskiej na wydziale ETI Politechniki Gdańskiej. Autorami aplikacji są Katarzyna Poniatowska, Jakub Ziemann i Alicja Zelewska. Aplikacja ma na celu pomóc osobom niepełnosprawnym w poruszaniu się po mieście."
         android:textColor="#FFFFFF"
         android:background="@color/colorPrimaryDark"
-        android:textSize="18dp"
+        android:textSize="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/aboutTextView"

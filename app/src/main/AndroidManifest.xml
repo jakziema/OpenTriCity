@@ -38,7 +38,8 @@
             android:value="@integer/google_play_services_version" />
 
         <activity android:name=".UI.UI.AddPlace" />
-        <activity android:name=".UI.UI.Pop"></activity>
+        <activity android:name=".UI.UI.Pop" />
+        <activity android:name=".UI.UI.PopComments"></activity>
     </application>
 
 </manifest>

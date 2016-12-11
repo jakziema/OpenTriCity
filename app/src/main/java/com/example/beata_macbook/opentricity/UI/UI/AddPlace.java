@@ -52,7 +52,10 @@ public class AddPlace extends AppCompatActivity {
     EditText mTextToilets;
     EditText mTextRamp;
     Spinner spinnerCategory;
+    Spinner spinnerDisabilities;
     ArrayAdapter<CharSequence> adapter;
+    ArrayAdapter<CharSequence> adapter2;
+
 
     ToggleButton elevatorBtn;
 
@@ -60,6 +63,7 @@ public class AddPlace extends AppCompatActivity {
 
     Button mAddBtn;
     private String category;
+    private String disabilities;
     private FirebaseAuth mAuth;
     private StorageReference mStorage;
 
@@ -94,9 +98,13 @@ public class AddPlace extends AppCompatActivity {
         mAddBtn = (Button) findViewById(R.id.addBtn);
 
         spinnerCategory = (Spinner) findViewById(R.id.spinner);
+        spinnerDisabilities = (Spinner)findViewById(R.id.spinner2);
         adapter = ArrayAdapter.createFromResource(this, R.array.categories, android.R.layout.simple_spinner_item);
+        adapter2 = ArrayAdapter.createFromResource(this, R.array.disabilities, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCategory.setAdapter(adapter);
+        spinnerDisabilities.setAdapter(adapter2);
 
         mSelectImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,6 +117,20 @@ public class AddPlace extends AppCompatActivity {
 
 
         spinnerCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                parent.getItemAtPosition(position);
+                text = parent.getSelectedItem().toString();
+
+
+            }
+
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Another interface callback
+            }
+        });
+
+        spinnerDisabilities.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
                 parent.getItemAtPosition(position);
@@ -144,6 +166,10 @@ public class AddPlace extends AppCompatActivity {
         DatabaseReference refEle = FirebaseDatabase.getInstance().getReference().child(text).child(String.valueOf(n)).child("elevator");
         DatabaseReference refStaff = FirebaseDatabase.getInstance().getReference().child(text).child(String.valueOf(n)).child("staff");
         DatabaseReference refToil = FirebaseDatabase.getInstance().getReference().child(text).child(String.valueOf(n)).child("toilets");
+       DatabaseReference refKul = FirebaseDatabase.getInstance().getReference().child(text).child(String.valueOf(n)).child("O kulach");
+       DatabaseReference refWoz = FirebaseDatabase.getInstance().getReference().child(text).child(String.valueOf(n)).child("Wozek");
+       DatabaseReference refNies = FirebaseDatabase.getInstance().getReference().child(text).child(String.valueOf(n)).child("Niesłyszący");
+       DatabaseReference refPies = FirebaseDatabase.getInstance().getReference().child(text).child(String.valueOf(n)).child("Karłowatość");
         DatabaseReference refRamp = FirebaseDatabase.getInstance().getReference().child(text).child(String.valueOf(n)).child("podjazdy");
       DatabaseReference imageURL = FirebaseDatabase.getInstance().getReference().child(text).child(String.valueOf(n)).child("imageURL");
         Log.d("Wybrałam", text);
@@ -171,16 +197,12 @@ public class AddPlace extends AppCompatActivity {
             startActivity(getIntent());
 
             Toast.makeText(this, "Miejsce zostało dodane", Toast.LENGTH_SHORT).show();
-        }/* else {
+        } else {
                 Toast.makeText(AddPlace.this,
                         "Uzupełnij wszystkie pola", Toast.LENGTH_LONG).show();
             }
-        }*/
-
-        else {
-            Toast.makeText(this, "Uzupełnij pola", Toast.LENGTH_SHORT).show();
         }
-    }
+
 
 
 
