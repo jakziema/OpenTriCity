@@ -37,8 +37,6 @@ public class Place {
     String deaf;
     String blind;
     String midget;
-    String komunikacja;
-    String parking;
     HashMap<String, Object> comments;
 
     //pusty konstruktor potrzebny bibliotece PICASSO
@@ -47,7 +45,7 @@ public class Place {
     public Place(
             String name, String website, String address, String phoneNumber,
             String imageURL, String opis, String elevator,
-            String staff, String bar, String toilets, String podjazdy, String komunikacja, String parking,
+            String staff, String bar, String toilets, String podjazdy,
             String el_wheelchair, String wheelchair, String crutch,
             String latitude, String longitude, String blind, String midget,
             String deaf,  HashMap<String, Object> comments
@@ -58,8 +56,6 @@ public class Place {
         this.phoneNumber = phoneNumber;
         this.imageURL = imageURL;
         this.opis = opis;
-        this.komunikacja = komunikacja;
-        this.parking = parking;
         this.elevator = elevator;
         this.staff = staff;
         this.bar = bar;
@@ -106,10 +102,6 @@ public class Place {
 
     public String getBar() {return bar; }
 
-    public String getParking() {return parking; }
-
-    public String getKomunikacja() {return komunikacja; }
-
     public String getToilets() {return toilets; }
 
     public void setDescription(String opis) {
@@ -143,8 +135,6 @@ public class Place {
     public void setBar(String bar) {
         this.bar = bar;
     }
-
-    //public void setKomunikacja()
 
     public void setStaff(String staff) {
         this.staff = staff;

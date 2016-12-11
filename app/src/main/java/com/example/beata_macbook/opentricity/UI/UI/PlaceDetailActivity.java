@@ -68,10 +68,6 @@ public class PlaceDetailActivity extends AppCompatActivity {
     TextView staffTextView;
     TextView barTextView;
     TextView noCommentsTxt;
-    TextView parkingTextView;
-    TextView komunikacjaTextView;
-
-
     EditText addCommentTxt;
     Button addCommentBtn;
     LayoutInflater inflater;
@@ -120,9 +116,6 @@ public class PlaceDetailActivity extends AppCompatActivity {
         toiletsTextView = (TextView) details.findViewById(R.id.toiletsTextView);
         staffTextView = (TextView) details.findViewById(R.id.staffTextView);
         podjazdyTextView = (TextView) details.findViewById(R.id.podjazdyTextView);
-        parkingTextView = (TextView)details.findViewById(R.id.parking1TextView);
-        komunikacjaTextView = (TextView)details.findViewById(R.id.komunikacja1TextView);
-
 
 
         noCommentsTxt = (TextView) details.findViewById(R.id.noCommentsTxt);
@@ -141,8 +134,6 @@ public class PlaceDetailActivity extends AppCompatActivity {
 
         //wrzucamy do labeli pola kliknietego miejsca
         detailPlaceNameTextView.setText(place.getName());
-        parkingTextView.setText(place.getParking());
-        komunikacjaTextView.setText(place.getKomunikacja());
         addressTextView.setText(place.getAddress());
         descriptionTextView.setText(place.getDescription());
         phoneTextView.setText(place.getPhoneNumber());
