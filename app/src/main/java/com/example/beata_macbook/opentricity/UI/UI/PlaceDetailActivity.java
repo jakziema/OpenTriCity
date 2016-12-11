@@ -46,11 +46,15 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import static com.example.beata_macbook.opentricity.UI.UI.PlaceDetailActivity.loggedIn;
+
 /**
  * Klasa odpowiadająca za widok pokazujący szczegóły danego miejsca
  */
 
 public class PlaceDetailActivity extends AppCompatActivity {
+
+    public static boolean loggedIn = false;
 
 
     // deklaracja wszystkich labeli itd
@@ -149,6 +153,9 @@ public class PlaceDetailActivity extends AppCompatActivity {
         podjazdyTextView.setText(place.getPodjazdy());
         list = (ListView) findViewById(R.id.commentList);
         this.createListView();
+
+        if (loggedIn) {     logujBtn.setText("Wyloguj"); } else {     logujBtn.setText("Zaloguj"); }
+
         //ustawiamy zdjecie po URL
         Picasso.with(this).load(place.getImageURL()).resize(400, 300).centerCrop().into(detailPlaceImageView);
 
@@ -323,6 +330,8 @@ public class PlaceDetailActivity extends AppCompatActivity {
             Log.d("LOCATION", Double.toString(location.getLatitude()));
         }
     };
+
+    protected void onRestart() {     super.onRestart();      if (loggedIn) {         logujBtn.setText("Wyloguj");     } else {         logujBtn.setText("Zaloguj");     }   }
 
 
 

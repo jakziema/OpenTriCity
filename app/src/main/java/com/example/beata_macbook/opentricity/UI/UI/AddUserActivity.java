@@ -17,6 +17,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import static com.example.beata_macbook.opentricity.UI.UI.PlaceDetailActivity.loggedIn;
+
 public class AddUserActivity extends AppCompatActivity implements
         View.OnClickListener {
 
@@ -133,12 +135,15 @@ public class AddUserActivity extends AppCompatActivity implements
                         if (!task.isSuccessful()) {
                             mStatusTextView.setText(R.string.auth_failed);
                         }
+
+                        loggedIn = true
                     }
                 });
     }
 
     private void signOut() {
         mAuth.signOut();
+        loggedIn = false;
         updateUI(null);
     }
 
